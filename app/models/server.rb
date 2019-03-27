@@ -30,7 +30,7 @@ class Server
 
   def ram
     begin
-      self.reports.last.ram_used + "/" + self.reports.last.ram_total
+      self.reports.last.ram_used.to_s + "/" + self.reports.last.ram_total.to_s
     rescue
       nil
     end
@@ -38,7 +38,7 @@ class Server
 
   def disk
     begin
-      self.reports.last.disk_used + "/" + self.reports.last.disk_total
+      self.reports.last.disk_used.to_s + "/" + self.reports.last.disk_total.to_s
     rescue
       nil
     end
