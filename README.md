@@ -1,11 +1,11 @@
-# Meeseeks
+# SSSM - Stupid Simple Server Monitor
 
-## Requisitos
+## Requirements
 
 - MongoDB v3.4
 - Ruby 2.5.3
-- Rails 5.2.2 ou superior
-- NGINX (produção)
+- Rails 5.2.2 or above
+- NGINX (production)
 
 ## Uso
 
@@ -15,22 +15,22 @@ crontab -e
 ```
 
 ```text
-* * * * * curl -s https://meeseeks.ml/runner.sh | bash -s [token do servidor]
+* * * * * curl -s https://meeseeks.ml/runner.sh | bash -s [server token]
 ```
 
-## Desenvolvimento
+## Development
 
-Clone o repositório, vá até a pasta do projeto e instale as dependências executando ```bundle install```.
+Clone the repository and nstall dependencies running ```bundle install```.
 
-Inicie o servidor com ```rails server```.
+Start the server running ```rails server```.
 
-Acesse http://localhost:3000.
+Go to http://localhost:3000.
 
-## Produção
+## Production
 
-Clone o repositório na pasta /srv/, vá até a pasta do projeto e instale as dependências executando ```bundle install```.
+Clone the repository at /srv/ and install dependencies running ```bundle install```.
 
-Configure o NGINX:
+Setup NGINX:
 
 ```bash
 sudo nano /etc/nginx/sites-enabled/meeseeks
@@ -61,7 +61,7 @@ server {
 sudo systemctl restart nginx
 ```
 
-Configure o systemd:
+Setup systemd:
 
 ```bash
 rvm wrapper show bundle
@@ -92,4 +92,4 @@ sudo systemctl enable meeseeks
 sudo systemctl start meeseeks
 ```
 
-Acesse o domínio registrado no NGINX.
+Go to your NGINX domain.

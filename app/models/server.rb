@@ -13,15 +13,15 @@ class Server
   validates :nickname, presence: true
 
   def last_active
-    self.reports.last.created_at rescue nil
+    self.reports.last.created_at rescue "-"
   end
 
   def last_hostname
-    self.reports.last.hostname rescue nil
+    self.reports.last.hostname rescue "-"
   end
 
   def last_distro
-    self.reports.last.distro rescue nil
+    self.reports.last.distro rescue "-"
   end
 
   def last_uptime
@@ -32,7 +32,7 @@ class Server
       dd, hh = hh.divmod(24)
       return "%dd %dh %dm" % [dd, hh, mm]
     rescue
-      nil
+      "-"
     end
   end
 
@@ -41,7 +41,7 @@ class Server
       pct = self.reports.last.ram_used * 100 / self.reports.last.ram_total
       return pct.round.to_s + "%"
     rescue
-      nil
+      "0%"
     end
   end
 
@@ -50,7 +50,7 @@ class Server
       pct = self.reports.last.disk_used * 100 / self.reports.last.disk_total
       return pct.round.to_s + "%"
     rescue
-      nil
+      "0%"
     end
   end
 
