@@ -13,7 +13,7 @@ class Server
   validates :hostname, presence: true
 
   def last_active
-    self.reports.last
+    self.reports.last.created_at rescue nil
   end
 
   private
