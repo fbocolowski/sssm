@@ -6,6 +6,7 @@
       </div>
       <div class="col-xl-8 text-right">
         <% unless @user.nil? %>
+          <a href="<%= servers_path %>" class="link">Servers</a>
           <a href="#" class="link"><%= @user.username %></a>
           <a href="<%= logout_path %>" class="link">Logout</a>
         <% else %>
