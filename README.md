@@ -8,9 +8,15 @@
 - NGINX (produção)
 
 ## Uso
+
+```bash
 sudo su
 crontab -e
+```
+
+```text
 * * * * * curl -s https://meeseeks.ml/runner.sh | bash -s [token do servidor]
+```
 
 ## Desenvolvimento
 
@@ -26,8 +32,12 @@ Clone o repositório na pasta /srv/, vá até a pasta do projeto e instale as de
 
 Configure o NGINX:
 
-```text
+```bash
 sudo nano /etc/nginx/sites-enabled/meeseeks
+sudo nano /etc/nginx/conf.d/meeseeks].conf
+```
+
+```text
 server {
 	listen 80;
 	server_name meeseeks.ml;
@@ -45,14 +55,20 @@ server {
 
 	keepalive_timeout 10;
 }
+```
+
+```bash
 sudo systemctl restart nginx
 ```
 
 Configure o systemd:
 
-```text
+```bash
 rvm wrapper show bundle
 sudo nano /etc/systemd/system/meeseeks.service
+```
+
+```text
 [Unit]
 After=network.target
 
@@ -67,6 +83,10 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+WantedBy=multi-user.target
+```
+
+```bash
 sudo systemctl daemon-reload
 sudo systemctl enable meeseeks
 sudo systemctl start meeseeks
