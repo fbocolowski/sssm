@@ -80,18 +80,22 @@ a, a:hover {
 }
 
 .menu {
-    background-color: #f8f8f8;
     line-height: 70px;
     /*border-bottom: 1px solid #e3ebf6 !important;*/
-    background-color: #fff;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .menu .link {
     color: #12263f;
     padding: .625rem 1rem;
     text-decoration: none;
+}
+
+.rodape {
+    border-top: 1px solid #e3ebf6 !important;
+    margin-top: 1.5rem;
+    padding: 1rem;
 }
 
 .snackbar {

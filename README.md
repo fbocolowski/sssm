@@ -9,7 +9,7 @@
 
 ## Development
 
-Clone the repository and nstall dependencies running ```bundle install```.
+Clone the repository and install dependencies running ```bundle install```.
 
 Start the server running ```rails server```.
 
@@ -22,7 +22,9 @@ Clone the repository at /srv/ and install dependencies running ```bundle install
 Setup NGINX:
 
 ```bash
+# Debian
 sudo nano /etc/nginx/sites-enabled/sssm
+# Red Hat
 sudo nano /etc/nginx/conf.d/sssm.conf
 ```
 
