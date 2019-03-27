@@ -30,7 +30,8 @@ class Server
 
   def ram
     begin
-      self.reports.last.ram_used.to_s + "/" + self.reports.last.ram_total.to_s
+      pct = self.reports.last.ram_used * 100 / self.reports.last.ram_total
+      return pct.to_s + "%"
     rescue
       nil
     end
@@ -38,7 +39,8 @@ class Server
 
   def disk
     begin
-      self.reports.last.disk_used.to_s + "/" + self.reports.last.disk_total.to_s
+      pct = self.reports.last.disk_used * 100 / self.reports.last.disk_total
+      return pct.to_s + "%"
     rescue
       nil
     end
