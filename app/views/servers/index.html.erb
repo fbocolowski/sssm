@@ -22,9 +22,8 @@
           </tr>
           <% @user.servers.each do |server| %>
             <tr class="clickable-row" data-href="<%= server_path(server) %>">
-              <td><%= server.nickname %></td>
-              <td><%= server.last_active %></td>
               <td><%= server.last_hostname %></td>
+              <td><%= server.last_active %></td>
               <td><%= server.last_distro %></td>
               <td><%= server.last_uptime %></td>
               <td>
