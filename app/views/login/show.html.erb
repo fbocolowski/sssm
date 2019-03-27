@@ -1,13 +1,25 @@
-<h2>Login</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4 offset-4">
+      <h4>Login</h4>
 
-<%= form_tag(login_path, method: "post") do %>
-  <label>Username</label>
-  <%= text_field_tag(:username, params[:username], autofocus: true) %>
+      <%= form_tag(login_path, method: "post") do %>
+        <div class="form-group">
+          <label>Username</label>
+          <%= text_field_tag(:username, params[:username], autofocus: true, class: "form-control") %>
+        </div>
 
-  <label>Password</label>
-  <%= password_field_tag(:password, "", class: "form-control") %>
+        <div class="form-group">
+          <label>Password</label>
+          <%= password_field_tag(:password, "", class: "form-control") %>
+        </div>
 
-  <%= submit_tag("Submit", class: "btn btn-dark w-100") %>
-<% end %>
+        <%= submit_tag("Submit", class: "btn btn-dark w-100") %>
+      <% end %>
 
-<p>Not registered yet? <a href="<%= registration_path %>">Create an account</a></p>
+      <div class="text-center mt-3">
+        <p>Not registered yet? <a href="<%= registration_path %>">Create an account</a></p>
+      </div>
+    </div>
+  </div>
+</div>

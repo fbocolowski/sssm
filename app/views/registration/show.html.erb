@@ -1,13 +1,25 @@
-<h2>Create an account</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4 offset-4">
+      <h4>Create an account</h4>
 
-<%= form_for(@new_user, url: registration_path, method: "post") do |f| %>
-  <label>Username</label>
-  <%= f.text_field(:username) %>
+      <%= form_for(@new_user, url: registration_path, method: "post") do |f| %>
+        <div class="form-group">
+          <label>Username</label>
+          <%= f.text_field(:username, autofocus: true, class: "form-control") %>
+        </div>
 
-  <label>Password</label>
-  <%= f.password_field(:password) %>
+        <div class="form-group">
+          <label>Password</label>
+          <%= f.password_field(:password, class: "form-control") %>
+        </div>
 
-  <%= f.submit("Submit", class: "btn btn-dark w-100") %>
-<% end %>
+        <%= submit_tag("Submit", class: "btn btn-dark w-100") %>
+      <% end %>
 
-<p>Alrady registered? <a href="<%= login_path %>">Login</a></p>
+      <div class="text-center mt-3">
+        <p>Alrady registered? <a href="<%= login_path %>">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,31 +1,39 @@
-<h2>Servers</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="row mb-3">
+        <div class="col">
+          <h4>Servers</h4>
+        </div>
+        <div class="col text-right">
+          <a href="<%= new_server_path %>" class="btn btn-dark">New server</a>
+        </div>
+      </div>
 
-<table>
-  <tr>
-    <th>Nickname</th>
-    <th>Last active</th>
-    <th>Hostname</th>
-    <th>Distro</th>
-    <th>Uptime</th>
-    <th>RAM</th>
-    <th>Disk</th>
-    <th>Last active</th>
-    <th></th>
-  </tr>
-  <% @user.servers.each do |server| %>
-    <tr>
-      <td><%= server.hostname %></td>
-      <td><%= server.last_active %></td>
-      <td><%= server.hostname %></td>
-      <td><%= server.distro %></td>
-      <td><%= server.uptime %></td>
-      <td><%= server.ram %></td>
-      <td><%= server.disk %></td>
-      <td><a href="<%= server_path(server) %>">Show</a> | <a href="<%= edit_server_path(server) %>">Edit</a></td>
-    </tr>
-  <% end %>
-</table>
-
-<hr>
-
-<a href="<%= new_server_path %>">New server</a>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <th>Nickname</th>
+            <th>Last active</th>
+            <th>Hostname</th>
+            <th>Distro</th>
+            <th>Uptime</th>
+            <th>RAM</th>
+            <th>Disk</th>
+          </tr>
+          <% @user.servers.each do |server| %>
+            <tr class="clickable-row" data-href="<%= server_path(server) %>">
+              <td><%= server.hostname %></td>
+              <td><%= server.last_active %></td>
+              <td><%= server.hostname %></td>
+              <td><%= server.distro %></td>
+              <td><%= server.uptime %></td>
+              <td><%= server.ram %></td>
+              <td><%= server.disk %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

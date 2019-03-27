@@ -1,0 +1,92 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #343a40;
+    background-color: #ffffff;
+    font-size: 0.875rem;
+}
+
+a, a:hover {
+    color: #12263f;
+}
+
+.btn {
+    border-radius: 0px !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 0.875rem !important;
+}
+
+hr {
+    border-top: 1px solid #e3ebf6 !important;
+}
+
+.form-control {
+    background-color: transparent !important;
+    border-radius: 0px !important;
+    outline: none !important;
+    border: none !important;
+    border: 1px solid #d3d3d3 !important;
+    font-size: 0.875rem !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    border-color: rgba(223, 225, 229, 0);
+}
+
+.card {
+    border-radius: 0 !important;
+    border: 0 solid rgba(0, 0, 0, .125);
+    box-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, .075) !important;
+}
+
+.card-header {
+    background-color: #FFFFFF !important;
+}
+
+.table {
+    margin-bottom: 0;
+    font-size: 0.875rem !important;
+}
+
+.table td, .table th {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.table thead th {
+    border-top: none !important;
+    border-bottom: 1px solid #e3ebf6 !important;
+}
+
+.table tbody td {
+    border-top: 1px solid #e3ebf6 !important;
+}
+
+.table > thead > tr:first-child > td,
+.table > tbody > tr:first-child > td {
+    border: none !important;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.menu {
+    background-color: #f8f8f8;
+    line-height: 70px;
+    /*border-bottom: 1px solid #e3ebf6 !important;*/
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075);
+    margin-bottom: 1rem;
+}
+
+.menu .link {
+    color: #12263f;
+    padding: .625rem 1rem;
+    text-decoration: none;
+}
+
+.snackbar {
+    font-size: 0.875rem !important;
+}

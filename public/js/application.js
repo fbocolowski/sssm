@@ -31,4 +31,10 @@ $(function () {
             http_request($(this).attr('href'), 'DELETE', null, 'json');
         }
     });
+
+    $(".clickable-row").click(function () {
+        window.location = $(this).data("href");
+    });
+
+    autosize($('textarea'));
 });

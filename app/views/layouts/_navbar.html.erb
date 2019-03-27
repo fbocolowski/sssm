@@ -1,0 +1,15 @@
+<div class="menu">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4">
+        <a href="<%= root_path %>" class="link">Meeseeks</a>
+      </div>
+      <div class="col-xl-8 text-right">
+        <% unless @user.nil? %>
+          <a href="#" class="link"><%= @user.username %></a>
+          <a href="<%= logout_path %>" class="link">Logout</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
