@@ -23,8 +23,8 @@ EOF
 }
 
 curl -X POST \
--H "Meeseeks-Token: $1" \
+-H "SSSM-Token: $1" \
 -H "Accept: application/json" \
 -H "Content-Type:application/json" \
 -d "$(generate_post_data)" \
--s "https://meeseeks.ml/api/reports" > /dev/null
+-s "https://sssm.ml/api/reports" > /dev/null

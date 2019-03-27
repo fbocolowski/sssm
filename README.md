@@ -7,17 +7,6 @@
 - Rails 5.2.2 or above
 - NGINX (production)
 
-## Uso
-
-```bash
-sudo su
-crontab -e
-```
-
-```text
-* * * * * curl -s https://sssm.ml/runner.sh | bash -s [server token]
-```
-
 ## Development
 
 Clone the repository and nstall dependencies running ```bundle install```.

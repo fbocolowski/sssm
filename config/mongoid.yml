@@ -1,12 +1,12 @@
 development:
   clients:
     default:
-      database: meeseeks-dev
+      database: sssm-dev
       hosts:
         - localhost:27017
 production:
   clients:
     default:
-      database: meeseeks
+      database: sssm
       hosts:
         - localhost:27017

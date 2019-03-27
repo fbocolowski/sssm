@@ -9,7 +9,7 @@ require "action_view/railtie"
 
 Bundler.require(*Rails.groups)
 
-module Meeseeks
+module SSSM
   class Application < Rails::Application
     config.load_defaults 5.2
 
