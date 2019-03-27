@@ -1,0 +1,13 @@
+<h2>Login</h2>
+
+<%= form_tag(login_path, method: "post") do %>
+  <label>Username</label>
+  <%= text_field_tag(:username, params[:username], autofocus: true) %>
+
+  <label>Password</label>
+  <%= password_field_tag(:password, "", class: "form-control") %>
+
+  <%= submit_tag("Submit", class: "btn btn-dark w-100") %>
+<% end %>
+
+<p>Not registered yet? <a href="<%= registration_path %>">Create an account</a></p>

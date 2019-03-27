@@ -1,0 +1,13 @@
+<h2>Create an account</h2>
+
+<%= form_for(@new_user, url: registration_path, method: "post") do |f| %>
+  <label>Username</label>
+  <%= f.text_field(:username) %>
+
+  <label>Password</label>
+  <%= f.password_field(:password) %>
+
+  <%= f.submit("Submit", class: "btn btn-dark w-100") %>
+<% end %>
+
+<p>Alrady registered? <a href="<%= login_path %>">Login</a></p>

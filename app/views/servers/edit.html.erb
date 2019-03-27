@@ -1,0 +1,10 @@
+<h2><a href="<%= servers_path %>">Servers</a> / New server</h2>
+
+<%= form_for(@server, url: server_path, method: "put") do |f| %>
+  <label>Hostname</label>
+  <%= f.text_field(:hostname) %>
+
+  <%= f.submit("Submit", class: "btn btn-dark w-100") %>
+<% end %>
+
+<p><a href="<%= server_path(@server) %>" class="delete">Delete</a></p>

@@ -1,0 +1,8 @@
+<h2><a href="<%= servers_path %>">Servers</a> / New server</h2>
+
+<%= form_for(@server, url: servers_path, method: "post") do |f| %>
+  <label>Hostname</label>
+  <%= f.text_field(:hostname) %>
+
+  <%= f.submit("Submit", class: "btn btn-dark w-100") %>
+<% end %>

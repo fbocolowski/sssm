@@ -1,0 +1,7 @@
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/.idea/*
+/*.iml
+/public/uploads/*

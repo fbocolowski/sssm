@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Meeseeks</title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/application.js"></script>
+</head>
+<body>
+
+<div>
+  <% if @user.nil? %>
+    <b>Meeseeks</b>
+  <% else %>
+    <b>Meeseeks</b> | Logged in as <%= @user.username %> | <a href="<%= logout_path %>">Logout</a>
+  <% end %>
+</div>
+
+<hr>
+
+<%= yield %>
+
+<% unless @alert.nil? %>
+  <script>
+      alert("<%= @alert.html_safe %>");
+  </script>
+<% end %>
+</body>
+</html>

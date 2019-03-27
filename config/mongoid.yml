@@ -1,0 +1,12 @@
+development:
+  clients:
+    default:
+      database: meeseeks-dev
+      hosts:
+        - localhost:27017
+production:
+  clients:
+    default:
+      database: meeseeks
+      hosts:
+        - localhost:27017
