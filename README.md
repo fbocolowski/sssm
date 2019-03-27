@@ -34,7 +34,7 @@ Configure o NGINX:
 
 ```bash
 sudo nano /etc/nginx/sites-enabled/meeseeks
-sudo nano /etc/nginx/conf.d/meeseeks].conf
+sudo nano /etc/nginx/conf.d/meeseeks.conf
 ```
 
 ```text
