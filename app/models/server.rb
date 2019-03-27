@@ -16,6 +16,34 @@ class Server
     self.reports.last.created_at rescue nil
   end
 
+  def hostname
+    self.reports.last.hostname rescue nil
+  end
+
+  def distro
+    self.reports.last.distro rescue nil
+  end
+
+  def uptime
+    self.reports.last.uptime rescue nil
+  end
+
+  def ram
+    begin
+      self.reports.last.ram_used + "/" + self.reports.last.ram_total
+    rescue
+      nil
+    end
+  end
+
+  def disk
+    begin
+      self.reports.last.disk_used + "/" + self.reports.last.disk_total
+    rescue
+      nil
+    end
+  end
+
   private
 
   def generate_token
