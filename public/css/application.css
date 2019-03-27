@@ -64,6 +64,17 @@ a, a:hover {
     border: none !important;
 }
 
+.table-thumb {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.table-thumb img {
+    height: 30px;
+    padding-top: .25rem !important;
+    padding-bottom: .25rem !important;
+}
+
 .clickable-row {
     cursor: pointer;
 }
@@ -84,5 +95,9 @@ a, a:hover {
 }
 
 .snackbar {
+    font-size: 0.875rem !important;
+}
+
+.tooltip {
     font-size: 0.875rem !important;
 }

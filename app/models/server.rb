@@ -16,15 +16,27 @@ class Server
     self.reports.last.created_at rescue "-"
   end
 
-  def last_hostname
+  def hostname
     self.reports.last.hostname rescue "-"
   end
 
-  def last_distro
+  def distro
     self.reports.last.distro rescue "-"
   end
 
-  def last_uptime
+  def distro_logo
+    if self.distro.include? "Fedora"
+      "fedora"
+    elsif self.distro.include? "Debian"
+      "debian"
+    elsif self.distro.include? "Ubuntu"
+      "ubuntu"
+    else
+      "unknown"
+    end
+  end
+
+  def uptime
     begin
       t = self.reports.last.uptime
       mm, ss = t.divmod(60)
@@ -36,7 +48,7 @@ class Server
     end
   end
 
-  def last_ram
+  def ram_usage
     begin
       pct = self.reports.last.ram_used * 100 / self.reports.last.ram_total
       return pct.round.to_s + "%"
@@ -45,7 +57,7 @@ class Server
     end
   end
 
-  def last_disk
+  def disk_usage
     begin
       pct = self.reports.last.disk_used * 100 / self.reports.last.disk_total
       return pct.round.to_s + "%"

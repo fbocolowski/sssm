@@ -22,18 +22,18 @@
           </tr>
           <% @user.servers.each do |server| %>
             <tr class="clickable-row" data-href="<%= server_path(server) %>">
-              <td><%= server.last_hostname %></td>
+              <td><%= server.hostname %></td>
               <td><%= server.last_active %></td>
-              <td><%= server.last_distro %></td>
-              <td><%= server.last_uptime %></td>
+              <td class="table-thumb"><img src="/img/distros/<%= server.distro_logo %>.png" data-toggle="tooltip" data-placement="top" title="<%= server.distro %>"></td>
+              <td><%= server.uptime %></td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= server.last_ram %>"><%= server.last_ram %></div>
+                  <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>"><%= server.ram_usage %></div>
                 </div>
               </td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= server.last_disk %>"><%= server.last_disk %></div>
+                  <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>"><%= server.disk_usage %></div>
                 </div>
               </td>
             </tr>

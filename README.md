@@ -15,7 +15,7 @@ crontab -e
 ```
 
 ```text
-* * * * * curl -s https://meeseeks.ml/runner.sh | bash -s [server token]
+* * * * * curl -s https://sssm.ml/runner.sh | bash -s [server token]
 ```
 
 ## Development
@@ -33,16 +33,16 @@ Clone the repository at /srv/ and install dependencies running ```bundle install
 Setup NGINX:
 
 ```bash
-sudo nano /etc/nginx/sites-enabled/meeseeks
-sudo nano /etc/nginx/conf.d/meeseeks.conf
+sudo nano /etc/nginx/sites-enabled/sssm
+sudo nano /etc/nginx/conf.d/sssm.conf
 ```
 
 ```text
 server {
 	listen 80;
-	server_name meeseeks.ml;
+	server_name sssm.ml;
 
-	root /srv/meeseeks/public/;
+	root /srv/sssm/public/;
 	try_files $uri @puma;
 
 	location @puma {
@@ -50,7 +50,7 @@ server {
 		proxy_set_header Host $host;
 		proxy_set_header X-Forwarded-Proto $scheme;
 		proxy_redirect off;
-		proxy_pass http://unix:/srv/meeseeks/tmp/puma.sock;
+		proxy_pass http://unix:/srv/sssm/tmp/puma.sock;
 	}
 
 	keepalive_timeout 10;
@@ -65,7 +65,7 @@ Setup systemd:
 
 ```bash
 rvm wrapper show bundle
-sudo nano /etc/systemd/system/meeseeks.service
+sudo nano /etc/systemd/system/sssm.service
 ```
 
 ```text
@@ -75,10 +75,10 @@ After=network.target
 [Service]
 Type=forking
 User=deploy
-WorkingDirectory=/srv/meeseeks/
+WorkingDirectory=/srv/sssm/
 ExecStart=/home/deploy/.rvm/gems/ruby-2.5.3/wrappers/bundle exec puma -C config/puma_production.rb --daemon
 ExecStop=/home/deploy/.rvm/gems/ruby-2.5.3/wrappers/bundle exec pumactl -S tmp/puma.state stop
-PIDFile=/srv/meeseeks/tmp/puma.pid
+PIDFile=/srv/sssm/tmp/puma.pid
 Restart=always
 
 [Install]
@@ -88,8 +88,8 @@ WantedBy=multi-user.target
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable meeseeks
-sudo systemctl start meeseeks
+sudo systemctl enable sssm
+sudo systemctl start sssm
 ```
 
 Go to your NGINX domain.
