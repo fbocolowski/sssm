@@ -13,8 +13,6 @@ class ServersController < ApplicationController
   end
 
   def create
-    puts server_params
-    puts params[:server][:hostname]
     @server = @user.servers.new(server_params)
     if @server.save
       return redirect_to server_path(@server)
@@ -44,7 +42,7 @@ class ServersController < ApplicationController
   private
 
   def server_params
-    params.require(:server).permit(:hostname)
+    params.require(:server).permit!
   end
 
   def set_server

@@ -1,6 +1,20 @@
-<h2><a href="<%= servers_path %>">Servers</a> / <%= @server.hostname %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="row mb-3">
+        <div class="col">
+          <h4><a href="<%= servers_path %>">Servers</a> / <%= @server.nickname %></h4>
+        </div>
+        <div class="col text-right">
+          <a href="<%= server_path(@server) %>" class="btn btn-danger delete">Delete</a>
+          <a href="<%= edit_server_path(@server) %>" class="btn btn-dark">Edit</a>
+        </div>
+      </div>
 
-<div>
-  Runner command:
-  <textarea style="width: 100%">* * * * * curl -s https://meeseeks.ml/runner.sh | bash -s <%= @server.token %></textarea>
+      <div class="form-group">
+        <label>Runner command</label>
+        <textarea class="form-control">* * * * * curl -s https://meeseeks.ml/runner.sh | bash -s <%= @server.token %></textarea>
+      </div>
+    </div>
+  </div>
 </div>

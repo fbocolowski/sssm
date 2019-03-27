@@ -5,11 +5,13 @@
 
       <%= form_for(@server, url: servers_path, method: "post") do |f| %>
         <div class="form-group">
-          <label>Hostname</label>
-          <%= f.text_field(:hostname, class: "form-control") %>
+          <label>Nickname</label>
+          <%= f.text_field(:nickname, class: "form-control") %>
         </div>
 
-        <%= f.submit("Submit", class: "btn btn-dark w-100") %>
+        <div class="text-right">
+          <%= f.submit("Submit", class: "btn btn-dark") %>
+        </div>
       <% end %>
     </div>
   </div>

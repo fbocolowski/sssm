@@ -14,12 +14,10 @@
           <%= f.password_field(:password, class: "form-control") %>
         </div>
 
-        <%= submit_tag("Submit", class: "btn btn-dark w-100") %>
+        <div class="text-right">
+          <%= submit_tag("Submit", class: "btn btn-dark") %>
+        </div>
       <% end %>
-
-      <div class="text-center mt-3">
-        <p>Alrady registered? <a href="<%= login_path %>">Login</a></p>
-      </div>
     </div>
   </div>
 </div>

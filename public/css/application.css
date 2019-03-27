@@ -1,7 +1,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     color: #343a40;
-    background-color: #ffffff;
+    background-color: #fff;
     font-size: 0.875rem;
 }
 
@@ -14,10 +14,6 @@ a, a:hover {
     outline: none !important;
     box-shadow: none !important;
     font-size: 0.875rem !important;
-}
-
-hr {
-    border-top: 1px solid #e3ebf6 !important;
 }
 
 .form-control {

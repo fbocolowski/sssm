@@ -1,20 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-4 offset-4">
-      <h4><a href="<%= servers_path %>">Servers</a> / <%= @server.hostname %></h4>
+      <h4><a href="<%= servers_path %>">Servers</a> / <%= @server.nickname %></h4>
 
       <%= form_for(@server, url: server_path, method: "put") do |f| %>
         <div class="form-group">
-          <label>Hostname</label>
-          <%= f.text_field(:hostname, class: "form-control") %>
+          <label>Nickname</label>
+          <%= f.text_field(:nickname, class: "form-control") %>
         </div>
 
-        <%= f.submit("Submit", class: "btn btn-dark w-100") %>
+        <div class="text-right">
+          <%= f.submit("Submit", class: "btn btn-dark") %>
+        </div>
       <% end %>
-
-      <div class="text-center mt-3">
-        <p><a href="<%= server_path(@server) %>" class="btn btn-danger w-100 delete">Delete</a></p>
-      </div>
     </div>
   </div>
 </div>

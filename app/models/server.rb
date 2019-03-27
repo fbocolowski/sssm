@@ -5,30 +5,38 @@ class Server
   belongs_to :user
   has_many :reports
 
-  field :hostname, type: String
+  field :nickname, type: String
   field :token, type: String
 
   before_create :generate_token
 
-  validates :hostname, presence: true
+  validates :nickname, presence: true
 
   def last_active
     self.reports.last.created_at rescue nil
   end
 
-  def hostname
+  def last_hostname
     self.reports.last.hostname rescue nil
   end
 
-  def distro
+  def last_distro
     self.reports.last.distro rescue nil
   end
 
-  def uptime
-    self.reports.last.uptime rescue nil
+  def last_uptime
+    begin
+      t = self.reports.last.uptime
+      mm, ss = t.divmod(60)
+      hh, mm = mm.divmod(60)
+      dd, hh = hh.divmod(24)
+      return "%dd %dh %dm" % [dd, hh, mm]
+    rescue
+      nil
+    end
   end
 
-  def ram
+  def last_ram
     begin
       pct = self.reports.last.ram_used * 100 / self.reports.last.ram_total
       return pct.round.to_s + "%"
@@ -37,7 +45,7 @@ class Server
     end
   end
 
-  def disk
+  def last_disk
     begin
       pct = self.reports.last.disk_used * 100 / self.reports.last.disk_total
       return pct.round.to_s + "%"

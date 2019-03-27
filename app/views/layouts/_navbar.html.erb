@@ -8,6 +8,9 @@
         <% unless @user.nil? %>
           <a href="#" class="link"><%= @user.username %></a>
           <a href="<%= logout_path %>" class="link">Logout</a>
+        <% else %>
+          <a href="<%= login_path %>" class="link">Login</a>
+          <a href="<%= registration_path %>" class="link">Create an account</a>
         <% end %>
       </div>
     </div>

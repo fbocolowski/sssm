@@ -14,12 +14,12 @@
           <%= password_field_tag(:password, "", class: "form-control") %>
         </div>
 
-        <%= submit_tag("Submit", class: "btn btn-dark w-100") %>
-      <% end %>
+        <div class="text-right">
+            <%= submit_tag("Submit", class: "btn btn-dark") %>
+        </div>
 
-      <div class="text-center mt-3">
-        <p>Not registered yet? <a href="<%= registration_path %>">Create an account</a></p>
-      </div>
+
+      <% end %>
     </div>
   </div>
 </div>
