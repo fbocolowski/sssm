@@ -12,6 +12,10 @@ class Server
 
   validates :nickname, presence: true
 
+  def ip
+    self.reports.last.ip rescue "-"
+  end
+
   def last_active
     self.reports.last.created_at rescue "-"
   end

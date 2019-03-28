@@ -7,6 +7,7 @@ class Report
   field :uptime, type: Float
   field :hostname, type: String
   field :distro, type: String
+  field :ip, type: String
   field :ram_total, type: Float
   field :ram_used, type: Float
   field :disk_total, type: Float

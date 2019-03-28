@@ -14,6 +14,7 @@
         <table class="table">
           <tr>
             <th>Hostname</th>
+            <th>IP</th>
             <th>Last active</th>
             <th>Distro</th>
             <th>Uptime</th>
@@ -23,11 +24,12 @@
           <% @user.servers.each do |server| %>
             <tr class="clickable-row" data-href="<%= server_path(server) %>">
               <td><%= server.hostname %></td>
+              <td><%= server.ip %></td>
               <td>
                 <% if server.last_active_minutes_ago.nil? %>
                   <span class="badge badge-light">Unavailable</span>
                 <% elsif server.last_active_minutes_ago == 0 %>
-                  <span class="badge badge-success">Just now</span>
+                  <span class="badge badge-success">Less than a minute</span>
                 <% else %>
                   <span class="badge badge-primary"><%= server.last_active_minutes_ago %> minutes ago</span>
                 <% end %>
