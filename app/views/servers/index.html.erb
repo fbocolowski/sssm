@@ -26,7 +26,7 @@
               <td>
                 <% if server.last_active_minutes_ago.nil? %>
                   <span class="badge badge-light">Unavailable</span>
-                <% elsif server.last_active_minutes_ago == 1 %>
+                <% elsif server.last_active_minutes_ago == 0 %>
                   <span class="badge badge-success">Just now</span>
                 <% else %>
                   <span class="badge badge-primary"><%= server.last_active_minutes_ago %> minutes ago</span>
