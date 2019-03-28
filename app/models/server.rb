@@ -17,7 +17,7 @@ class Server
   end
 
   def last_active
-    self.reports.last.created_at rescue "-"
+    self.reports.last.created_at rescue nil
   end
 
   def last_active_minutes_ago
@@ -29,21 +29,25 @@ class Server
   end
 
   def hostname
-    self.reports.last.hostname rescue "-"
+    self.reports.last.hostname rescue nil
   end
 
   def distro
-    self.reports.last.distro rescue "-"
+    self.reports.last.distro rescue nil
   end
 
   def distro_logo
-    if self.distro.include? "Fedora"
-      "fedora"
-    elsif self.distro.include? "Debian"
-      "debian"
-    elsif self.distro.include? "Ubuntu"
-      "ubuntu"
-    else
+    begin
+      if self.distro.include? "Fedora"
+        "fedora"
+      elsif self.distro.include? "Debian"
+        "debian"
+      elsif self.distro.include? "Ubuntu"
+        "ubuntu"
+      else
+        "tux"
+      end
+    rescue
       "tux"
     end
   end
@@ -56,25 +60,25 @@ class Server
       dd, hh = hh.divmod(24)
       return "%dd %dh %dm" % [dd, hh, mm]
     rescue
-      "-"
+      nil
     end
   end
 
   def ram_usage
     begin
       pct = self.reports.last.ram_used * 100 / self.reports.last.ram_total
-      return pct.round.to_s + "%"
+      return pct.round
     rescue
-      "0%"
+      0
     end
   end
 
   def disk_usage
     begin
       pct = self.reports.last.disk_used * 100 / self.reports.last.disk_total
-      return pct.round.to_s + "%"
+      return pct.round
     rescue
-      "0%"
+      0
     end
   end
 

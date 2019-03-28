@@ -40,12 +40,16 @@
               <td><%= server.uptime %></td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>"><%= server.ram_usage %></div>
+                  <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>%"><%= server.ram_usage %>
+                    %
+                  </div>
                 </div>
               </td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>"><%= server.disk_usage %></div>
+                  <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>%"><%= server.disk_usage %>
+                    %
+                  </div>
                 </div>
               </td>
             </tr>
