@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :secutity_public
+  before_action :security_public
 
   def show
   end

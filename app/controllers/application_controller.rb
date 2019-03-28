@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     destroy_session if @user.nil?
   end
 
-  def secutity_public
+  def security_public
     redirect_to servers_path unless @user.nil?
   end
 

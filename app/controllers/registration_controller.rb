@@ -1,5 +1,5 @@
 class RegistrationController < ApplicationController
-  before_action :secutity_public
+  before_action :security_public
 
   def show
     @new_user = User.new
