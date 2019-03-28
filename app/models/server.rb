@@ -5,22 +5,23 @@ class Server
   belongs_to :user
   has_many :reports
 
-  field :nickname, type: String
   field :token, type: String
 
   before_create :generate_token
 
-  validates :nickname, presence: true
-
   def ip
-    self.reports.last.ip rescue "-"
+    self.reports.last.ip rescue nil
   end
 
-  def last_active
+  def first_report
+    self.reports.first.created_at rescue nil
+  end
+
+  def last_report
     self.reports.last.created_at rescue nil
   end
 
-  def last_active_minutes_ago
+  def last_report_minutes
     begin
       (Time.now - self.reports.last.created_at).to_i / 60
     rescue
@@ -29,7 +30,7 @@ class Server
   end
 
   def hostname
-    self.reports.last.hostname rescue nil
+    self.reports.last.hostname rescue "Unknown"
   end
 
   def distro
@@ -86,7 +87,7 @@ class Server
 
   def generate_token
     self.token = loop do
-      random = SecureRandom.urlsafe_base64(nil, false)
+      random = SecureRandom.hex(13)
       break random if Server.where(token: random).count == 0
     end
   end

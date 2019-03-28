@@ -5,10 +5,6 @@ body {
     font-size: 0.875rem;
 }
 
-a, a:hover {
-    color: #12263f;
-}
-
 .btn {
     border-radius: 0px !important;
     outline: none !important;
@@ -80,7 +76,7 @@ a, a:hover {
 }
 
 .menu {
-    line-height: 70px;
+    line-height: 55px;
     /*border-bottom: 1px solid #e3ebf6 !important;*/
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075);
     margin-bottom: 1.5rem;
@@ -90,6 +86,11 @@ a, a:hover {
     color: #12263f;
     padding: .625rem 1rem;
     text-decoration: none;
+}
+
+.menu .logo {
+    max-height: 40px;
+    padding: .5rem;
 }
 
 .rodape {

@@ -26,29 +26,29 @@
               <td><%= server.hostname %></td>
               <td><%= server.ip %></td>
               <td>
-                <% if server.last_active_minutes_ago.nil? %>
+                <% if server.last_report_minutes.nil? %>
                   <span class="badge badge-light">Unavailable</span>
-                <% elsif server.last_active_minutes_ago == 0 %>
+                <% elsif server.last_report_minutes == 0 %>
                   <span class="badge badge-success">Less than a minute</span>
                 <% else %>
-                  <span class="badge badge-primary"><%= server.last_active_minutes_ago %> minutes ago</span>
+                  <span class="badge badge-primary"><%= server.last_report_minutes %> minutes ago</span>
                 <% end %>
               </td>
               <td class="table-thumb">
-                <img src="/img/distros/<%= server.distro_logo %>.png" data-toggle="tooltip" data-placement="top" title="<%= server.distro %>">
+                <img src="/img/distros/<%= server.distro_logo %>.png">
               </td>
               <td><%= server.uptime %></td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>%"><%= server.ram_usage %>
-                    %
+                  <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>%">
+                    <%= server.ram_usage %>%
                   </div>
                 </div>
               </td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>%"><%= server.disk_usage %>
-                    %
+                  <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>%">
+                    <%= server.disk_usage %>%
                   </div>
                 </div>
               </td>

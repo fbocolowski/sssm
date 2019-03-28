@@ -36,6 +36,6 @@ class ApplicationController < ActionController::Base
 
   def destroy_session
     cookies[:user] = nil
-    return redirect_to login_path
+    return redirect_to root_path
   end
 end

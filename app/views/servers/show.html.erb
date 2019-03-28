@@ -3,18 +3,44 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4>Servers / <%= @server.nickname %></h4>
+          <h4>Servers / <%= @server.hostname %></h4>
         </div>
         <div class="col text-right">
           <a href="<%= server_path(@server) %>" class="btn btn-danger delete">Delete</a>
-          <a href="<%= edit_server_path(@server) %>" class="btn btn-primary">Edit</a>
         </div>
       </div>
 
+      <h5>Setup</h5>
+
       <div class="form-group">
-        <label>Runner command</label>
-        <textarea class="form-control">* * * * * curl -s https://sssm.ml/runner.sh | bash -s <%= @server.token %></textarea>
+        <label>Add this line to your crontab</label>
+        <input type="text" class="form-control" value="* * * * * curl -s https://sssm.ml/runner.sh | bash -s <%= @server.token %>">
       </div>
+
+      <p class="text-muted">If you wish, you can download <a href="https://sssm.ml/runner.sh">this shell script</a> (but it can get outdated).</p>
+
+      <p>And refresh this page after 1 minute!</p>
+
+      <h5>RAM usage</h5>
+      <div id="ram_usage" style="height: 420px;"></div>
+      <script>
+          new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage', {curve: false});
+      </script>
+
+      <h5>Disk usage</h5>
+      <div id="disk_usage" style="height: 420px;"></div>
+      <script>
+          new Chartkick.LineChart("disk_usage", '/charts?server_id=<%= @server.id %>&type=disk_usage', {curve: false});
+      </script>
+
+      <h5>Details</h5>
+      <p>Hostname: <%= @server.hostname %></p>
+      <p>IP: <%= @server.ip %></p>
+      <p>Distro: <%= @server.distro %></p>
+      <p>Uptime: <%= @server.uptime %></p>
+      <p>Total reports: <%= @server.reports.count %></p>
+      <p>First report: <%= @server.first_report %></p>
+      <p>Last report: <%= @server.last_report %></p>
     </div>
   </div>
 </div>

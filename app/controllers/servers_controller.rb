@@ -1,6 +1,6 @@
 class ServersController < ApplicationController
   before_action :security_private
-  before_action :set_server, only: [:show, :edit, :update, :destroy]
+  before_action :set_server, only: [:show, :destroy]
 
   def index
   end
@@ -9,29 +9,8 @@ class ServersController < ApplicationController
   end
 
   def new
-    @server = @user.servers.new
-  end
-
-  def create
-    @server = @user.servers.new(server_params)
-    if @server.save
-      return redirect_to server_path(@server)
-    else
-      @alert = @server.errors.full_messages.first
-      return render 'new'
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    if @server.update(server_params)
-      return redirect_to server_path(@server)
-    else
-      @alert = @server.errors.full_messages.first
-      return render 'edit'
-    end
+    @server = @user.servers.create
+    return redirect_to server_path(@server)
   end
 
   def destroy
@@ -40,10 +19,6 @@ class ServersController < ApplicationController
   end
 
   private
-
-  def server_params
-    params.require(:server).permit!
-  end
 
   def set_server
     @server = @user.servers.find(params[:id])

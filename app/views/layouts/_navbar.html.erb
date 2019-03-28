@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-4">
-        <a href="<%= root_path %>" class="link">SSSM</a>
+        <a href="<%= root_path %>"><img src="/img/logo.png" class="logo"></a>
       </div>
       <div class="col-xl-8 text-right">
         <% unless @user.nil? %>
@@ -10,6 +10,7 @@
           <a href="#" class="link"><%= @user.username %></a>
           <a href="<%= logout_path %>" class="link">Logout</a>
         <% else %>
+          <a href="<%= home_path %>" class="link">Home</a>
           <a href="<%= login_path %>" class="link">Login</a>
           <a href="<%= registration_path %>" class="link">Create an account</a>
         <% end %>
