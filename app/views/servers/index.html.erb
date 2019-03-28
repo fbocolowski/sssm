@@ -23,8 +23,8 @@
           </tr>
           <% @user.servers.each do |server| %>
             <tr class="clickable-row" data-href="<%= server_path(server) %>">
-              <td><%= server.hostname %></td>
-              <td><%= server.ip %></td>
+              <td>myHostname</td>
+              <td>127.0.0.1</td>
               <td>
                 <% if server.last_report_minutes.nil? %>
                   <span class="badge badge-light">Unavailable</span>
