@@ -23,8 +23,18 @@
           <% @user.servers.each do |server| %>
             <tr class="clickable-row" data-href="<%= server_path(server) %>">
               <td><%= server.hostname %></td>
-              <td><%= server.last_active %></td>
-              <td class="table-thumb"><img src="/img/distros/<%= server.distro_logo %>.png" data-toggle="tooltip" data-placement="top" title="<%= server.distro %>"></td>
+              <td>
+                <% if server.last_active_minutes_ago.nil? %>
+                  <span class="badge badge-light">Unavailable</span>
+                <% elsif server.last_active_minutes_ago == 1 %>
+                  <span class="badge badge-success">Just now</span>
+                <% else %>
+                  <span class="badge badge-primary"><%= server.last_active_minutes_ago %> minutes ago</span>
+                <% end %>
+              </td>
+              <td class="table-thumb">
+                <img src="/img/distros/<%= server.distro_logo %>.png" data-toggle="tooltip" data-placement="top" title="<%= server.distro %>">
+              </td>
               <td><%= server.uptime %></td>
               <td>
                 <div class="progress">

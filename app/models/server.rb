@@ -16,6 +16,14 @@ class Server
     self.reports.last.created_at rescue "-"
   end
 
+  def last_active_minutes_ago
+    begin
+      (Time.now - self.reports.last.created_at).to_i / 60
+    rescue
+      nil
+    end
+  end
+
   def hostname
     self.reports.last.hostname rescue "-"
   end
@@ -32,7 +40,7 @@ class Server
     elsif self.distro.include? "Ubuntu"
       "ubuntu"
     else
-      "unknown"
+      "tux"
     end
   end
 

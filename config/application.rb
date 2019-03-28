@@ -14,5 +14,7 @@ module SSSM
     config.load_defaults 5.2
 
     config.generators.system_tests = nil
+
+    config.time_zone = 'UTC'
   end
 end
