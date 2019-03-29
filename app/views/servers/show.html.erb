@@ -17,8 +17,6 @@
         <input type="text" class="form-control" value="* * * * * curl -s https://sssm.ml/runner.sh | bash -s <%= @server.token %>">
       </div>
 
-      <p class="text-muted">If you wish, you can download <a href="https://sssm.ml/runner.sh">this shell script</a> (but it can get outdated).</p>
-
       <p>And refresh this page after 1 minute!</p>
 
       <h5>RAM usage</h5>
@@ -34,13 +32,13 @@
       </script>
 
       <h5>Details</h5>
-      <p>Hostname: <%= @server.hostname %></p>
-      <p>IP: <%= @server.ip %></p>
-      <p>Distro: <%= @server.distro %></p>
-      <p>Uptime: <%= @server.uptime %></p>
-      <p>Total reports: <%= @server.reports.count %></p>
-      <p>First report: <%= @server.first_report %></p>
-      <p>Last report: <%= @server.last_report %></p>
+      <div>Hostname: <%= @server.hostname %></div>
+      <div>IP: <%= @server.ip %></div>
+      <div>Distro: <%= @server.distro %></div>
+      <div>Uptime: <%= @server.uptime %></div>
+      <div>Total reports: <%= @server.reports.count %></div>
+      <div>First report: <%= @server.first_report %></div>
+      <div>Last report: <%= @server.last_report %></div>
     </div>
   </div>
 </div>

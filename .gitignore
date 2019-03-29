@@ -2,6 +2,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/config/secrets.yml
 /.idea/*
 /*.iml
 /public/uploads/*

@@ -19,6 +19,18 @@ Go to http://localhost:3000.
 
 Clone the repository at /srv/ and install dependencies running ```bundle install```.
 
+Generate a Rails Secret running ```rake secret```.
+
+```bash
+nano /config/secrets.yml
+```
+
+
+```text
+production:
+  secret_key_base: '[RAILS_SECRET_KEY]'
+```
+
 Setup NGINX:
 
 ```bash

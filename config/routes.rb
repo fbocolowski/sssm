@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resource 'login', controller: 'login', only: [:show, :create]
   resource 'logout', controller: 'logout', only: [:show]
   resource 'registration', controller: 'registration', only: [:show, :create]
+  resource 'account', controller: 'account', only: [:show, :create]
+  resource 'change_password', controller: 'change_password', only: [:update]
   resources 'servers', controller: 'servers', only: [:index, :show, :new, :destroy]
   resource 'charts', controller: 'charts', only: [:show]
 

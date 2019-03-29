@@ -45,6 +45,18 @@ class Server
         "debian"
       elsif self.distro.include? "Ubuntu"
         "ubuntu"
+      elsif self.distro.include? "Raspbian"
+        "raspbian"
+      elsif self.distro.include? "CentOS"
+        "centos"
+      elsif self.distro.include? "Manjaro"
+        "manjaro"
+      elsif self.distro.include? "Mint"
+        "mint"
+      elsif self.distro.include? "Antergos"
+        "antergos"
+      elsif self.distro.include? "Arch"
+        "arch"
       else
         "tux"
       end
