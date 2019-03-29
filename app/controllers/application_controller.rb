@@ -10,32 +10,34 @@ class ApplicationController < ActionController::Base
   end
 
   def start_session(id)
-    puts 'Iniciando sessao ' + id
-    cookies[:user] = id
+    @session = User.find(id).sessions.create(ip: request.remote_ip, user_agent: request.user_agent)
+    cookies[:session_id] = @session.token
     return redirect_to servers_path
   end
 
   def load_session
-    if cookies[:user].present?
-      @user = User.where(id: cookies[:user]).first rescue nil
-      if @user.nil?
+    if cookies[:session_id].present?
+      @session = Session.where(token: cookies[:session_id], active: true).first rescue nil
+      if @session.nil?
         destroy_session
+      else
+        @user = @session.user
       end
     else
-      @user = nil
+      @session = nil
     end
   end
 
   def security_private
-    destroy_session if @user.nil?
+    destroy_session if @session.nil?
   end
 
   def security_public
-    redirect_to servers_path unless @user.nil?
+    redirect_to servers_path unless @session.nil?
   end
 
   def destroy_session
-    cookies[:user] = nil
+    cookies[:session_id] = nil
     return redirect_to root_path
   end
 end

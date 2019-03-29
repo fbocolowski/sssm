@@ -3,6 +3,7 @@ class User
   include Mongoid::Timestamps
   store_in collection: 'users'
   has_many :servers
+  has_many :sessions
 
   field :username, type: String
   field :password, type: String

@@ -22,9 +22,8 @@ Clone the repository at /srv/ and install dependencies running ```bundle install
 Generate a Rails Secret running ```rake secret```.
 
 ```bash
-nano /config/secrets.yml
+nano config/secrets.yml
 ```
-
 
 ```text
 production:

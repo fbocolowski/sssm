@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4"></div>
+    <div class="col-xl-4">
+      <h4>Active sessions</h4>
+      <% @user.sessions.where(active: true).each do |session| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div>Created at: <%= session.created_at %></div>
+            <div>IP: <%= session.ip %></div>
+            <div>User Agent: <%= session.user_agent %></div>
+            <div class="text-right mt-3">
+              <% if @session != session %>
+                <a href="<%= session_path(session) %>" class="btn btn-danger delete">Destroy</a>
+              <% else %>
+                <div>Current session</div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
