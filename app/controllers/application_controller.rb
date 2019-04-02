@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :load_session
+  before_action :load_session, :define_url
 
   private
 
@@ -39,5 +39,13 @@ class ApplicationController < ActionController::Base
   def destroy_session
     cookies[:session_id] = nil
     return redirect_to root_path
+  end
+
+  def define_url
+    if Rails.env == 'production'
+      @url = 'https://sssm.ml'
+    else
+      @url = 'http://localhost:3000'
+    end
   end
 end

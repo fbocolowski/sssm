@@ -3,7 +3,7 @@ class Server
   include Mongoid::Timestamps
   store_in collection: 'servers'
   belongs_to :user
-  has_many :reports
+  has_many :reports, dependent: :delete_all
 
   field :token, type: String
 

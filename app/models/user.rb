@@ -2,8 +2,8 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   store_in collection: 'users'
-  has_many :servers
-  has_many :sessions
+  has_many :servers, dependent: :delete_all
+  has_many :sessions, dependent: :delete_all
 
   field :username, type: String
   field :password, type: String

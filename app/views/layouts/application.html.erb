@@ -44,7 +44,7 @@
         feather.replace();
 
         <% unless @alert.nil? %>
-        $.snackbar({content: "<%= @alert.html_safe %>"});
+        snackbar("<%= @alert.html_safe %>");
         <% end %>
     });
 </script>

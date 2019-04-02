@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4"></div>
+    <div class="col-xl-4">
+      <h4>Delete account</h4>
+      <%= form_tag(delete_account_path, method: "post") do %>
+        <p>Ok, this one is serious.</p>
+
+        <p>This page will allow you to delete every information you ever sent to our application. This is irreversible,
+          so think twice.</p>
+
+        <div class="form-row">
+          <div class="form-group col-xl-12">
+            <label>Type in your password to confirm</label>
+            <%= password_field_tag(:password_confirmation, "", class: "form-control") %>
+          </div>
+        </div>
+
+        <p>Are you sure you want to delete your account?</p>
+
+        <div class="text-right">
+          <a href="<%= account_path %>" class="btn btn-primary">No, take me back</a>
+          <%= submit_tag("Yes, I'm sure", class: "btn btn-danger") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

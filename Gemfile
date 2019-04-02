@@ -7,6 +7,7 @@ gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 gem 'rails-i18n'
 gem 'mongoid', '~> 7.0'
+gem 'rufus-scheduler'
 
 group :development do
 end

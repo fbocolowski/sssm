@@ -1,23 +1,8 @@
-$(function () {
-    function http_request(url, method, data, dataType) {
-        $.ajax({
-            url: url,
-            type: method,
-            data: data,
-            dataType: dataType,
-            success: function (result) {
-                if (result.redirect != undefined) {
-                    window.location.href = result.redirect;
-                } else {
-                    alert(result.text);
-                }
-            },
-            error: function (result) {
-                alert("Request error.");
-            }
-        });
-    }
+function snackbar(message) {
+    $.snackbar({content: message});
+}
 
+$(function () {
     $.ajaxSetup({
         headers: {
             'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -26,10 +11,22 @@ $(function () {
 
     $('.delete').click(function (e) {
         e.preventDefault();
-        var result = confirm('Are you sure?');
-        if (result) {
-            http_request($(this).attr('href'), 'DELETE', null, 'json');
-        }
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'DELETE',
+            data: null,
+            dataType: 'json',
+            success: function (result) {
+                if (result.redirect != undefined) {
+                    window.location.href = result.redirect;
+                } else {
+                    snackbar(result.text);
+                }
+            },
+            error: function (result) {
+                console.log("Request error");
+            }
+        });
     });
 
     $(".clickable-row").click(function () {

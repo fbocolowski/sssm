@@ -19,6 +19,10 @@
           </div>
         </div>
       <% end %>
+      <% if @user.sessions.where(active: true).count > 1 %>
+        <hr>
+        <a href="<%= destroy_active_sessions_path %>" class="delete">Destroy all active sessions</a>
+      <% end %>
     </div>
   </div>
 </div>

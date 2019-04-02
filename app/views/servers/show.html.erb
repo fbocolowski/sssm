@@ -10,35 +10,55 @@
         </div>
       </div>
 
-      <h5>Setup</h5>
+      <% if @server.reports.count == 0 %>
+        <h5>Setup</h5>
 
-      <div class="form-group">
-        <label>Add this line to your crontab</label>
-        <input type="text" class="form-control" value="* * * * * curl -s https://sssm.ml/runner.sh | bash -s <%= @server.token %>">
-      </div>
+        <div class="form-group">
+          <label>Add this line to your crontab</label>
+          <input type="text" class="form-control" value="* * * * * curl -s <%= @url %>/runner.sh | bash -s <%= @server.token %>">
+        </div>
 
-      <p>And refresh this page after 1 minute!</p>
+        <p>And refresh this page after 1 minute!</p>
+      <% else %>
+        <h5>Details</h5>
+        <div>Hostname: <%= @server.hostname %></div>
+        <div>IP: <%= @server.ip %></div>
+        <div>Distro: <%= @server.distro %></div>
+        <div>Uptime: <%= @server.uptime %></div>
+        <div>Total reports: <%= @server.reports.count %></div>
+        <div>First report: <%= @server.first_report %></div>
+        <div class="mb-3">Last report: <%= @server.last_report %></div>
 
-      <h5>RAM usage</h5>
-      <div id="ram_usage" style="height: 420px;"></div>
-      <script>
-          new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage', {curve: false});
-      </script>
+        <div class="text-right">
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" id="charts_1d" onclick="updateCharts('1d');">1 day
+            </button>
+            <button type="button" class="btn btn-primary" id="charts_1w" onclick="updateCharts('1w');">1 week</button>
+            <button type="button" class="btn btn-primary" id="charts_1m" onclick="updateCharts('1m');">1 month</button>
+            <button type="button" class="btn btn-primary" id="charts_1y" onclick="updateCharts('1y');">1 year</button>
+          </div>
+        </div>
 
-      <h5>Disk usage</h5>
-      <div id="disk_usage" style="height: 420px;"></div>
-      <script>
-          new Chartkick.LineChart("disk_usage", '/charts?server_id=<%= @server.id %>&type=disk_usage', {curve: false});
-      </script>
+        <h5>RAM usage</h5>
+        <div id="ram_usage" style="height: 420px;"></div>
 
-      <h5>Details</h5>
-      <div>Hostname: <%= @server.hostname %></div>
-      <div>IP: <%= @server.ip %></div>
-      <div>Distro: <%= @server.distro %></div>
-      <div>Uptime: <%= @server.uptime %></div>
-      <div>Total reports: <%= @server.reports.count %></div>
-      <div>First report: <%= @server.first_report %></div>
-      <div>Last report: <%= @server.last_report %></div>
+        <h5>Disk usage</h5>
+        <div id="disk_usage" style="height: 420px;"></div>
+
+        <script>
+            function updateCharts(time) {
+                $('#charts_1d').removeClass('active');
+                $('#charts_1w').removeClass('active');
+                $('#charts_1m').removeClass('active');
+                $('#charts_1y').removeClass('active');
+                new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage&time=' + time, {curve: false});
+                new Chartkick.LineChart("disk_usage", '/charts?server_id=<%= @server.id %>&type=disk_usage&time=' + time, {curve: false});
+                $('#charts_' + time).addClass('active');
+            }
+
+            updateCharts('1d');
+        </script>
+      <% end %>
     </div>
   </div>
 </div>
