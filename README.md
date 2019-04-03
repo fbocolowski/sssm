@@ -9,6 +9,8 @@
 
 ## Development
 
+Install mongodb (e.g for Ubuntu ```sudo apt-get install -y mongodb```)
+
 Clone the repository and install dependencies running ```bundle install```.
 
 Start the server running ```rails server```.

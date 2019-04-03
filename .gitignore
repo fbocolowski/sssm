@@ -1,8 +1,6 @@
 /log/*
 /tmp/*
-!/log/.keep
-!/tmp/.keep
 /config/secrets.yml
-/.idea/*
+/.idea
 /*.iml
 /public/uploads/*
