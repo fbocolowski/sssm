@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="robots" content="all, follow">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="robots" content="all, follow">
 
-  <title>Stupid Simple Server Monitor</title>
+    <title>Stupid Simple Server Monitor</title>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-permanent': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-permanent': 'reload' %>
 
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="shortcut icon" href="/img/favicon.png">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
-  <link rel="stylesheet" href="https://unpkg.com/ionicons@4.4.8/dist/css/ionicons.min.css">
-  <script src="https://unpkg.com/feather-icons"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.4.8/dist/css/ionicons.min.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
 
-<%= render 'layouts/navbar' %>
+  <body>
 
-<%= yield %>
+    <%= render 'layouts/navbar' %>
 
-<%= render 'layouts/footer' %>
+    <%= yield %>
 
-<script>
-  $(function () {
-      feather.replace();
+    <%= render 'layouts/footer' %>
 
-      <% unless @alert.nil? %>
-      snackbar("<%= @alert.html_safe %>");
-      <% end %>
-  });
-</script>
+    <script>
+      $(function () {
+          feather.replace();
 
-</body>
+          <% unless @alert.nil? %>
+          snackbar("<%= @alert.html_safe %>");
+          <% end %>
+      });
+    </script>
+
+  </body>
 </html>
