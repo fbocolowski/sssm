@@ -6,13 +6,12 @@
       </div>
       <div class="col-xl-8 text-right">
         <% unless @user.nil? %>
-          <a href="<%= servers_path %>" class="link">Servers</a>
-          <a href="<%= account_path %>" class="link"><%= @user.username %></a>
-          <a href="<%= logout_path %>" class="link">Logout</a>
+          <%= link_to "<span style='width: 20px; color: #000' data-feather='server'></span>".html_safe, servers_path, class: "link" %>
+          <%= link_to "<span style='width: 20px; color: #000' data-feather='user'></span>".html_safe, account_path, class: "link" %>
+          <%= link_to "<span class='text-danger' style='width: 20px' data-feather='power'></span>".html_safe, logout_path, class: "link" %>
         <% else %>
-          <a href="<%= home_path %>" class="link">Home</a>
-          <a href="<%= login_path %>" class="link">Login</a>
-          <a href="<%= registration_path %>" class="btn btn-primary btn-sm text-white">Create an account</a>
+          <%= link_to "Login", login_path, class: "link" %>
+          <%= link_to "Create an account", registration_path, class: "btn btn-primary btn-sm text-white" %>
         <% end %>
       </div>
     </div>

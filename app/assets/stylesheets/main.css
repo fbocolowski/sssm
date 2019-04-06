@@ -3,6 +3,10 @@ body {
     color: #343a40;
     background-color: #fff;
     font-size: 0.875rem;
+    padding-bottom: 80px;
+    position: relative;
+    margin: 0;
+    min-height: 100vh;
 }
 
 .btn {
@@ -94,6 +98,10 @@ body {
 }
 
 .rodape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     border-top: 1px solid #e3ebf6 !important;
     margin-top: 1.5rem;
     padding: 1rem;
