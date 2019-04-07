@@ -19,7 +19,7 @@ class ChartsController < ApplicationController
 
       ram_total_data = Hash.new
       ram_used_data = Hash.new
-      (start_date..Date.today).each do |day|
+      (start_date..Date.tomorrow).each do |day|
         reports = @server.reports.where(:created_at.gte => day.beginning_of_day, :created_at.lte => day.end_of_day)
         reports.each do |report|
           ram_total_data.store(report.created_at.strftime("%Y-%m-%d %H:%M:%S"), report.ram_total)
@@ -33,7 +33,7 @@ class ChartsController < ApplicationController
 
       disk_total_data = Hash.new
       disk_used_data = Hash.new
-      (start_date..Date.today).each do |day|
+      (start_date..Date.tomorrow).each do |day|
         reports = @server.reports.where(:created_at.gte => day.beginning_of_day, :created_at.lte => day.end_of_day)
         reports.each do |report|
           disk_total_data.store(report.created_at.strftime("%Y-%m-%d %H:%M:%S"), report.disk_total)

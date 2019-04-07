@@ -7,34 +7,24 @@ class Server
 
   field :token, type: String
 
-  before_create :generate_token
+  field :username, type: String
+  field :first_report, type: Time
+  field :last_report, type: Time
+  field :ip, type: String
+  field :hostname, type: String
+  field :distro, type: String
+  field :uptime, type: Float
+  field :ram_usage, type: Integer
+  field :disk_usage, type: Integer
 
-  def ip
-    self.reports.last.ip rescue nil
-  end
-
-  def first_report
-    self.reports.first.created_at rescue nil
-  end
-
-  def last_report
-    self.reports.last.created_at rescue nil
-  end
+  before_create :generate_token, :replicate_data
 
   def last_report_minutes
     begin
-      (Time.now - self.reports.last.created_at).to_i / 60
+      (Time.now - self.last_report).to_i / 60
     rescue
       nil
     end
-  end
-
-  def hostname
-    self.reports.last.hostname rescue "Unknown"
-  end
-
-  def distro
-    self.reports.last.distro rescue nil
   end
 
   def distro_logo
@@ -65,33 +55,15 @@ class Server
     end
   end
 
-  def uptime
+  def uptime_string
     begin
-      t = self.reports.last.uptime
+      t = self.uptime
       mm, ss = t.divmod(60)
       hh, mm = mm.divmod(60)
       dd, hh = hh.divmod(24)
       return "%dd %dh %dm" % [dd, hh, mm]
     rescue
       nil
-    end
-  end
-
-  def ram_usage
-    begin
-      pct = self.reports.last.ram_used * 100 / self.reports.last.ram_total
-      return pct.round
-    rescue
-      0
-    end
-  end
-
-  def disk_usage
-    begin
-      pct = self.reports.last.disk_used * 100 / self.reports.last.disk_total
-      return pct.round
-    rescue
-      0
     end
   end
 
@@ -102,5 +74,9 @@ class Server
       random = SecureRandom.hex(13)
       break random if Server.where(token: random).count == 0
     end
+  end
+
+  def replicate_data
+    self.username = self.user.username
   end
 end

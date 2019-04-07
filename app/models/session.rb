@@ -9,7 +9,9 @@ class Session
   field :user_agent, type: String
   field :active, type: Boolean, default: true
 
-  before_create :generate_token
+  field :username, type: String
+
+  before_create :generate_token, :replicate_data
 
   private
 
@@ -18,5 +20,9 @@ class Session
       random = SecureRandom.hex(13)
       break random if Server.where(token: random).count == 0
     end
+  end
+
+  def replicate_data
+    self.username = self.user.username
   end
 end
