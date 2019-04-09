@@ -4,6 +4,7 @@ class Server
   store_in collection: 'servers'
   belongs_to :user
   has_many :reports, dependent: :delete_all
+  has_many :triggers, dependent: :delete_all
 
   field :token, type: String
 
@@ -47,11 +48,9 @@ class Server
         "antergos"
       elsif self.distro.include? "Arch"
         "arch"
-      else
-        "tux"
       end
     rescue
-      "tux"
+      # do nothing
     end
   end
 

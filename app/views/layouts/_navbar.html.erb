@@ -6,12 +6,12 @@
       </div>
       <div class="col-xl-8 text-right">
         <% unless @user.nil? %>
-          <%= link_to "<span style='width: 20px; color: #000' data-feather='server'></span>".html_safe, servers_path, class: "link" %>
-          <%= link_to "<span style='width: 20px; color: #000' data-feather='user'></span>".html_safe, account_path, class: "link" %>
-          <%= link_to "<span class='text-danger' style='width: 20px' data-feather='power'></span>".html_safe, logout_path, class: "link" %>
+          <%= link_to "<span data-feather='server' style='width: 20px; height: 20px'></span>".html_safe, servers_path, class: "link" %>
+          <%= link_to "<span data-feather='user' style='width: 20px; height: 20px'></span>".html_safe, account_path, class: "link" %>
+          <%= link_to "<span class='text-danger' data-feather='power' style='width: 20px; height: 20px'></span>".html_safe, logout_path, class: "link" %>
         <% else %>
           <%= link_to "Login", login_path, class: "link" %>
-          <%= link_to "Create an account", registration_path, class: "btn btn-primary btn-sm text-white" %>
+          <%= link_to "Create an account", registration_path, class: "btn btn-sm btn-primary text-white" %>
         <% end %>
       </div>
     </div>

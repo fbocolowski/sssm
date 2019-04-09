@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4"></div>
+    <div class="col-xl-4">
+      <h4><%= @server.hostname %> / New trigger</h4>
+      <%= form_for @trigger, url: server_triggers_path(@server) do |f| %>
+        <div class="form-group">
+          <label>Event</label>
+          <%= f.select(:event, options_for_select(Trigger::EVENTS), {}, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Criteria (N)</label>
+          <%= f.number_field(:criteria, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Action</label>
+          <%= f.select(:action, options_for_select(Trigger::ACTIONS), {}, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>URL</label>
+          <%= f.text_field(:url, class: "form-control") %>
+        </div>
+        <div class="text-right">
+          <%= f.submit("Submit", class: "btn btn-sm btn-primary") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

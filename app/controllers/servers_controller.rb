@@ -3,6 +3,7 @@ class ServersController < ApplicationController
   before_action :set_server, only: [:show, :destroy]
 
   def index
+    @servers = @user.servers
   end
 
   def show

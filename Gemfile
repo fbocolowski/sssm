@@ -8,6 +8,7 @@ gem 'puma', '~> 3.11'
 gem 'rails-i18n'
 gem 'mongoid', '~> 7.0'
 gem 'rufus-scheduler'
+gem 'rest-client'
 
 group :development do
 end

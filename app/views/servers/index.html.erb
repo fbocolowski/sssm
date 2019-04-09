@@ -6,55 +6,76 @@
           <h4>Servers</h4>
         </div>
         <div class="col text-right">
-          <a href="<%= new_server_path %>" class="btn btn-primary"><span style="width:22px" data-feather='plus'></span> New server</a>
+          <% unless @servers.empty? %>
+            <a href="<%= new_server_path %>" class="btn btn-sm btn-primary">New server</a>
+          <% end %>
         </div>
       </div>
 
-      <div class="table-responsive">
-        <table class="table">
-          <tr>
-            <th>Hostname</th>
-            <th>IP</th>
-            <th>Last active</th>
-            <th>Distro</th>
-            <th>Uptime</th>
-            <th>RAM</th>
-            <th>Disk</th>
-          </tr>
-          <% @user.servers.each do |server| %>
-            <tr class="clickable-row" data-href="<%= server_path(server) %>">
-              <td><%= server.hostname %></td>
-              <td><%= server.ip %></td>
-              <td>
-                <% if server.last_report_minutes.nil? %>
-                  <span class="badge badge-light">Unavailable</span>
-                <% elsif server.last_report_minutes == 0 %>
-                  <span class="badge badge-success">Less than a minute</span>
-                <% else %>
-                  <span class="badge badge-primary"><%= server.last_report_minutes %> minutes ago</span>
+      <div class="row">
+        <div class="col-xl-12">
+          <% if @servers.empty? %>
+            <div class="my-5 text-center">
+              <span data-feather="server" style="width: 45px; height: 45px" class="mb-3"></span>
+              <h5>No server found</h5>
+              <p class="text-muted">Start by creating a new server</p>
+              <a href="<%= new_server_path %>" class="btn btn-sm btn-primary">New server</a>
+            </div>
+          <% else %>
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th>Hostname</th>
+                  <th>IP</th>
+                  <th>Last active</th>
+                  <th>Distro</th>
+                  <th>Uptime</th>
+                  <th>RAM</th>
+                  <th>Disk</th>
+                </tr>
+                <% @servers.each do |server| %>
+                  <tr class="clickable-row" data-href="<%= server_path(server) %>">
+                    <td><%= server.hostname || 'New server' %></td>
+                    <td><%= server.ip %></td>
+                    <td>
+                      <% unless server.last_report_minutes.nil? %>
+                        <% if server.last_report_minutes == 0 %>
+                          <span class="badge badge-success">Less than a minute</span>
+                        <% else %>
+                          <span class="badge badge-primary"><%= server.last_report_minutes %> minutes ago</span>
+                        <% end %>
+                      <% end %>
+                    </td>
+                    <td class="table-thumb">
+                      <% unless server.distro_logo.nil? %>
+                        <img src="/img/distros/<%= server.distro_logo %>.png">
+                      <% end %>
+                    </td>
+                    <td><%= server.uptime_string %></td>
+                    <td>
+                      <% unless server.ram_usage.nil? %>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>%">
+                            <%= server.ram_usage %>%
+                          </div>
+                        </div>
+                      <% end %>
+                    </td>
+                    <td>
+                      <% unless server.disk_usage.nil? %>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>%">
+                            <%= server.disk_usage %>%
+                          </div>
+                        </div>
+                      <% end %>
+                    </td>
+                  </tr>
                 <% end %>
-              </td>
-              <td class="table-thumb">
-                <img src="/img/distros/<%= server.distro_logo %>.png">
-              </td>
-              <td><%= server.uptime_string %></td>
-              <td>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>%">
-                    <%= server.ram_usage %>%
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>%">
-                    <%= server.disk_usage %>%
-                  </div>
-                </div>
-              </td>
-            </tr>
+              </table>
+            </div>
           <% end %>
-        </table>
+        </div>
       </div>
     </div>
   </div>

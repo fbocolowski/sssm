@@ -3,10 +3,13 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4>Servers / <%= @server.hostname %></h4>
+          <h4><%= @server.hostname || 'New server' %></h4>
         </div>
         <div class="col text-right">
-          <a href="<%= server_path(@server) %>" class="btn btn-danger delete">Delete</a>
+          <% unless @server.hostname.nil? %>
+            <a href="<%= server_triggers_path(@server) %>" class="btn btn-sm btn-primary">Triggers</a>
+          <% end %>
+          <a href="<%= server_path(@server) %>" class="btn btn-sm btn-danger delete">Delete</a>
         </div>
       </div>
 
@@ -25,38 +28,37 @@
         <div>IP: <%= @server.ip %></div>
         <div>Distro: <%= @server.distro %></div>
         <div>Uptime: <%= @server.uptime_string %></div>
-        <div>Total reports: <%= @server.reports.count %></div>
         <div>First report: <%= @server.first_report %></div>
         <div class="mb-3">Last report: <%= @server.last_report %></div>
 
-        <div class="text-right">
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary" id="charts_1d" onclick="updateCharts('1d');">1 day
-            </button>
-            <button type="button" class="btn btn-primary" id="charts_1w" onclick="updateCharts('1w');">1 week</button>
-            <button type="button" class="btn btn-primary" id="charts_1m" onclick="updateCharts('1m');">1 month</button>
-            <button type="button" class="btn btn-primary" id="charts_1y" onclick="updateCharts('1y');">1 year</button>
-          </div>
-        </div>
+<!--        <div class="text-right">-->
+<!--          <div class="btn-group">-->
+<!--            <button type="button" class="btn btn-sm btn-primary" id="charts_1d" onclick="updateCharts('1d');">1 day-->
+<!--            </button>-->
+<!--            <button type="button" class="btn btn-sm btn-primary" id="charts_1w" onclick="updateCharts('1w');">1 week</button>-->
+<!--            <button type="button" class="btn btn-sm btn-primary" id="charts_1m" onclick="updateCharts('1m');">1 month</button>-->
+<!--            <button type="button" class="btn btn-sm btn-primary" id="charts_1y" onclick="updateCharts('1y');">1 year</button>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <h5>RAM usage</h5>
+        <h5>RAM usage (last 24h)</h5>
         <div id="ram_usage" style="height: 420px;"></div>
 
-        <h5>Disk usage</h5>
+        <h5>Disk usage (last 24h)</h5>
         <div id="disk_usage" style="height: 420px;"></div>
 
         <script>
-            function updateCharts(time) {
-                $('#charts_1d').removeClass('active');
-                $('#charts_1w').removeClass('active');
-                $('#charts_1m').removeClass('active');
-                $('#charts_1y').removeClass('active');
-                new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage&time=' + time, {curve: false});
-                new Chartkick.LineChart("disk_usage", '/charts?server_id=<%= @server.id %>&type=disk_usage&time=' + time, {curve: false});
-                $('#charts_' + time).addClass('active');
+            function updateCharts() {
+                // $('#charts_1d').removeClass('active');
+                // $('#charts_1w').removeClass('active');
+                // $('#charts_1m').removeClass('active');
+                // $('#charts_1y').removeClass('active');
+                new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage', {curve: false});
+                new Chartkick.LineChart("disk_usage", '/charts?server_id=<%= @server.id %>&type=disk_usage', {curve: false});
+                // $('#charts_' + time).addClass('active');
             }
 
-            updateCharts('1d');
+            updateCharts();
         </script>
       <% end %>
     </div>
