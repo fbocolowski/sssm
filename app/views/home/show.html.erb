@@ -2,88 +2,82 @@
   <div class="row">
     <div class="col-xl-12">
       <div class="my-5">
-        <h1>Stupid Simple Server Monitor</h1>
-        <p class="lead">Open Source, Cloud and Secure multiple server monitoring.</p>
+        <h1><%= t(:name) %></h1>
+        <p class="lead"><%= t(:about) %></p>
         <hr class="my-4">
-        <p>Keep up with your server status, get notified and more just with a single line in your crontab!</p>
+        <p><%= t(:punchline) %></p>
         <p class="lead">
-          <a class="btn btn-primary" href="<%= registration_path %>" role="button">Create an account</a>
+          <a class="btn btn-primary" href="<%= registration_path %>" role="button"><%= t(:create_account) %></a>
         </p>
       </div>
 
       <div class="text-center mb-5">
-        <h2>How does it work?</h2>
+        <h2><%= t(:how_does_it_work) %></h2>
       </div>
 
       <div class="row">
         <div class="col-xl-4 mb-5 text-center">
           <img src="/img/undraw_maintenance.svg" style="height: 250px" class="mb-3">
-          <h4>Step 1 - Sign up</h4>
-          <p>Create your account with an username and password. No email, phone or login through third party
-            services required.</p>
+          <h4><%= t(:step_1) %></h4>
+          <p><%= t(:step_1_description) %></p>
         </div>
         <div class="col-xl-4 mb-5 text-center">
           <img src="/img/undraw_server.svg" style="height: 250px" class=" mb-3">
-          <h4>Step 2 - Link your server</h4>
-          <p>Now that you are logged in, click the "New server" button. This will generate a random token and give you a
-            line to paste in your server's crontab.</p>
+          <h4><%= t(:step_2) %></h4>
+          <p><%= t(:step_2_description) %></p>
         </div>
         <div class="col-xl-4 mb-5 text-center">
           <img src="/img/undraw_cloud_sync.svg" style="height: 250px" class=" mb-3">
-          <h4>Step 3 - And that's all!</h4>
-          <p>The crontab you pasted will run our data collector script, send information to our servers and we will generate a simple but
-            powerful dashboard for all your servers.</p>
+          <h4><%= t(:step_3) %></h4>
+          <p><%= t(:step_3_description) %></p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xl-6 mb-5 text-center">
-          <h4><span style="color: #000" data-feather="lock"></span> We value your privacy</h4>
-          <p>You don't need to provide any email or contact form, so there is no information about you stored on our servers. You can fully control the data sent to our servers
-            including their retention time and deletion. There is <strong>NO SOFT DELETE</strong>. You can delete your account, your servers
-            information and reports at any time.</p>
+          <h4><span style="color: #000" data-feather="lock"></span> <%= t(:value_privacy) %></h4>
+          <p><%= t(:value_privacy_description).html_safe %></p>
         </div>
 
         <div class="col-xl-6 mb-5 text-center">
-          <h4><span style="color: #000" data-feather="github"></span> Open Source</h4>
-          <p>This is a fully open source project, and needs active help and contribution! Check out the GitHub page at <a href="https://github.com/fbocolowski/sssm">https://github.com/fbocolowski/sssm</a>.
-            There are also other ways to contribute without developing. A great way to help can also be helping to translate this project into other languages.</p>
+          <h4><span style="color: #000" data-feather="github"></span> <%= t(:open_source) %></h4>
+          <p><%= t(:open_source_description).html_safe %></p>
         </div>
 
         <div class="col-md-6 offset-md-3 text-center">
-          <h4><span style="color: #000" data-feather="server"></span> Data collected</h4>
+          <h4><span style="color: #000" data-feather="server"></span> <%= t(:data_collected) %></h4>
 
           <table class="table table-striped table-sm mt-3">
             <tbody>
               <tr>
-                <td>Hostname</td>
+                <td><%= t(:hostname) %></td>
               </tr>
               <tr>
-                <td>IP</td>
+                <td><%= t(:ip) %></td>
               </tr>
               <tr>
-                <td>Linux Distribution</td>
+                <td><%= t(:linux_distribution) %></td>
               </tr>
               <tr>
-                <td>Uptime</td>
+                <td><%= t(:uptime) %></td>
               </tr>
               <tr>
-                <td>Total and used memory</td>
+                <td><%= t(:total_used_memory) %></td>
               </tr>
               <tr>
-                <td>Total and used Disk (partition /)</td>
+                <td><%= t(:total_used_disk) %></td>
               </tr>
               <tr>
-                <td class="text-secondary">Active Processes</td>
+                <td class="text-secondary"><%= t(:active_processes) %></td>
               </tr>
               <tr>
-                <td class="text-secondary">Boot time and systemd info</td>
+                <td class="text-secondary"><%= t(:boot_time) %></td>
               </tr>
               <tr>
-                <td class="text-secondary">Info on all disks</td>
+                <td class="text-secondary"><%= t(:info_on_all_disks) %></td>
               </tr>
               <tr>
-                <td class="text-secondary">Status of other services</td>
+                <td class="text-secondary"><%= t(:status_of_other_services) %></td>
               </tr>
             </tbody>
           </table>
