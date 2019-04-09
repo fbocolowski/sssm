@@ -3,11 +3,11 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4>Servers</h4>
+          <h4><%= t(:servers) %></h4>
         </div>
         <div class="col text-right">
           <% unless @servers.empty? %>
-            <a href="<%= new_server_path %>" class="btn btn-sm btn-primary">New server</a>
+            <a href="<%= new_server_path %>" class="btn btn-sm btn-primary"><%= t(:new_server) %></a>
           <% end %>
         </div>
       </div>
@@ -17,32 +17,32 @@
           <% if @servers.empty? %>
             <div class="my-5 text-center">
               <span data-feather="server" style="width: 45px; height: 45px" class="mb-3"></span>
-              <h5>No server found</h5>
-              <p class="text-muted">Start by creating a new server</p>
-              <a href="<%= new_server_path %>" class="btn btn-sm btn-primary">New server</a>
+              <h5><%= t(:no_server_found) %></h5>
+              <p class="text-muted"><%= t(:start_creating_new_server) %></p>
+              <a href="<%= new_server_path %>" class="btn btn-sm btn-primary"><%= t(:new_server) %></a>
             </div>
           <% else %>
             <div class="table-responsive">
               <table class="table">
                 <tr>
-                  <th>Hostname</th>
-                  <th>IP</th>
-                  <th>Last active</th>
-                  <th>Distro</th>
-                  <th>Uptime</th>
-                  <th>RAM</th>
-                  <th>Disk</th>
+                  <th><%= t(:hostname) %></th>
+                  <th><%= t(:ip) %></th>
+                  <th><%= t(:last_active) %></th>
+                  <th><%= t(:linux_distribution) %></th>
+                  <th><%= t(:uptime) %></th>
+                  <th><%= t(:ram) %></th>
+                  <th><%= t(:disk) %></th>
                 </tr>
                 <% @servers.each do |server| %>
                   <tr class="clickable-row" data-href="<%= server_path(server) %>">
-                    <td><%= server.hostname || 'New server' %></td>
+                    <td><%= server.hostname || t(:new_server) %></td>
                     <td><%= server.ip %></td>
                     <td>
                       <% unless server.last_report_minutes.nil? %>
                         <% if server.last_report_minutes == 0 %>
-                          <span class="badge badge-success">Less than a minute</span>
+                          <span class="badge badge-success"><%= t(:less_than_a_minute) %></span>
                         <% else %>
-                          <span class="badge badge-primary"><%= server.last_report_minutes %> minutes ago</span>
+                          <span class="badge badge-primary"><%= t(:minutes_ago, time: server.last_report_minutes) %></span>
                         <% end %>
                       <% end %>
                     </td>

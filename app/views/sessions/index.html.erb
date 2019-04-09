@@ -2,18 +2,18 @@
   <div class="row">
     <div class="col-xl-4"></div>
     <div class="col-xl-4">
-      <h4>Active sessions</h4>
+      <h4><%= t(:active_sessions) %></h4>
       <% @user.sessions.where(active: true).each do |session| %>
         <div class="card mb-3">
           <div class="card-body">
-            <div>Created at: <%= session.created_at %></div>
-            <div>IP: <%= session.ip %></div>
-            <div>User Agent: <%= session.user_agent %></div>
+            <div><%= t(:created_at) %>: <%= session.created_at %></div>
+            <div><%= t(:ip) %>: <%= session.ip %></div>
+            <div><%= t(:user_agent) %>: <%= session.user_agent %></div>
             <div class="text-right mt-3">
               <% if @session != session %>
-                <a href="<%= session_path(session) %>" class="btn btn-sm btn-danger delete">Destroy</a>
+                <a href="<%= session_path(session) %>" class="btn btn-sm btn-danger delete"><%= t(:delete) %></a>
               <% else %>
-                <div>Current session</div>
+                <div><%= t(:current_session) %></div>
               <% end %>
             </div>
           </div>
@@ -21,7 +21,7 @@
       <% end %>
       <% if @user.sessions.where(active: true).count > 1 %>
         <hr>
-        <a href="<%= destroy_active_sessions_path %>" class="delete">Destroy all active sessions</a>
+        <a href="<%= destroy_active_sessions_path %>" class="delete"><%= t(:destroy_all_sessions) %></a>
       <% end %>
     </div>
   </div>

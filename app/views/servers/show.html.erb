@@ -3,33 +3,33 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4><%= @server.hostname || 'New server' %></h4>
+          <h4><%= @server.hostname || t(:new_server) %></h4>
         </div>
         <div class="col text-right">
           <% unless @server.hostname.nil? %>
-            <a href="<%= server_triggers_path(@server) %>" class="btn btn-sm btn-primary">Triggers</a>
+            <a href="<%= server_triggers_path(@server) %>" class="btn btn-sm btn-primary"><%= t(:triggers) %></a>
           <% end %>
-          <a href="<%= server_path(@server) %>" class="btn btn-sm btn-danger delete">Delete</a>
+          <a href="<%= server_path(@server) %>" class="btn btn-sm btn-danger delete"><%= t(:delete) %></a>
         </div>
       </div>
 
       <% if @server.reports.count == 0 %>
-        <h5>Setup</h5>
+        <h5><%= t(:setup) %></h5>
 
         <div class="form-group">
-          <label>Add this line to your crontab</label>
+          <label><%= t(:add_line_to_crontab) %></label>
           <input type="text" class="form-control" value="* * * * * curl -s <%= @url %>/runner.sh | bash -s <%= @server.token %>">
         </div>
 
-        <p>And refresh this page after 1 minute!</p>
+        <p><%= t(:refresh_page_after_1_minute) %></p>
       <% else %>
-        <h5>Details</h5>
-        <div>Hostname: <%= @server.hostname %></div>
-        <div>IP: <%= @server.ip %></div>
-        <div>Distro: <%= @server.distro %></div>
-        <div>Uptime: <%= @server.uptime_string %></div>
-        <div>First report: <%= @server.first_report %></div>
-        <div class="mb-3">Last report: <%= @server.last_report %></div>
+        <h5><%= t(:details) %></h5>
+        <div><%= t(:hostname) %>: <%= @server.hostname %></div>
+        <div><%= t(:ip) %>: <%= @server.ip %></div>
+        <div><%= t(:linux_distribution) %>: <%= @server.distro %></div>
+        <div><%= t(:uptime) %>: <%= @server.uptime_string %></div>
+        <div><%= t(:first_report) %>: <%= @server.first_report %></div>
+        <div class="mb-3"><%= t(:last_report) %>: <%= @server.last_report %></div>
 
 <!--        <div class="text-right">-->
 <!--          <div class="btn-group">-->
@@ -41,10 +41,10 @@
 <!--          </div>-->
 <!--        </div>-->
 
-        <h5>RAM usage (last 24h)</h5>
+        <h5><%= t(:ram_usage_24) %></h5>
         <div id="ram_usage" style="height: 420px;"></div>
 
-        <h5>Disk usage (last 24h)</h5>
+        <h5><%= t(:disk_usage_24) %></h5>
         <div id="disk_usage" style="height: 420px;"></div>
 
         <script>

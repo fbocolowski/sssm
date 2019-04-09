@@ -36,3 +36,63 @@ en:
   # Navbar
   login: "Login"
   create_account: "Create an account"
+
+  # Account
+  my_account: "My account"
+  username: "Username"
+  email: "Email"
+  submit: "Submit"
+  change_password: "Change password"
+  current_password: "Current password"
+  new_password: "New password"
+  confirm_password: "Confirm password"
+  manage_active_session: "Manage active sessions"
+  delete_account: "Delete account"
+  password: "Password"
+
+  # Delete Account
+  this_is_serious: "Ok, this one is serious."
+  delete_info: "This page will allow you to delete every information you ever sent to our application. This is irreversible,
+    so think twice."
+  type_password_to_confirm: "Type in your password to confirm"
+  are_you_sure_delete: "Are you sure you want to delete your account?"
+  delete_no: "No, take me back"
+  delete_yes: "Yes, I'm sure"
+
+  # Servers
+  servers: "Servers"
+  new_server: "New server"
+  no_server_found: "No server found"
+  start_creating_new_server: "Start by creating a new server"
+  last_active: "Last active"
+  ram: "RAM"
+  disk: "Disk"
+  less_than_a_minute: "Less than a minute"
+  minutes_ago: "%{time} minutes ago"
+  triggers: "Triggers"
+  delete: "Delete"
+  setup: "Setup"
+  add_line_to_crontab: "Add this line to your crontab"
+  refresh_page_after_1_minute: "And refresh this page after 1 minute!"
+  details: "Details"
+  first_report: "First report"
+  last_report: "Last report"
+  ram_usage_24: "RAM usage (last 24h)"
+  disk_usage_24: "Disk usage (last 24h)"
+
+  # Sessions
+  active_sessions: "Active sessions"
+  created_at: "Created at"
+  user_agent: "User Agent"
+  current_session: "Current session"
+  destroy_all_sessions: "Destroy all active sessions"
+
+  # Triggers
+  new_trigger: "New trigger"
+  no_trigger: "No trigger found"
+  start_creating_new_trigger: "Start by creating a new trigger"
+  event: "Event"
+  action: "Action"
+  to: "to"
+  criteria: "Criteria (N)"
+  url: "URL"
