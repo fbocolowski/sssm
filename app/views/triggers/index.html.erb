@@ -3,11 +3,11 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4><%= @server.hostname %> / Triggers</h4>
+          <h4><%= @server.hostname %> / <%= t(:triggers) %></h4>
         </div>
         <div class="col text-right">
           <% unless @triggers.empty? %>
-            <a href="<%= new_server_trigger_path(@server) %>" class="btn btn-sm btn-primary">New trigger</a>
+            <a href="<%= new_server_trigger_path(@server) %>" class="btn btn-sm btn-primary"><%= t(:new_trigger) %></a>
           <% end %>
         </div>
       </div>
@@ -17,24 +17,24 @@
           <% if @triggers.empty? %>
             <div class="my-5 text-center">
               <span data-feather="zap" style="width: 45px; height: 45px" class="mb-3"></span>
-              <h5>No trigger found</h5>
-              <p class="text-muted">Start by creating a new trigger</p>
-              <a href="<%= new_server_trigger_path(@server) %>" class="btn btn-sm btn-primary">New trigger</a>
+              <h5><%= t(:no_trigger) %></h5>
+              <p class="text-muted"><%= t(:start_creating_new_trigger) %></p>
+              <a href="<%= new_server_trigger_path(@server) %>" class="btn btn-sm btn-primary"><%= t(:new_trigger) %></a>
             </div>
           <% else %>
             <div class="table-responsive">
               <table class="table">
                 <tr>
-                  <th>Event</th>
-                  <th>Action</th>
+                  <th><%= t(:event) %></th>
+                  <th><%= t(:action) %></th>
                   <th></th>
                 </tr>
                 <% @triggers.each do |trigger| %>
                   <tr>
                     <td><%= trigger.name %></td>
-                    <td><%= trigger.action %> to <%= trigger.url %></td>
+                    <td><%= trigger.action %> <%= t(:to) %> <%= trigger.url %></td>
                     <td class="text-right">
-                      <a href="<%= server_trigger_path(@server, trigger) %>" class="btn btn-sm btn-danger delete">Delete</a>
+                      <a href="<%= server_trigger_path(@server, trigger) %>" class="btn btn-sm btn-danger delete"><%= t(:delete) %></a>
                     </td>
                   </tr>
                 <% end %>

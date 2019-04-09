@@ -2,52 +2,52 @@
   <div class="row">
     <div class="col-xl-4"></div>
     <div class="col-xl-4">
-      <h4>My account</h4>
+      <h4><%= t(:my_account) %></h4>
       <%= form_for(@user, url: account_path, method: "post") do |f| %>
         <div class="form-group">
-          <label>Username</label>
+          <label><%= t(:username) %></label>
           <%= f.text_field(:username, class: "form-control") %>
         </div>
 
         <div class="form-group">
-          <label>Email</label>
+          <label><%= t(:email) %></label>
           <%= f.text_field(:email, class: "form-control") %>
         </div>
 
         <div class="text-right">
-          <%= submit_tag("Submit", class: "btn btn-sm btn-primary") %>
+          <%= submit_tag(t(:submit), class: "btn btn-sm btn-primary") %>
         </div>
       <% end %>
 
       <hr>
 
-      <h4>Change password</h4>
+      <h4><%= t(:change_password) %></h4>
       <%= form_tag(change_password_path, method: "put") do %>
         <div class="form-group">
-          <label>Current password</label>
+          <label><%= t(:current_password) %></label>
           <%= password_field_tag(:current_password, "", class: "form-control") %>
         </div>
 
         <div class="form-group">
-          <label>New password</label>
+          <label><%= t(:new_password) %></label>
           <%= password_field_tag(:new_password, "", class: "form-control") %>
         </div>
 
         <div class="form-group">
-          <label>Repeat it</label>
+          <label><%= t(:confirm_password) %></label>
           <%= password_field_tag(:new_password_again, "", class: "form-control") %>
         </div>
 
         <div class="text-right">
-          <%= submit_tag("Submit", class: "btn btn-sm btn-primary") %>
+          <%= submit_tag(t(:submit), class: "btn btn-sm btn-primary") %>
         </div>
       <% end %>
 
       <hr>
 
-      <div><a href="<%= sessions_path %>">Manage active sessions</a></div>
+      <div><a href="<%= sessions_path %>"><%= t(:manage_active_sessions) %></a></div>
 
-      <div><a href="<%= delete_account_path %>">Delete account</a></div>
+      <div><a class="text-danger" href="<%= delete_account_path %>"><%= t(:delete_account) %></a></div>
     </div>
   </div>
 </div>

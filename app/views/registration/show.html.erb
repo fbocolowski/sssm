@@ -2,21 +2,21 @@
   <div class="row">
     <div class="col-xl-4"></div>
     <div class="col-xl-4">
-      <h4>Create an account</h4>
+      <h4><%= t(:create_account) %></h4>
 
       <%= form_for(@new_user, url: registration_path, method: "post") do |f| %>
         <div class="form-group">
-          <label>Username</label>
+          <label><%= t(:username) %></label>
           <%= f.text_field(:username, autofocus: true, class: "form-control") %>
         </div>
 
         <div class="form-group">
-          <label>Password</label>
+          <label><%= t(:password) %></label>
           <%= f.password_field(:password, class: "form-control") %>
         </div>
 
         <div class="text-right">
-          <%= submit_tag("Submit", class: "btn btn-sm btn-primary") %>
+          <%= submit_tag(t(:submit), class: "btn btn-sm btn-primary") %>
         </div>
       <% end %>
     </div>
