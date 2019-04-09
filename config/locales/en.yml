@@ -1,0 +1,38 @@
+en:
+  # Homepage
+  name: "Stupid Simple Server Monitor"
+  about: "Open Source, Cloud and Secure multiple server monitoring."
+  punchline: "Keep up with your server status, get notified and more just with a single line in your crontab!"
+  how_does_it_work: "How does it work?"
+  step_1: "Step 1 - Sign up"
+  step_1_description: "Create your account with an username and password. No email, phone or login through third party
+    services required."
+  step_2: "Step 2 - Link your server"
+  step_2_description: "Now that you are logged in, click the 'New server' button. This will generate a random token and give you a
+    line to paste in your server's crontab."
+  step_3: "Step 3 - And that's all!"
+  step_3_description: "The crontab you pasted will run our data collector script, send information to our servers and we will generate a simple but
+    powerful dashboard for all your servers."
+  value_privacy: "We value your privacy"
+  value_privacy_description: "You don't need to provide any email or contact form, so there is no information about you stored on our servers. You can fully control the data sent to our servers
+    including their retention time and deletion. There is <strong>NO SOFT DELETE</strong>. You can delete your account, your servers
+    information and reports at any time."
+  open_source: "Open Source"
+  open_source_description: |
+    This is a fully open source project, and needs active help and contribution! Check out the GitHub page at <a href="https://github.com/fbocolowski/sssm">https://github.com/fbocolowski/sssm</a>.
+    There are also other ways to contribute without developing. A great way to help can also be helping to translate this project into other languages.
+  data_collected: "Data collected"
+  hostname: "Hostname"
+  ip: "IP"
+  linux_distribution: "Linux Distribution"
+  uptime: "Uptime"
+  total_used_memory: "Total and used memory"
+  total_used_disk: "Total and used Disk (partition /)"
+  active_processes: "Active Processes"
+  boot_time: "Boot time and systemd info"
+  info_on_all_disks: "Info on all disks"
+  status_of_other_services: "Status of other services"
+
+  # Navbar
+  login: "Login"
+  create_account: "Create an account"
