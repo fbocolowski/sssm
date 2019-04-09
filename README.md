@@ -80,8 +80,8 @@ After=network.target
 Type=forking
 User=deploy
 WorkingDirectory=/srv/sssm/
-ExecStart=/home/deploy/.rvm/gems/ruby-2.5.3/wrappers/bundle exec puma -C config/puma_production.rb --daemon
-ExecStop=/home/deploy/.rvm/gems/ruby-2.5.3/wrappers/bundle exec pumactl -S tmp/puma.state stop
+ExecStart=/home/deploy/.rvm/gems/ruby-2.5.3@sssm/wrappers/bundle exec puma -C config/puma_production.rb --daemon
+ExecStop=/home/deploy/.rvm/gems/ruby-2.5.3@sssm/wrappers/bundle exec pumactl -S tmp/puma.state stop
 PIDFile=/srv/sssm/tmp/puma.pid
 Restart=always
 
