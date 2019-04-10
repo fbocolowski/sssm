@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   resource 'destroy_active_sessions', controller: 'destroy_active_sessions', only: [:destroy]
 
   resources 'servers', controller: 'servers', only: [:index, :show, :new, :destroy] do
-    resources 'triggers', controller: 'triggers', only: [:index, :new, :create, :destroy]
+    resources 'triggers', controller: 'triggers', only: [:index, :new, :create, :destroy] do
+      resource 'test', controller: 'test_trigger', only: [:show]
+    end
   end
   resource 'charts', controller: 'charts', only: [:show]
 

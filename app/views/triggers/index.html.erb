@@ -32,8 +32,9 @@
                 <% @triggers.each do |trigger| %>
                   <tr>
                     <td><%= trigger.name %></td>
-                    <td><%= trigger.action %> <%= t(:to) %> <%= trigger.url %></td>
+                    <td><%= trigger.action %></td>
                     <td class="text-right">
+                      <a href="<%= server_trigger_test_path(@server, trigger) %>" class="btn btn-sm btn-primary"><%= t(:send_test) %></a>
                       <a href="<%= server_trigger_path(@server, trigger) %>" class="btn btn-sm btn-danger delete"><%= t(:delete) %></a>
                     </td>
                   </tr>

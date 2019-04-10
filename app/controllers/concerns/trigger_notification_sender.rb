@@ -15,15 +15,15 @@ module TriggerNotificationSender
       end
     end
 
-    def webhook(url, hostname, ip, message)
+    def discord(url, content)
       if Rails.env.production?
         begin
-          RestClient.post(url, {hostname: hostname, ip: ip, message: message}.to_json, {content_type: :json, accept: :json})
+          RestClient.post(url, {content: content}.to_json)
         rescue
           # do nothing
         end
       else
-        puts 'WEBHOOK -> ' + url + ' / ' + hostname + ' / ' + ip + ' / ' + message
+        puts 'DISCORD -> ' + url + ' / ' + content
       end
     end
   end

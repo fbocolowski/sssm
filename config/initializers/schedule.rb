@@ -31,8 +31,8 @@ scheduler.cron '* * * * *' do
         case trigger.action
         when "Slack"
           TriggerNotificationSender.slack(trigger.url, trigger.pretty_message)
-        when "Webhook"
-          TriggerNotificationSender.webhook(trigger.url, trigger.server.hostname, trigger.server.ip, trigger.name)
+        when "Discord"
+          TriggerNotificationSender.discord(trigger.url, trigger.pretty_message)
         end
       end
     end

@@ -93,6 +93,6 @@ en:
   start_creating_new_trigger: "Start by creating a new trigger"
   event: "Event"
   action: "Action"
-  to: "to"
   criteria: "Criteria (N)"
   url: "URL"
+  send_test: "Send test"

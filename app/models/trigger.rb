@@ -11,7 +11,7 @@ class Trigger
   field :url, type: String
 
   EVENTS = ["Server is down for N minutes", "RAM usage above N%", "Disk usage above N%"]
-  ACTIONS = ["Slack", "Webhook"]
+  ACTIONS = ["Slack", "Discord"]
 
   validates :event, presence: true, inclusion: {in: EVENTS}
   validates :criteria, presence: true, numericality: {greater_than_or_equal_to: 1}
