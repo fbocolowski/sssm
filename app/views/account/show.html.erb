@@ -45,9 +45,9 @@
 
       <hr>
 
-      <div><a href="<%= sessions_path %>"><%= t(:manage_active_sessions) %></a></div>
+      <div><%= link_to t(:manage_active_session), sessions_path %></div>
 
-      <div><a class="text-danger" href="<%= delete_account_path %>"><%= t(:delete_account) %></a></div>
+      <div><%= link_to t(:delete_account), delete_account_path, class: 'text-danger' %></div>
     </div>
   </div>
 </div>

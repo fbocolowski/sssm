@@ -18,7 +18,7 @@
         <p><%= t(:are_you_sure_delete) %></p>
 
         <div class="text-right">
-          <a href="<%= account_path %>" class="btn btn-sm btn-primary"><%= t(:delete_no) %></a>
+          <%= link_to t(:delete_no), account_path, class: 'btn btn-sm btn-primary' %>
           <%= submit_tag(t(:delete_yes), class: "btn btn-sm btn-danger") %>
         </div>
       <% end %>

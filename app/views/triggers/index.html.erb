@@ -7,7 +7,7 @@
         </div>
         <div class="col text-right">
           <% unless @triggers.empty? %>
-            <a href="<%= new_server_trigger_path(@server) %>" class="btn btn-sm btn-primary"><%= t(:new_trigger) %></a>
+            <%= link_to t(:new_trigger), new_server_trigger_path(@server), class: 'btn btn-sm btn-primary' %>
           <% end %>
         </div>
       </div>
@@ -19,7 +19,7 @@
               <span data-feather="zap" style="width: 45px; height: 45px" class="mb-3"></span>
               <h5><%= t(:no_trigger) %></h5>
               <p class="text-muted"><%= t(:start_creating_new_trigger) %></p>
-              <a href="<%= new_server_trigger_path(@server) %>" class="btn btn-sm btn-primary"><%= t(:new_trigger) %></a>
+              <%= link_to t(:new_trigger), new_server_trigger_path(@server), class: 'btn btn-sm btn-primary' %>
             </div>
           <% else %>
             <div class="table-responsive">
@@ -34,8 +34,8 @@
                     <td><%= trigger.name %></td>
                     <td><%= trigger.action %></td>
                     <td class="text-right">
-                      <a href="<%= server_trigger_test_path(@server, trigger) %>" class="btn btn-sm btn-primary"><%= t(:send_test) %></a>
-                      <a href="<%= server_trigger_path(@server, trigger) %>" class="btn btn-sm btn-danger delete"><%= t(:delete) %></a>
+                      <%= link_to t(:send_test), server_trigger_test_path(@server, trigger), class: 'btn btn-sm btn-primary' %>
+                      <%= link_to t(:delete), server_trigger_path(@server, trigger), class: 'btn btn-sm btn-danger delete' %>
                     </td>
                   </tr>
                 <% end %>
