@@ -11,7 +11,7 @@
             <div><%= t(:user_agent) %>: <%= session.user_agent %></div>
             <div class="text-right mt-3">
               <% if @session != session %>
-                <a href="<%= session_path(session) %>" class="btn btn-sm btn-danger delete"><%= t(:delete) %></a>
+                <%= link_to t(:delete), session_path(session), class: 'btn btn-sm btn-danger delete' %>
               <% else %>
                 <div><%= t(:current_session) %></div>
               <% end %>
@@ -21,7 +21,7 @@
       <% end %>
       <% if @user.sessions.where(active: true).count > 1 %>
         <hr>
-        <a href="<%= destroy_active_sessions_path %>" class="delete"><%= t(:destroy_all_sessions) %></a>
+        <%= link_to t(:destroy_all_sessions), destroy_active_sessions_path, class: 'delete' %>
       <% end %>
     </div>
   </div>

@@ -2,7 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-4">
-        <a href="<%= root_path %>"><img src="/img/logo.png" class="logo"></a>
+        <%= link_to root_path do %>
+          <img src="/img/logo.png" class="logo">
+        <% end %>
       </div>
       <div class="col-xl-8 text-right">
         <% unless @user.nil? %>

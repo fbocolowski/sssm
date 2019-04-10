@@ -7,7 +7,7 @@
         </div>
         <div class="col text-right">
           <% unless @servers.empty? %>
-            <a href="<%= new_server_path %>" class="btn btn-sm btn-primary"><%= t(:new_server) %></a>
+            <%= link_to t(:new_server), new_server_path, class: 'btn btn-sm btn-primary' %>
           <% end %>
         </div>
       </div>
@@ -19,7 +19,7 @@
               <span data-feather="server" style="width: 45px; height: 45px" class="mb-3"></span>
               <h5><%= t(:no_server_found) %></h5>
               <p class="text-muted"><%= t(:start_creating_new_server) %></p>
-              <a href="<%= new_server_path %>" class="btn btn-sm btn-primary"><%= t(:new_server) %></a>
+              <%= link_to t(:new_server), new_server_path, class: 'btn btn-sm btn-primary' %>
             </div>
           <% else %>
             <div class="table-responsive">

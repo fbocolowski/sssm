@@ -7,9 +7,11 @@
         </div>
         <div class="col text-right">
           <% unless @server.hostname.nil? %>
-            <a href="<%= server_triggers_path(@server) %>" class="btn btn-sm btn-primary"><span data-feather="zap" style="width: 15px; height: 20px"></span> <%= t(:triggers) %> (<%= @server.triggers.count %>)</a>
+            <%= link_to server_triggers_path(@server), class: 'btn btn-sm btn-primary' do %>
+              <span data-feather="zap" style="width: 15px; height: 20px"></span> <%= t(:triggers) %> (<%= @server.triggers.count %>)
+            <% end %>
           <% end %>
-          <a href="<%= server_path(@server) %>" class="btn btn-sm btn-danger delete"><%= t(:delete) %></a>
+          <%= link_to t(:delete), server_path(@server), class: 'btn btn-sm btn-danger delete' %>
         </div>
       </div>
 
