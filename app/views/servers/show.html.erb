@@ -7,7 +7,7 @@
         </div>
         <div class="col text-right">
           <% unless @server.hostname.nil? %>
-            <a href="<%= server_triggers_path(@server) %>" class="btn btn-sm btn-primary"><%= t(:triggers) %></a>
+            <a href="<%= server_triggers_path(@server) %>" class="btn btn-sm btn-primary"><span data-feather="zap" style="width: 15px; height: 20px"></span> <%= t(:triggers) %> (<%= @server.triggers.count %>)</a>
           <% end %>
           <a href="<%= server_path(@server) %>" class="btn btn-sm btn-danger delete"><%= t(:delete) %></a>
         </div>
@@ -28,18 +28,10 @@
         <div><%= t(:ip) %>: <%= @server.ip %></div>
         <div><%= t(:linux_distribution) %>: <%= @server.distro %></div>
         <div><%= t(:uptime) %>: <%= @server.uptime_string %></div>
+        <div><%= t(:ram) %>: <%= @server.ram_usage %>%</div>
+        <div><%= t(:disk) %>: <%= @server.disk_usage %>%</div>
         <div><%= t(:first_report) %>: <%= @server.first_report %></div>
         <div class="mb-3"><%= t(:last_report) %>: <%= @server.last_report %></div>
-
-<!--        <div class="text-right">-->
-<!--          <div class="btn-group">-->
-<!--            <button type="button" class="btn btn-sm btn-primary" id="charts_1d" onclick="updateCharts('1d');">1 day-->
-<!--            </button>-->
-<!--            <button type="button" class="btn btn-sm btn-primary" id="charts_1w" onclick="updateCharts('1w');">1 week</button>-->
-<!--            <button type="button" class="btn btn-sm btn-primary" id="charts_1m" onclick="updateCharts('1m');">1 month</button>-->
-<!--            <button type="button" class="btn btn-sm btn-primary" id="charts_1y" onclick="updateCharts('1y');">1 year</button>-->
-<!--          </div>-->
-<!--        </div>-->
 
         <h5><%= t(:ram_usage_24) %></h5>
         <div id="ram_usage" style="height: 420px;"></div>
@@ -48,17 +40,8 @@
         <div id="disk_usage" style="height: 420px;"></div>
 
         <script>
-            function updateCharts() {
-                // $('#charts_1d').removeClass('active');
-                // $('#charts_1w').removeClass('active');
-                // $('#charts_1m').removeClass('active');
-                // $('#charts_1y').removeClass('active');
-                new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage', {curve: false});
-                new Chartkick.LineChart("disk_usage", '/charts?server_id=<%= @server.id %>&type=disk_usage', {curve: false});
-                // $('#charts_' + time).addClass('active');
-            }
-
-            updateCharts();
+            new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage', {curve: false});
+            new Chartkick.LineChart("disk_usage", '/charts?server_id=<%= @server.id %>&type=disk_usage', {curve: false});
         </script>
       <% end %>
     </div>

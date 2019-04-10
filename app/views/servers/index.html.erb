@@ -27,16 +27,22 @@
                 <tr>
                   <th><%= t(:hostname) %></th>
                   <th><%= t(:ip) %></th>
+                  <th></th>
                   <th><%= t(:last_active) %></th>
-                  <th><%= t(:linux_distribution) %></th>
                   <th><%= t(:uptime) %></th>
                   <th><%= t(:ram) %></th>
                   <th><%= t(:disk) %></th>
+                  <th></th>
                 </tr>
                 <% @servers.each do |server| %>
                   <tr class="clickable-row" data-href="<%= server_path(server) %>">
                     <td><%= server.hostname || t(:new_server) %></td>
                     <td><%= server.ip %></td>
+                    <td class="table-thumb text-center" data-toggle="tooltip" data-placement="top" title="<%= server.distro %>">
+                      <% unless server.distro_logo.nil? %>
+                        <img src="/img/distros/<%= server.distro_logo %>.png">
+                      <% end %>
+                    </td>
                     <td>
                       <% unless server.last_report_minutes.nil? %>
                         <% if server.last_report_minutes == 0 %>
@@ -44,11 +50,6 @@
                         <% else %>
                           <span class="badge badge-primary"><%= t(:minutes_ago, time: server.last_report_minutes) %></span>
                         <% end %>
-                      <% end %>
-                    </td>
-                    <td class="table-thumb">
-                      <% unless server.distro_logo.nil? %>
-                        <img src="/img/distros/<%= server.distro_logo %>.png">
                       <% end %>
                     </td>
                     <td><%= server.uptime_string %></td>
@@ -69,6 +70,9 @@
                           </div>
                         </div>
                       <% end %>
+                    </td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<%= t(:triggers) %>">
+                      <span data-feather="zap" style="width: 15px; height: 20px"></span> <%= server.triggers.count %>
                     </td>
                   </tr>
                 <% end %>
