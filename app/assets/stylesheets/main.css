@@ -114,3 +114,8 @@ body {
 .tooltip {
     font-size: 0.875rem !important;
 }
+
+.sorting-icon {
+    height: 20px;
+    vertical-align: -5.5px;
+}
