@@ -25,13 +25,13 @@
             <div class="table-responsive">
               <table class="table">
                 <tr>
-                  <th><%= t(:hostname) %></th>
+                  <th><%= sort_link("hostname", t(:hostname)) %></th>
                   <th><%= t(:ip) %></th>
                   <th></th>
-                  <th><%= t(:last_active) %></th>
-                  <th><%= t(:uptime) %></th>
-                  <th><%= t(:ram) %></th>
-                  <th><%= t(:disk) %></th>
+                  <th><%= sort_link("last_report", t(:last_active)) %></th>
+                  <th><%= sort_link("uptime", t(:uptime)) %></th>
+                  <th><%= sort_link("ram_usage", t(:ram)) %></th>
+                  <th><%= sort_link("disk_usage", t(:disk)) %></th>
                   <th></th>
                 </tr>
                 <% @servers.each do |server| %>
