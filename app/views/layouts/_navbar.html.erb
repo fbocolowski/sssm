@@ -8,9 +8,9 @@
       </div>
       <div class="col-xl-8 text-right">
         <% unless @user.nil? %>
-          <%= link_to "<span data-feather='server' style='width: 20px; height: 20px'></span>".html_safe, servers_path, class: "link" %>
-          <%= link_to "<span data-feather='user' style='width: 20px; height: 20px'></span>".html_safe, account_path, class: "link" %>
-          <%= link_to "<span data-feather='power' style='width: 20px; height: 20px' class='text-danger'></span>".html_safe, logout_path, class: "link" %>
+          <%= link_to "<span data-feather='server' style='width: 22px; height: 22px'></span>".html_safe, servers_path, class: "link" %>
+          <%= link_to "<span data-feather='user' style='width: 22px; height: 22px'></span>".html_safe, account_path, class: "link" %>
+          <%= link_to "<span data-feather='power' style='width: 22px; height: 22px' class='text-danger'></span>".html_safe, logout_path, class: "link" %>
         <% else %>
           <%= link_to t(:login), login_path, class: "link" %>
           <%= link_to t(:create_account), registration_path, class: "btn btn-sm btn-primary text-white" %>

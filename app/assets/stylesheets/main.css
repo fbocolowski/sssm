@@ -27,7 +27,6 @@ body {
 
 .form-control:focus {
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-    border-color: rgba(223, 225, 229, 0);
 }
 
 .card {
@@ -81,8 +80,7 @@ body {
 
 .menu {
     line-height: 55px;
-    /*border-bottom: 1px solid #e3ebf6 !important;*/
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075);
+    border-bottom: 1px solid #dadce0;
     margin-bottom: 1.5rem;
 }
 
@@ -102,7 +100,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    border-top: 1px solid #e3ebf6 !important;
+    border-top: 1px solid #dadce0;
     margin-top: 1.5rem;
     padding: 1rem;
 }
@@ -116,6 +114,15 @@ body {
 }
 
 .sorting-icon {
-    height: 20px;
-    vertical-align: -5.5px;
+    height: 15px;
+}
+
+hr {
+    border-top: 1px solid transparent;
+}
+
+.distro-logo {
+    height: 30px;
+    margin-right: .3rem;
+    margin-left: .3rem;
 }

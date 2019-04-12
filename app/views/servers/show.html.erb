@@ -8,7 +8,7 @@
         <div class="col text-right">
           <% unless @server.hostname.nil? %>
             <%= link_to server_triggers_path(@server), class: 'btn btn-sm btn-primary' do %>
-              <span data-feather="zap" style="width: 15px; height: 20px"></span> <%= t(:triggers) %> (<%= @server.triggers.count %>)
+              <%= t(:triggers) %>
             <% end %>
           <% end %>
           <%= link_to t(:delete), server_path(@server), class: 'btn btn-sm btn-danger delete' %>

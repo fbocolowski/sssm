@@ -1,18 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="my-5">
-        <h1><%= t(:name) %></h1>
+      <div class="text-center my-5">
+        <img src="/img/logo.png" class="mb-3" style="height: 100px;">
+        <h2><%= t(:name) %></h2>
         <p class="lead"><%= t(:about) %></p>
-        <hr class="my-4">
-        <p><%= t(:punchline) %></p>
-        <p class="lead">
-          <%= link_to t(:create_account), registration_path, class: 'btn btn-sm btn-primary' %>
-        </p>
       </div>
 
+
+      <hr class="mb-5">
+
+      <div class="row">
+        <div class="col-xl-12 text-center">
+          <img src="/img/distros/ubuntu.png" class="distro-logo">
+          <img src="/img/distros/arch.png" class="distro-logo">
+          <img src="/img/distros/antergos.png" class="distro-logo">
+          <img src="/img/distros/centos.png" class="distro-logo">
+          <img src="/img/distros/debian.png" class="distro-logo">
+          <img src="/img/distros/fedora.png" class="distro-logo">
+          <img src="/img/distros/manjaro.png" class="distro-logo">
+          <img src="/img/distros/mint.png" class="distro-logo">
+          <img src="/img/distros/raspbian.png" class="distro-logo">
+          <img src="/img/integrations/slack.png" class="distro-logo">
+          <img src="/img/integrations/discord.png" class="distro-logo">
+        </div>
+      </div>
+
+      <hr class="my-5">
+
       <div class="text-center mb-5">
-        <h2><%= t(:how_does_it_work) %></h2>
+        <h3><%= t(:how_does_it_work) %></h3>
       </div>
 
       <div class="row">
@@ -29,61 +46,26 @@
         <div class="col-xl-4 mb-5 text-center">
           <img src="/img/undraw_cloud_sync.svg" style="height: 250px" class=" mb-3">
           <h4><%= t(:step_3) %></h4>
-          <p><%= t(:step_3_description) %></p>
+          <p><%= t(:step_3_description).html_safe %></p>
         </div>
       </div>
 
+      <hr class="mb-5">
+
       <div class="row">
         <div class="col-xl-6 mb-5 text-center">
-          <h4><span style="color: #000" data-feather="lock"></span> <%= t(:value_privacy) %></h4>
+          <span data-feather="lock" class="mb-3"></span>
+          <h4><%= t(:value_privacy) %></h4>
           <p><%= t(:value_privacy_description).html_safe %></p>
         </div>
 
         <div class="col-xl-6 mb-5 text-center">
-          <h4><span style="color: #000" data-feather="github"></span> <%= t(:open_source) %></h4>
+          <span data-feather="code" class="mb-3"></span>
+          <h4><%= t(:open_source) %></h4>
           <p><%= t(:open_source_description).html_safe %></p>
         </div>
-
-        <div class="col-md-6 offset-md-3 text-center">
-          <h4><span style="color: #000" data-feather="server"></span> <%= t(:data_collected) %></h4>
-
-          <table class="table table-striped table-sm mt-3">
-            <tbody>
-              <tr>
-                <td><%= t(:hostname) %></td>
-              </tr>
-              <tr>
-                <td><%= t(:ip) %></td>
-              </tr>
-              <tr>
-                <td><%= t(:linux_distribution) %></td>
-              </tr>
-              <tr>
-                <td><%= t(:uptime) %></td>
-              </tr>
-              <tr>
-                <td><%= t(:total_used_memory) %></td>
-              </tr>
-              <tr>
-                <td><%= t(:total_used_disk) %></td>
-              </tr>
-              <tr>
-                <td class="text-secondary"><%= t(:active_processes) %></td>
-              </tr>
-              <tr>
-                <td class="text-secondary"><%= t(:boot_time) %></td>
-              </tr>
-              <tr>
-                <td class="text-secondary"><%= t(:info_on_all_disks) %></td>
-              </tr>
-              <tr>
-                <td class="text-secondary"><%= t(:status_of_other_services) %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
       </div>
+
     </div>
   </div>
 </div>

@@ -1,26 +1,19 @@
 en:
   # Homepage
   name: "Stupid Simple Server Monitor"
-  about: "Open Source, Cloud and Secure multiple server monitoring."
-  punchline: "Keep up with your server status, get notified and more just with a single line in your crontab!"
+  about: "Open Source, Cloud and Secure multiple server monitoring"
   how_does_it_work: "How does it work?"
   step_1: "Step 1 - Sign up"
-  step_1_description: "Create your account with an username and password. No email, phone or login through third party
-    services required."
+  step_1_description: "Create your account and login with an username and password. No email or phone required."
   step_2: "Step 2 - Link your server"
-  step_2_description: "Now that you are logged in, click the 'New server' button. This will generate a random token and give you a
-    line to paste in your server's crontab."
+  step_2_description: "Select 'New server', then copy and paste the generated line into your server's crontab."
   step_3: "Step 3 - And that's all!"
-  step_3_description: "The crontab you pasted will run our data collector script, send information to our servers and we will generate a simple but
-    powerful dashboard for all your servers."
+  step_3_description: "<a href=\"/runner.sh\" target=\"_blank\">Our script</a> will gather the needed information and generate a simple but powerful dashboard for you."
   value_privacy: "We value your privacy"
-  value_privacy_description: "You don't need to provide any email or contact form, so there is no information about you stored on our servers. You can fully control the data sent to our servers
-    including their retention time and deletion. There is <strong>NO SOFT DELETE</strong>. You can delete your account, your servers
-    information and reports at any time."
+  value_privacy_description: "You don't need to provide any personal information, and you can delete your account, servers and gathered data at any time."
+  support: "Support"
   open_source: "Open Source"
-  open_source_description: |
-    This is a fully open source project, and needs active help and contribution! Check out the GitHub page at <a href="https://github.com/fbocolowski/sssm">https://github.com/fbocolowski/sssm</a>.
-    There are also other ways to contribute without developing. A great way to help can also be helping to translate this project into other languages.
+  open_source_description: "This is an open source project that need active help and contribution. Check out our <a href=\"https://github.com/fbocolowski/sssm\" target=\"_blank\">GitHub repository</a> to find out more and help."
   data_collected: "Data collected"
   hostname: "Hostname"
   ip: "IP"
