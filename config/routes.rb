@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     resources 'reports', controller: 'reports'
   end
+
+  get '/password-recovery', to: 'login#recovery'
+  post '/recover', to: 'login#recover'
 end

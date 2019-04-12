@@ -42,6 +42,11 @@ en:
   manage_active_session: "Manage active sessions"
   delete_account: "Delete account"
   password: "Password"
+  password_recovery: "Password recovery"
+  password_recovery_text: |
+    If you forgot your password you can recover it by entering your username and the token of one of your servers.
+  token: "Token"
+  what_is_the_token: "What is the token?"
 
   # Delete Account
   this_is_serious: "Ok, this one is serious."
@@ -89,3 +94,11 @@ en:
   criteria: "Criteria (N)"
   url: "URL"
   send_test: "Send test"
+
+  # Alerts
+  changes_saved: "Changes saved"
+  passwords_do_not_match: "Passwords do not match"
+  username_token_not_found: "Username not found / Token invalid"
+  password_changed: "Password changed"
+  new_password_cant_be_blank: "New password can't be blank"
+  current_password_incorrect: "Current password is incorrect"

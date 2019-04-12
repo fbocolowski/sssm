@@ -15,10 +15,11 @@
           <%= password_field_tag(:password, "", class: "form-control") %>
         </div>
 
-        <div class="text-right">
+        <div class="mb-3">
           <%= submit_tag(t(:submit), class: "btn btn-sm btn-primary") %>
         </div>
       <% end %>
+      <%= link_to t(:password_recovery), password_recovery_path %>
     </div>
   </div>
 </div>

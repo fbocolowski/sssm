@@ -10,7 +10,7 @@ class AccountController < ApplicationController
     else
       @alert = @user.errors.full_messages.first
     end
-    return render 'show'
+    render 'show'
   end
 
   private
