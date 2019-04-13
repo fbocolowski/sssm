@@ -16,13 +16,7 @@ class Report
   field :token, type: String
   field :username, type: String
 
-  before_create :replicate_data
   after_create :update_server
-
-  def replicate_data
-    self.token = self.server.token
-    self.username = self.server.user.username
-  end
 
   def update_server
     if self.server.first_report.nil?

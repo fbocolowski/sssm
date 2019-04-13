@@ -8,7 +8,6 @@ class Server
 
   field :token, type: String
 
-  field :username, type: String
   field :first_report, type: Time
   field :last_report, type: Time
   field :ip, type: String
@@ -18,7 +17,7 @@ class Server
   field :ram_usage, type: Integer
   field :disk_usage, type: Integer
 
-  before_create :generate_token, :replicate_data
+  before_create :generate_token
 
   def last_report_minutes
     begin
@@ -73,9 +72,5 @@ class Server
       random = SecureRandom.hex(13)
       break random if Server.where(token: random).count == 0
     end
-  end
-
-  def replicate_data
-    self.username = self.user.username
   end
 end

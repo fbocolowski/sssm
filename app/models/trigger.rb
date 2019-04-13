@@ -18,6 +18,8 @@ class Trigger
   validates :action, presence: true, inclusion: {in: ACTIONS}
   validates :url, presence: true
 
+  validates_uniqueness_of :server, scope: [:event, :criteria, :action, :url]
+
   def name
     self.event.gsub('N', self.criteria.to_s)
   end

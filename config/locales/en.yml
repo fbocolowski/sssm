@@ -94,6 +94,7 @@ en:
   criteria: "Criteria (N)"
   url: "URL"
   send_test: "Send test"
+  create_for_all: "Create for all servers"
 
   # Alerts
   changes_saved: "Changes saved"
