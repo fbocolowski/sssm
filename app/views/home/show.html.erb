@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xl-12">
       <div class="text-center my-5">
-        <img src="/img/logo.png" class="mb-3" style="height: 100px;">
+        <%= image_tag('logo.png', class: 'mb-3', style: 'height: 100px;') %>
         <h2><%= t(:name) %></h2>
         <p class="lead"><%= t(:about) %></p>
       </div>
@@ -12,17 +12,17 @@
 
       <div class="row">
         <div class="col-xl-12 text-center">
-          <img src="/img/distros/ubuntu.png" class="distro-logo">
-          <img src="/img/distros/arch.png" class="distro-logo">
-          <img src="/img/distros/antergos.png" class="distro-logo">
-          <img src="/img/distros/centos.png" class="distro-logo">
-          <img src="/img/distros/debian.png" class="distro-logo">
-          <img src="/img/distros/fedora.png" class="distro-logo">
-          <img src="/img/distros/manjaro.png" class="distro-logo">
-          <img src="/img/distros/mint.png" class="distro-logo">
-          <img src="/img/distros/raspbian.png" class="distro-logo">
-          <img src="/img/integrations/slack.png" class="distro-logo">
-          <img src="/img/integrations/discord.png" class="distro-logo">
+          <%= image_tag('distros/ubuntu.png', class: 'distro-logo') %>
+          <%= image_tag('distros/arch.png', class: 'distro-logo') %>
+          <%= image_tag('distros/antergos.png', class: 'distro-logo') %>
+          <%= image_tag('distros/centos.png', class: 'distro-logo') %>
+          <%= image_tag('distros/debian.png', class: 'distro-logo') %>
+          <%= image_tag('distros/fedora.png', class: 'distro-logo') %>
+          <%= image_tag('distros/manjaro.png', class: 'distro-logo') %>
+          <%= image_tag('distros/mint.png', class: 'distro-logo') %>
+          <%= image_tag('distros/raspbian.png', class: 'distro-logo') %>
+          <%= image_tag('integrations/slack.png', class: 'distro-logo') %>
+          <%= image_tag('integrations/discord.png', class: 'distro-logo') %>
         </div>
       </div>
 
@@ -34,17 +34,17 @@
 
       <div class="row">
         <div class="col-xl-4 mb-5 text-center">
-          <img src="/img/undraw_maintenance.svg" style="height: 250px" class="mb-3">
+          <%= image_tag('undraw_maintenance.svg', class: 'mb-3', style: 'height: 200px;') %>
           <h4><%= t(:step_1) %></h4>
           <p><%= t(:step_1_description) %></p>
         </div>
         <div class="col-xl-4 mb-5 text-center">
-          <img src="/img/undraw_server.svg" style="height: 250px" class=" mb-3">
+          <%= image_tag('undraw_server.svg', class: 'mb-3', style: 'height: 200px;') %>
           <h4><%= t(:step_2) %></h4>
           <p><%= t(:step_2_description) %></p>
         </div>
         <div class="col-xl-4 mb-5 text-center">
-          <img src="/img/undraw_cloud_sync.svg" style="height: 250px" class=" mb-3">
+          <%= image_tag('undraw_cloud_sync.svg', class: 'mb-3', style: 'height: 200px;') %>
           <h4><%= t(:step_3) %></h4>
           <p><%= t(:step_3_description).html_safe %></p>
         </div>

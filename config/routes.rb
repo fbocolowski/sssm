@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resource 'home', controller: 'home', only: [:show]
   resource 'login', controller: 'login', only: [:show, :create]
   resource 'registration', controller: 'registration', only: [:show, :create]
+  resource 'password_reset', controller: 'password_reset', only: [:show, :create]
 
   resource 'runner', controller: 'runner', only: [:show]
 
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   resource 'destroy_active_sessions', controller: 'destroy_active_sessions', only: [:destroy]
 
   resources 'servers', controller: 'servers', only: [:index, :show, :new, :destroy] do
-    resources 'triggers', controller: 'triggers', only: [:index, :new, :create, :destroy] do
+    resources 'triggers', controller: 'triggers' do
       resource 'test', controller: 'test_trigger', only: [:show]
     end
   end
@@ -23,7 +24,4 @@ Rails.application.routes.draw do
   namespace 'api' do
     resources 'reports', controller: 'reports'
   end
-
-  get '/password-recovery', to: 'login#recovery'
-  post '/recover', to: 'login#recover'
 end

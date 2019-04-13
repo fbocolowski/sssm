@@ -42,11 +42,9 @@ en:
   manage_active_session: "Manage active sessions"
   delete_account: "Delete account"
   password: "Password"
-  password_recovery: "Password recovery"
-  password_recovery_text: |
-    If you forgot your password you can recover it by entering your username and the token of one of your servers.
+  password_reset: "Password reset"
+  password_reset_text: "If you forgot your password you can reset it by entering your username and the token of one of your servers."
   token: "Token"
-  what_is_the_token: "What is the token?"
 
   # Delete Account
   this_is_serious: "Ok, this one is serious."
@@ -69,6 +67,7 @@ en:
   minutes_ago: "%{time} minutes ago"
   triggers: "Triggers"
   delete: "Delete"
+  edit: "Edit"
   setup: "Setup"
   add_line_to_crontab: "Add this line to your crontab"
   refresh_page_after_1_minute: "And refresh this page after 1 minute!"
@@ -87,6 +86,7 @@ en:
 
   # Triggers
   new_trigger: "New trigger"
+  edit_trigger: "Edit trigger"
   no_trigger: "No trigger found"
   start_creating_new_trigger: "Start by creating a new trigger"
   event: "Event"
@@ -98,7 +98,7 @@ en:
   # Alerts
   changes_saved: "Changes saved"
   passwords_do_not_match: "Passwords do not match"
-  username_token_not_found: "Username not found / Token invalid"
+  username_token_not_found: "Username or Token not found"
   password_changed: "Password changed"
   new_password_cant_be_blank: "New password can't be blank"
   current_password_incorrect: "Current password is incorrect"

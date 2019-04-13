@@ -2,13 +2,11 @@
   <div class="row">
     <div class="col-xl-4"></div>
     <div class="col-xl-4">
-      <h4 class="mb-5"><%= t(:password_recovery).titleize %></h4>
+      <h4><%= t(:password_reset) %></h4>
 
-      <p><%= t(:password_recovery_text) %></p>
+      <p><%= t(:password_reset_text) %></p>
 
-      <a data-toggle="modal" data-target="#token-info-modal" href="#0"><%= t(:what_is_the_token) %></a>
-
-      <%= form_tag(recover_path, method: "post") do %>
+      <%= form_tag(password_reset_path, method: "post") do %>
         <div class="form-group mt-3">
           <label><%= t(:username) %></label>
           <%= text_field_tag(:username, params[:username], autofocus: true, class: "form-control") %>
@@ -17,6 +15,7 @@
         <div class="form-group">
           <label><%= t(:token) %></label>
           <%= text_field_tag(:token, params[:token], autofocus: true, class: "form-control") %>
+          <%= image_tag('token-info.png', class: 'img-fluid') %>
         </div>
 
         <div class="form-group">
@@ -29,26 +28,10 @@
           <%= password_field_tag(:confirm_password, "", class: "form-control") %>
         </div>
 
-        <div class="mb-3">
+        <div>
           <%= submit_tag(t(:submit), class: "btn btn-sm btn-primary") %>
         </div>
       <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" tabindex="-1" role="dialog" id="token-info-modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><%= t(:token) %></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= image_tag('token-info.png', style: 'width: 100%;') %>
-      </div>
     </div>
   </div>
 </div>

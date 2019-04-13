@@ -1,7 +1,7 @@
 class TriggersController < ApplicationController
   before_action :security_private
   before_action :set_server
-  before_action :set_trigger, only: [:destroy]
+  before_action :set_trigger, only: [:edit, :update, :destroy]
 
   def index
     @triggers = @server.triggers
@@ -18,6 +18,19 @@ class TriggersController < ApplicationController
     else
       @alert = @trigger.errors.full_messages.first
       return render 'new'
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @trigger.update(trigger_params)
+      redirect_to server_triggers_path(@server)
+    else
+      @alert = @trigger.errors.full_messages.first
+      return render 'edit'
     end
   end
 

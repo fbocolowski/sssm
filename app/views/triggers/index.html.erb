@@ -35,6 +35,7 @@
                     <td><%= trigger.action %></td>
                     <td class="text-right">
                       <%= link_to t(:send_test), server_trigger_test_path(@server, trigger), class: 'btn btn-sm btn-primary' %>
+                      <%= link_to t(:edit), edit_server_trigger_path(@server, trigger), class: 'btn btn-sm btn-primary' %>
                       <%= link_to t(:delete), server_trigger_path(@server, trigger), class: 'btn btn-sm btn-danger delete' %>
                     </td>
                   </tr>
