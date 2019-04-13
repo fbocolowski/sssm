@@ -6,15 +6,15 @@ class ChangePasswordController < ApplicationController
       if params[:new_password] != "" && params[:new_password_again] != ""
         if params[:new_password] == params[:new_password_again]
           @user.update(password: params[:new_password])
-          @alert = 'Password changed'
+          @alert = t(:password_changed)
         else
-          @alert = "New password does't match"
+          @alert = t(:passwords_do_not_match)
         end
       else
-        @alert = "New password can't be blank"
+        @alert = t(:new_password_cant_be_blank)
       end
     else
-      @alert = "Current password is incorrect"
+      @alert = t(:current_password_incorrect)
     end
     render 'account/show'
   end

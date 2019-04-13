@@ -26,6 +26,7 @@
         <p><%= t(:refresh_page_after_1_minute) %></p>
       <% else %>
         <h5><%= t(:details) %></h5>
+        <div><%= t(:token) %>: <%= @server.token %></div>
         <div><%= t(:hostname) %>: <%= @server.hostname %></div>
         <div><%= t(:ip) %>: <%= @server.ip %></div>
         <div><%= t(:linux_distribution) %>: <%= @server.distro %></div>
