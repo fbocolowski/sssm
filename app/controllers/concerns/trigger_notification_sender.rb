@@ -3,6 +3,21 @@ module TriggerNotificationSender
     require 'rest-client'
     require 'json'
 
+    def send(trigger)
+      last_notification = trigger.notifications.last
+      if last_notification.nil? || ((Time.now - last_notification.created_at).to_i / 60) > 60
+        trigger.notifications.create
+        case trigger.action
+        when 'Slack'
+          slack(trigger.url, trigger.pretty_message)
+        when 'Discord'
+          discord(trigger.url, trigger.pretty_message)
+        end
+      else
+        puts 'Notification alredy sent in the last hour: ' + trigger.pretty_message
+      end
+    end
+
     def slack(url, text)
       if Rails.env.production?
         begin
@@ -11,7 +26,7 @@ module TriggerNotificationSender
           # do nothing
         end
       else
-        puts 'SLACK -> ' + url + ' / ' + text
+        puts 'Sending notification: ' + text
       end
     end
 
@@ -23,7 +38,7 @@ module TriggerNotificationSender
           # do nothing
         end
       else
-        puts 'DISCORD -> ' + url + ' / ' + content
+        puts 'Sending notification: ' + content
       end
     end
   end

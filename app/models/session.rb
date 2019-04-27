@@ -16,7 +16,7 @@ class Session
   def generate_token
     self.token = loop do
       random = SecureRandom.hex(13)
-      break random if Server.where(token: random).count == 0
+      break random if Session.where(token: random).count == 0
     end
   end
 end
