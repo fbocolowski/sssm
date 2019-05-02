@@ -16,7 +16,19 @@
       </div>
 
       <% if @server.reports.count == 0 %>
-        <h5><%= t(:setup) %></h5>
+        <h5><%= t(:setup_method_1) %></h5>
+
+        <div class="form-group">
+          <label><%= t(:download_script) %></label>
+          <input type="text" class="form-control" value="wget <%= @url %>/runner.sh">
+        </div>
+
+        <div class="form-group">
+          <label><%= t(:add_line_to_crontab) %></label>
+          <input type="text" class="form-control" value="* * * * * bash <your-script-path> <%= @server.token %>">
+        </div>
+
+        <h5><%= t(:setup_method_2) %></h5>
 
         <div class="form-group">
           <label><%= t(:add_line_to_crontab) %></label>
@@ -25,22 +37,24 @@
 
         <p><%= t(:refresh_page_after_1_minute) %></p>
       <% else %>
+        <div class="row">
+          <div class="col-xl-6">
+            <h5><%= t(:ram_usage_24) %></h5>
+            <div id="ram_usage" style="height: 420px;"></div>
+          </div>
+          <div class="col-xl-5">
+            <h5><%= t(:disk_usage_24) %></h5>
+            <div id="disk_usage" style="height: 420px;"></div>
+          </div>
+        </div>
+
         <h5><%= t(:details) %></h5>
         <div><%= t(:token) %>: <%= @server.token %></div>
-        <div><%= t(:hostname) %>: <%= @server.hostname %></div>
         <div><%= t(:ip) %>: <%= @server.ip %></div>
         <div><%= t(:linux_distribution) %>: <%= @server.distro %></div>
         <div><%= t(:uptime) %>: <%= @server.uptime_string %></div>
         <div><%= t(:ram) %>: <%= @server.ram_usage %>%</div>
         <div><%= t(:disk) %>: <%= @server.disk_usage %>%</div>
-        <div><%= t(:first_report) %>: <%= @server.first_report %></div>
-        <div class="mb-3"><%= t(:last_report) %>: <%= @server.last_report %></div>
-
-        <h5><%= t(:ram_usage_24) %></h5>
-        <div id="ram_usage" style="height: 420px;"></div>
-
-        <h5><%= t(:disk_usage_24) %></h5>
-        <div id="disk_usage" style="height: 420px;"></div>
 
         <script>
             new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage', {curve: false});

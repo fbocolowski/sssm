@@ -35,7 +35,7 @@
                   <th></th>
                 </tr>
                 <% @servers.each do |server| %>
-                  <tr class="clickable-row" data-href="<%= server_path(server) %>">
+                  <tr class="clickable" data-href="<%= server_path(server) %>">
                     <td><%= server.hostname || t(:new_server) %></td>
                     <td><%= server.ip %></td>
                     <td class="table-thumb text-center">

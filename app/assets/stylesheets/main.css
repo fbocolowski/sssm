@@ -74,14 +74,14 @@ body {
     padding-bottom: .25rem !important;
 }
 
-.clickable-row {
+.clickable {
     cursor: pointer;
 }
 
 .menu {
     line-height: 55px;
-    border-bottom: 1px solid #dadce0;
     margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(21, 27, 38, .15);
 }
 
 .menu .link {
@@ -95,7 +95,7 @@ body {
     padding: .5rem;
 }
 
-.rodape {
+.footer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -121,7 +121,7 @@ hr {
     border-top: 1px solid transparent;
 }
 
-.distro-logo {
+.table-icon {
     height: 30px;
     margin: .3rem;
 }

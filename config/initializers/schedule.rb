@@ -26,4 +26,5 @@ end
 scheduler.cron '* * * * *' do
   # Delete every report older than 1 day
   Report.where(:created_at.lt => (Time.now.utc - 1.days)).delete_all
+  TriggerNotification.where(:created_at.lt => (Time.now.utc - 1.days)).delete_all
 end

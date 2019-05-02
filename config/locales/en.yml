@@ -68,7 +68,9 @@ en:
   triggers: "Triggers"
   delete: "Delete"
   edit: "Edit"
-  setup: "Setup"
+  setup_method_1: "Setup (Method 1 - Recommended)"
+  setup_method_2: "Setup (Method 2 - Easier and always updated)"
+  download_script: "Download our script via wget to your server (or any other tool)"
   add_line_to_crontab: "Add this line to your crontab"
   refresh_page_after_1_minute: "And refresh this page after 1 minute!"
   details: "Details"
@@ -95,6 +97,12 @@ en:
   url: "URL"
   send_test: "Send test"
   create_for_all: "Create for all servers"
+
+  # Notifications
+  notifications: "Notifications"
+  no_notifications: "No notifications found"
+  notifications_explained: "We'll let you know if anything happens to your servers"
+  date: "Date"
 
   # Alerts
   changes_saved: "Changes saved"

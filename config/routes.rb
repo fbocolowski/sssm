@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
   end
   resource 'charts', controller: 'charts', only: [:show]
+  resources 'notifications', controller: 'notifications', only: [:index]
 
   namespace 'api' do
     resources 'reports', controller: 'reports'

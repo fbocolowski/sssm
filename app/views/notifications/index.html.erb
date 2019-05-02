@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="row mb-3">
+        <div class="col">
+          <h4><%= t(:notifications) %></h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12">
+          <% if @notifications.empty? %>
+            <div class="my-5 text-center">
+              <span data-feather="bell" style="width: 45px; height: 45px" class="mb-3"></span>
+              <h5><%= t(:no_notifications) %></h5>
+              <p class="text-muted"><%= t(:notifications_explained) %></p>
+            </div>
+          <% else %>
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th><%= t(:date) %></th>
+                  <th><%= t(:hostname) %></th>
+                  <th><%= t(:event) %></th>
+                </tr>
+                <% @notifications.each do |notification| %>
+                  <tr>
+                    <td><%= notification['date'] %></td>
+                    <td><%= link_to(notification['hostname'], server_path(notification['server_id'])) %></td>
+                    <td><%= notification['event'] %></td>
+                <% end %>
+              </table>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
