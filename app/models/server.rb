@@ -5,9 +5,9 @@ class Server
   belongs_to :user
   has_many :reports, dependent: :delete_all
   has_many :triggers, dependent: :delete_all
+  has_many :log_watchers, dependent: :delete_all
 
   field :token, type: String
-
   field :first_report, type: Time
   field :last_report, type: Time
   field :ip, type: String

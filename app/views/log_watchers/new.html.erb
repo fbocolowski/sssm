@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4"></div>
+    <div class="col-xl-4">
+      <h4><%= link_to(@server.hostname, @server) %> / <%= t(:new_log_watcher) %></h4>
+      <%= form_for @log_watcher, url: server_log_watchers_path(@server) do |f| %>
+        <div class="form-group">
+          <label><%= t(:log_watcher_name) %></label>
+          <%= f.text_field(:name, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label><%= t(:action) %></label>
+          <%= f.select(:action, options_for_select(LogWatcher::ACTIONS, selected: @log_watcher.action), {}, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label><%= t(:url) %></label>
+          <%= f.text_field(:url, class: "form-control") %>
+        </div>
+        <div>
+          <%= f.submit(t(:submit), class: "btn btn-sm btn-primary") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -18,11 +18,15 @@ Rails.application.routes.draw do
     resources 'triggers', controller: 'triggers' do
       resource 'test', controller: 'test_trigger', only: [:show]
     end
+    resources 'log_watchers', controller: 'log_watchers' do
+      resource 'test', controller: 'test_log_watcher', only: [:show]
+    end
   end
   resource 'charts', controller: 'charts', only: [:show]
   resources 'notifications', controller: 'notifications', only: [:index]
 
   namespace 'api' do
-    resources 'reports', controller: 'reports'
+    resources 'reports', controller: 'reports', only: [:create]
+    resources 'error_logs', controller: 'error_logs', only: [:create]
   end
 end

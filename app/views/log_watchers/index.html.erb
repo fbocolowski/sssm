@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="row mb-3">
+        <div class="col">
+          <h4><%= link_to(@server.hostname, @server) %> / <%= t(:log_watchers) %></h4>
+        </div>
+        <div class="col text-right">
+          <% unless @log_watchers.empty? %>
+            <%= link_to t(:new_log_watcher), new_server_log_watcher_path(@server), class: 'btn btn-sm btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12">
+          <% if @log_watchers.empty? %>
+            <div class="my-5 text-center">
+              <span data-feather="eye" style="width: 45px; height: 45px" class="mb-3"></span>
+              <h5><%= t(:no_log_watcher) %></h5>
+              <p class="text-muted"><%= t(:start_creating_new_log_watcher) %></p>
+              <%= link_to t(:new_log_watcher), new_server_log_watcher_path(@server), class: 'btn btn-sm btn-primary' %>
+            </div>
+          <% else %>
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th><%= t(:log_watcher_name) %></th>
+                  <th><%= t(:action) %></th>
+                  <th></th>
+                </tr>
+                <% @log_watchers.each do |log_watcher| %>
+                  <tr>
+                    <td><%= log_watcher.name %></td>
+                    <td><%= log_watcher.action %></td>
+                    <td class="text-right">
+                      <%= link_to t(:send_test), server_log_watcher_test_path(@server, log_watcher), class: 'btn btn-sm btn-primary' %>
+                      <%= link_to t(:edit), edit_server_log_watcher_path(@server, log_watcher), class: 'btn btn-sm btn-primary' %>
+                      <%= link_to t(:delete), server_log_watcher_path(@server, log_watcher), class: 'btn btn-sm btn-danger delete' %>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

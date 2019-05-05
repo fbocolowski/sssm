@@ -111,3 +111,12 @@ en:
   password_changed: "Password changed"
   new_password_cant_be_blank: "New password can't be blank"
   current_password_incorrect: "Current password is incorrect"
+
+  # Log Watchers
+  log_watchers: "Log watchers"
+  new_log_watcher: "New log watcher"
+  edit_log_watcher: "Edit log watcher"
+  no_log_watcher: "No log watcher found"
+  start_creating_new_log_watcher: "Start by creating a new log watcher"
+  log_watcher_name: "Name"
+  setup: "Setup"

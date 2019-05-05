@@ -6,7 +6,7 @@ class Api::ReportsController < Api::ApplicationController
       report.ip = request.remote_ip
       report.save
     end
-    render json: {}
+    render json: ""
   end
 
   private

@@ -6,9 +6,9 @@ class TestTriggerController < ApplicationController
   def show
     case @trigger.action
     when "Slack"
-      TriggerNotificationSender.slack(@trigger.url, "Hi there! Your trigger for #{@server.hostname} (#{@server.ip}) seems to be working.")
+      NotificationSender.slack(@trigger.url, "Hi there! Your trigger for #{@server.hostname} (#{@server.ip}) is working.", nil)
     when "Discord"
-      TriggerNotificationSender.discord(@trigger.url, "Hi there! Your trigger for #{@server.hostname} (#{@server.ip}) seems to be working.")
+      NotificationSender.discord(@trigger.url, "Hi there! Your trigger for #{@server.hostname} (#{@server.ip}) is working.", nil)
     end
     redirect_to server_triggers_path(@server)
   end

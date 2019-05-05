@@ -13,14 +13,7 @@ class TriggersController < ApplicationController
 
   def create
     @trigger = @server.triggers.new(trigger_params)
-    if @trigger.validate
-      if params[:create_for_all]
-        @session.user.servers.each do |server|
-          server.triggers.create(trigger_params)
-        end
-      else
-        @trigger.save
-      end
+    if @trigger.save
       redirect_to server_triggers_path(@server)
     else
       @alert = @trigger.errors.full_messages.first
