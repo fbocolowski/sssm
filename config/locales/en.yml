@@ -120,3 +120,4 @@ en:
   start_creating_new_log_watcher: "Start by creating a new log watcher"
   log_watcher_name: "Name"
   setup: "Setup"
+  file: "File"

@@ -7,12 +7,14 @@ class LogWatcher
 
   field :token, type: String
   field :name, type: String
+  field :file, type: String
   field :action, type: String
   field :url, type: String
 
   ACTIONS = ["Slack", "Discord"]
 
   validates :name, presence: true
+  validates :file, presence: true
   validates :action, presence: true, inclusion: {in: ACTIONS}
   validates :url, presence: true
 

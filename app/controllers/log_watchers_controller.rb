@@ -50,6 +50,6 @@ class LogWatchersController < ApplicationController
   end
 
   def log_watcher_params
-    params.require(:log_watcher).permit(:name, :action, :url)
+    params.require(:log_watcher).permit(:name, :file, :action, :url)
   end
 end

@@ -26,12 +26,14 @@
               <table class="table">
                 <tr>
                   <th><%= t(:log_watcher_name) %></th>
+                  <th><%= t(:file) %></th>
                   <th><%= t(:action) %></th>
                   <th></th>
                 </tr>
                 <% @log_watchers.each do |log_watcher| %>
                   <tr>
                     <td><%= log_watcher.name %></td>
+                    <td><%= log_watcher.file %></td>
                     <td><%= log_watcher.action %></td>
                     <td class="text-right">
                       <%= link_to t(:send_test), server_log_watcher_test_path(@server, log_watcher), class: 'btn btn-sm btn-primary' %>
