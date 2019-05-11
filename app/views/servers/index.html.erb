@@ -7,7 +7,7 @@
         </div>
         <div class="col text-right">
           <% unless @servers.empty? %>
-            <%= link_to t(:new_server), new_server_path, class: 'btn btn-sm btn-primary' %>
+            <%= link_to t(:new_server), new_server_path, class: 'btn btn-primary' %>
           <% end %>
         </div>
       </div>
@@ -19,7 +19,7 @@
               <span data-feather="server" style="width: 45px; height: 45px" class="mb-3"></span>
               <h5><%= t(:no_server_found) %></h5>
               <p class="text-muted"><%= t(:start_creating_new_server) %></p>
-              <%= link_to t(:new_server), new_server_path, class: 'btn btn-sm btn-primary' %>
+              <%= link_to t(:new_server), new_server_path, class: 'btn btn-primary' %>
             </div>
           <% else %>
             <div class="table-responsive">
@@ -73,14 +73,35 @@
                     </td>
                     <td class="text-center">
                       <span data-feather="zap" style="width: 15px; height: 20px"></span> <%= server.triggers.count %>
-                      <span data-feather="eye" class="ml-3" style="width: 15px; height: 20px"></span> <%= server.log_watchers.count %>
                     </td>
                   </tr>
                 <% end %>
               </table>
             </div>
           <% end %>
+
+          <hr>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+          </button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="exampleModal">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create a new group</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Form here.
       </div>
     </div>
   </div>

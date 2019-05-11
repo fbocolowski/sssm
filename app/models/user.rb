@@ -3,6 +3,7 @@ class User
   include Mongoid::Timestamps
   store_in collection: 'users'
   has_many :servers, dependent: :delete_all
+  has_many :log_watchers, dependent: :delete_all
   has_many :sessions, dependent: :delete_all
 
   field :username, type: String

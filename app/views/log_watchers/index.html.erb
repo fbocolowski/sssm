@@ -3,11 +3,11 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4><%= link_to(@server.hostname, @server) %> / <%= t(:log_watchers) %></h4>
+          <h4><%= t(:log_watchers) %></h4>
         </div>
         <div class="col text-right">
           <% unless @log_watchers.empty? %>
-            <%= link_to t(:new_log_watcher), new_server_log_watcher_path(@server), class: 'btn btn-sm btn-primary' %>
+            <%= link_to t(:new_log_watcher), new_log_watcher_path, class: 'btn btn-primary' %>
           <% end %>
         </div>
       </div>
@@ -19,7 +19,7 @@
               <span data-feather="eye" style="width: 45px; height: 45px" class="mb-3"></span>
               <h5><%= t(:no_log_watcher) %></h5>
               <p class="text-muted"><%= t(:start_creating_new_log_watcher) %></p>
-              <%= link_to t(:new_log_watcher), new_server_log_watcher_path(@server), class: 'btn btn-sm btn-primary' %>
+              <%= link_to t(:new_log_watcher), new_log_watcher_path, class: 'btn btn-primary' %>
             </div>
           <% else %>
             <div class="table-responsive">
@@ -36,9 +36,9 @@
                     <td><%= log_watcher.file %></td>
                     <td><%= log_watcher.action %></td>
                     <td class="text-right">
-                      <%= link_to t(:send_test), server_log_watcher_test_path(@server, log_watcher), class: 'btn btn-sm btn-primary' %>
-                      <%= link_to t(:edit), edit_server_log_watcher_path(@server, log_watcher), class: 'btn btn-sm btn-primary' %>
-                      <%= link_to t(:delete), server_log_watcher_path(@server, log_watcher), class: 'btn btn-sm btn-danger delete' %>
+                      <%= link_to t(:send_test), log_watcher_test_path(log_watcher), class: 'btn btn-primary' %>
+                      <%= link_to t(:edit), edit_log_watcher_path(log_watcher), class: 'btn btn-primary' %>
+                      <%= link_to t(:delete), log_watcher_path(log_watcher), class: 'btn btn-danger delete' %>
                     </td>
                   </tr>
                 <% end %>

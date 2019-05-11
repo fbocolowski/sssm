@@ -2,7 +2,7 @@ class LogWatcher
   include Mongoid::Document
   include Mongoid::Timestamps
   store_in collection: 'log_watchers'
-  belongs_to :server
+  belongs_to :user
   has_many :error_logs, dependent: :delete_all
 
   field :token, type: String

@@ -18,9 +18,9 @@ Rails.application.routes.draw do
     resources 'triggers', controller: 'triggers' do
       resource 'test', controller: 'test_trigger', only: [:show]
     end
-    resources 'log_watchers', controller: 'log_watchers' do
-      resource 'test', controller: 'test_log_watcher', only: [:show]
-    end
+  end
+  resources 'log_watchers', controller: 'log_watchers' do
+    resource 'test', controller: 'test_log_watcher', only: [:show]
   end
   resource 'charts', controller: 'charts', only: [:show]
   resources 'notifications', controller: 'notifications', only: [:index]

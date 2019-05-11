@@ -1,20 +1,19 @@
 class LogWatchersController < ApplicationController
   before_action :security_private
-  before_action :set_server
   before_action :set_log_watcher, only: [:edit, :update, :destroy]
 
   def index
-    @log_watchers = @server.log_watchers
+    @log_watchers = @user.log_watchers
   end
 
   def new
-    @log_watcher = @server.log_watchers.new
+    @log_watcher = @user.log_watchers.new
   end
 
   def create
-    @log_watcher = @server.log_watchers.new(log_watcher_params)
+    @log_watcher = @user.log_watchers.new(log_watcher_params)
     if @log_watcher.save
-      redirect_to edit_server_log_watcher_path(@server, @log_watcher)
+      redirect_to edit_log_watcher_path(@log_watcher)
     else
       @alert = @log_watcher.errors.full_messages.first
       return render 'new'
@@ -27,7 +26,7 @@ class LogWatchersController < ApplicationController
 
   def update
     if @log_watcher.update(log_watcher_params)
-      redirect_to server_log_watchers_path(@server)
+      redirect_to log_watchers_path(@user)
     else
       @alert = @log_watcher.errors.full_messages.first
       return render 'edit'
@@ -36,17 +35,13 @@ class LogWatchersController < ApplicationController
 
   def destroy
     @log_watcher.destroy
-    render json: {redirect: server_log_watchers_path(@server)}
+    render json: {redirect: log_watchers_path}
   end
 
   private
 
-  def set_server
-    @server = @user.servers.find(params[:server_id])
-  end
-
   def set_log_watcher
-    @log_watcher = @server.log_watchers.find(params[:id])
+    @log_watcher = @user.log_watchers.find(params[:id])
   end
 
   def log_watcher_params

@@ -98,12 +98,6 @@ en:
   send_test: "Send test"
   create_for_all: "Create for all servers"
 
-  # Notifications
-  notifications: "Notifications"
-  no_notifications: "No notifications found"
-  notifications_explained: "We'll let you know if anything happens to your servers"
-  date: "Date"
-
   # Alerts
   changes_saved: "Changes saved"
   passwords_do_not_match: "Passwords do not match"

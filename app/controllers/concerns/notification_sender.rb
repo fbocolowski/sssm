@@ -13,31 +13,38 @@ module NotificationSender
     end
 
     def send_trigger(trigger)
-      last_notification = trigger.notifications.last
-      if last_notification.nil? || ((Time.now - last_notification.created_at).to_i / 60) > 60
-        trigger.notifications.create
+      if trigger.last_notification.nil? || ((Time.now - trigger.last_notification).to_i / 60) > 60
         case trigger.action
         when 'Slack'
           slack(trigger.url, trigger.pretty_message, nil)
         when 'Discord'
           discord(trigger.url, trigger.pretty_message, nil)
         end
+        trigger.update(last_notification: Time.now)
       end
     end
 
     def slack(url, text, attachment)
-      begin
-        RestClient.post(url, {payload: {text: text, attachments: [{text: attachment}]}.to_json})
-      rescue
-        # do nothing
+      if Rails.env.production?
+        begin
+          RestClient.post(url, {payload: {text: text, attachments: [{text: attachment}]}.to_json})
+        rescue
+          # do nothing
+        end
+      else
+        puts "Slack: #{text} / #{attachment}"
       end
     end
 
     def discord(url, text, attachment)
-      begin
-        RestClient.post(url, {embeds: [{title: text, description: attachment}]}.to_json)
-      rescue
-        # do nothing
+      if Rails.env.production?
+        begin
+          RestClient.post(url, {embeds: [{title: text, description: attachment}]}.to_json)
+        rescue
+          # do nothing
+        end
+      else
+        puts "Discord: #{text} / #{attachment}"
       end
     end
   end

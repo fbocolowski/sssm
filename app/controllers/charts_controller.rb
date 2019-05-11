@@ -7,7 +7,7 @@ class ChartsController < ApplicationController
     when "ram_usage"
       ram_total_data = Hash.new
       ram_used_data = Hash.new
-      reports = @server.reports.where(:created_at.lte => Time.now.utc)
+      reports = @server.reports.where(:created_at.gte => Time.now.utc - 24.hours)
       reports.each do |report|
         ram_total_data.store(report.created_at.strftime("%Y-%m-%d %H:%M:%S"), report.ram_total)
         ram_used_data.store(report.created_at.strftime("%Y-%m-%d %H:%M:%S"), report.ram_used)
@@ -16,7 +16,7 @@ class ChartsController < ApplicationController
     when "disk_usage"
       disk_total_data = Hash.new
       disk_used_data = Hash.new
-      reports = @server.reports.where(:created_at.lte => Time.now.utc)
+      reports = @server.reports.where(:created_at.gte => Time.now.utc - 24.hours)
       reports.each do |report|
         disk_total_data.store(report.created_at.strftime("%Y-%m-%d %H:%M:%S"), report.disk_total)
         disk_used_data.store(report.created_at.strftime("%Y-%m-%d %H:%M:%S"), report.disk_used)

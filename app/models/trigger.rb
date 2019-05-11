@@ -3,12 +3,12 @@ class Trigger
   include Mongoid::Timestamps
   store_in collection: 'triggers'
   belongs_to :server
-  has_many :notifications, class_name: 'TriggerNotification', dependent: :delete_all
 
   field :event, type: String
   field :criteria, type: Integer
   field :action, type: String
   field :url, type: String
+  field :last_notification, type: DateTime
 
   EVENTS = ["Server is down for N minutes", "RAM usage above N%", "Disk usage above N%"]
   ACTIONS = ["Slack", "Discord"]
@@ -17,6 +17,7 @@ class Trigger
   validates :criteria, presence: true, numericality: {greater_than_or_equal_to: 1}
   validates :action, presence: true, inclusion: {in: ACTIONS}
   validates :url, presence: true
+  validates :last_notification, presence: false
 
   validates_uniqueness_of :server, scope: [:event, :criteria, :action, :url]
 
