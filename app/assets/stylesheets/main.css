@@ -10,10 +10,12 @@ body {
 }
 
 .btn {
+    padding: .25rem .5rem !important;
     border-radius: 0px !important;
     outline: none !important;
     box-shadow: none !important;
     font-size: 0.875rem !important;
+    line-height: 1.5 !important;
 }
 
 .form-control {
