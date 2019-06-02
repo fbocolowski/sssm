@@ -1,71 +1,51 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="text-center my-5">
-        <%= image_tag('logo.png', class: 'mb-3', style: 'height: 100px;') %>
+      <div class="text-center mt-3 mb-5">
+        <%= image_tag('logo.png', class: 'mb-3', style: 'height: 80px;') %>
         <h2><%= t(:name) %></h2>
         <p class="lead"><%= t(:about) %></p>
       </div>
 
+      <hr>
 
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-xl-12 text-center">
-          <%= image_tag('distros/ubuntu.png', class: 'table-icon') %>
-          <%= image_tag('distros/arch.png', class: 'table-icon') %>
-          <%= image_tag('distros/antergos.png', class: 'table-icon') %>
-          <%= image_tag('distros/centos.png', class: 'table-icon') %>
-          <%= image_tag('distros/debian.png', class: 'table-icon') %>
-          <%= image_tag('distros/fedora.png', class: 'table-icon') %>
-          <%= image_tag('distros/manjaro.png', class: 'table-icon') %>
-          <%= image_tag('distros/mint.png', class: 'table-icon') %>
-          <%= image_tag('distros/raspbian.png', class: 'table-icon') %>
-          <%= image_tag('integrations/slack.png', class: 'table-icon') %>
-          <%= image_tag('integrations/discord.png', class: 'table-icon') %>
-        </div>
-      </div>
-
-      <hr class="my-5">
-
-      <div class="text-center mb-5">
+      <div class="text-center my-5">
         <h3><%= t(:how_does_it_work) %></h3>
       </div>
 
       <div class="row">
-        <div class="col-xl-4 mb-5 text-center">
+        <div class="col-xl-4 mb-3 text-center">
           <%= image_tag('undraw_maintenance.svg', class: 'mb-3', style: 'height: 200px;') %>
           <h4><%= t(:step_1) %></h4>
           <p><%= t(:step_1_description) %></p>
         </div>
-        <div class="col-xl-4 mb-5 text-center">
+        <div class="col-xl-4 mb-3 text-center">
           <%= image_tag('undraw_server.svg', class: 'mb-3', style: 'height: 200px;') %>
           <h4><%= t(:step_2) %></h4>
           <p><%= t(:step_2_description) %></p>
         </div>
-        <div class="col-xl-4 mb-5 text-center">
+        <div class="col-xl-4 mb-3 text-center">
           <%= image_tag('undraw_cloud_sync.svg', class: 'mb-3', style: 'height: 200px;') %>
           <h4><%= t(:step_3) %></h4>
           <p><%= t(:step_3_description).html_safe %></p>
         </div>
       </div>
 
-      <hr class="mb-5">
+      <hr>
 
-      <div class="row">
-        <div class="col-xl-6 mb-5 text-center">
+      <div class="row mt-5">
+        <div class="col-xl-6 mb-3 text-center">
           <span data-feather="lock" class="mb-3"></span>
           <h4><%= t(:value_privacy) %></h4>
           <p><%= t(:value_privacy_description).html_safe %></p>
         </div>
 
-        <div class="col-xl-6 mb-5 text-center">
+        <div class="col-xl-6 mb-3 text-center">
           <span data-feather="code" class="mb-3"></span>
           <h4><%= t(:open_source) %></h4>
           <p><%= t(:open_source_description).html_safe %></p>
         </div>
       </div>
-
     </div>
   </div>
 </div>

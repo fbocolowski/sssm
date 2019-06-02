@@ -1,73 +1,5 @@
 body {
-    font-family: "Open Sans", sans-serif;
-    color: #343a40;
-    background-color: #fff;
-    font-size: 0.875rem;
-    padding-bottom: 80px;
-    position: relative;
-    margin: 0;
-    min-height: 100vh;
-}
-
-.btn {
-    padding: .25rem .5rem !important;
-    border-radius: 0px !important;
-    outline: none !important;
-    box-shadow: none !important;
-    font-size: 0.875rem !important;
-    line-height: 1.5 !important;
-}
-
-.form-control {
-    background-color: transparent !important;
-    border-radius: 0px !important;
-    outline: none !important;
-    border: none !important;
-    border: 1px solid #d3d3d3 !important;
-    font-size: 0.875rem !important;
-}
-
-.form-control:focus {
-    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-}
-
-.card {
-    border-radius: 0 !important;
-    border: 0 solid rgba(0, 0, 0, .125);
-    box-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, .075) !important;
-}
-
-.card-header {
-    background-color: #FFFFFF !important;
-}
-
-.table {
-    margin-bottom: 0;
-    font-size: 0.875rem !important;
-}
-
-.table td, .table th {
-    white-space: nowrap;
-    vertical-align: middle;
-}
-
-.table thead th {
-    border-top: none !important;
-    border-bottom: 1px solid #e3ebf6 !important;
-}
-
-.table tbody td {
-    border-top: 1px solid #e3ebf6 !important;
-}
-
-.table > thead > tr:first-child > td,
-.table > tbody > tr:first-child > td {
-    border: none !important;
-}
-
-.table-thumb {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 1.5rem;
 }
 
 .table-thumb img {
@@ -83,7 +15,7 @@ body {
 .menu {
     line-height: 55px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px 0 rgba(21, 27, 38, .15);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
 
 .menu .link {
@@ -97,33 +29,15 @@ body {
     padding: .5rem;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    border-top: 1px solid #dadce0;
-    margin-top: 1.5rem;
-    padding: 1rem;
-}
-
-.snackbar {
-    font-size: 0.875rem !important;
-}
-
-.tooltip {
-    font-size: 0.875rem !important;
-}
-
 .sorting-icon {
     height: 15px;
 }
 
-hr {
-    border-top: 1px solid transparent;
+.table td, .table th {
+    vertical-align: middle;
 }
 
-.table-icon {
-    height: 30px;
-    margin: .3rem;
+.menu .feather {
+    width: 22px;
+    height: 22px;
 }

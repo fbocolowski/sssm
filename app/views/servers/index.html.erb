@@ -38,7 +38,7 @@
                   <tr class="clickable" data-href="<%= server_path(server) %>">
                     <td><%= server.hostname || t(:new_server) %></td>
                     <td><%= server.ip %></td>
-                    <td class="table-thumb text-center">
+                    <td class="table-thumb py-0 text-center">
                       <% unless server.distro_logo.nil? %>
                         <%= image_tag("distros/#{server.distro_logo}.png") %>
                       <% end %>
