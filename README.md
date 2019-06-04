@@ -13,3 +13,10 @@ Clone the repository and install dependencies running ```bundle install```.
 Start the server running ```rails server```.
 
 Go to http://localhost:3000.
+
+
+## Donate
+
+Like this project? Consider donating any amount to help maintain and buy coffee.
+
+[PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SF8YKWJUTV34S&source=url) or contact me at [fbocolowski@gmail.com](mailto:fbocolowski@gmail.com).
