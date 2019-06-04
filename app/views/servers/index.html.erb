@@ -23,7 +23,8 @@
             </div>
           <% else %>
             <div class="table-responsive">
-              <table class="table">
+              <table class="table table-hover">
+                <thead>
                 <tr>
                   <th><%= sort_link("hostname", t(:hostname)) %></th>
                   <th><%= t(:ip) %></th>
@@ -34,6 +35,8 @@
                   <th><%= sort_link("disk_usage", t(:disk)) %></th>
                   <th></th>
                 </tr>
+                </thead>
+                <tbody>
                 <% @servers.each do |server| %>
                   <tr class="clickable" data-href="<%= server_path(server) %>">
                     <td><%= server.hostname || t(:new_server) %></td>
@@ -76,6 +79,8 @@
                     </td>
                   </tr>
                 <% end %>
+
+                </tbody>
               </table>
             </div>
           <% end %>

@@ -23,13 +23,16 @@
             </div>
           <% else %>
             <div class="table-responsive">
-              <table class="table">
+              <table class="table table-hover">
+                <thead>
                 <tr>
                   <th><%= t(:log_watcher_name) %></th>
                   <th><%= t(:file) %></th>
                   <th><%= t(:action) %></th>
                   <th></th>
                 </tr>
+                </thead>
+                <tbody>
                 <% @log_watchers.each do |log_watcher| %>
                   <tr>
                     <td><%= log_watcher.name %></td>
@@ -42,6 +45,7 @@
                     </td>
                   </tr>
                 <% end %>
+                </tbody>
               </table>
             </div>
           <% end %>
