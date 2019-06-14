@@ -24,4 +24,6 @@ scheduler.cron '* * * * *' do
 end
 
 scheduler.cron '* * * * *' do
+  Report.where(:created_at.lt => (Time.now - 1.days)).delete_all
+  TriggerNotification.where(:created_at.lt => (Time.now - 1.days)).delete_all
 end

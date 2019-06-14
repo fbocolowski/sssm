@@ -1,2 +1,2 @@
 #!/bin/bash
-ssh -t russell "cd /srv/sssm/ && git pull && bundle install && sudo systemctl restart sssm.service"
+ssh -t elizabeth "cd /srv/sssm/ && git pull && bundle install && sudo systemctl restart sssm.service"

@@ -1,6 +1,6 @@
 #!/bin/bash
-ssh -t russell "mongodump --gzip --db sssm --archive=sssm-db.gz"
-scp russell:sssm-db.gz /tmp/
+ssh -t elizabeth "mongodump --gzip --db sssm --archive=sssm-db.gz"
+scp elizabeth:sssm-db.gz /tmp/
 mongo sssm --eval "db.dropDatabase()"
 mongorestore --gzip --archive=/tmp/sssm-db.gz
 rm -fr /tmp/sssm-db.gz

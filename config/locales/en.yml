@@ -29,7 +29,6 @@ en:
   # Navbar
   login: "Login"
   create_account: "Create an account"
-  donate: "Donate"
 
   # Account
   my_account: "My account"
