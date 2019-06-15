@@ -30,6 +30,6 @@ class ChartsController < ApplicationController
   private
 
   def set_server
-    @server = @user.servers.find(params[:server_id])
+    @server = Server.find(params[:server_id])
   end
 end

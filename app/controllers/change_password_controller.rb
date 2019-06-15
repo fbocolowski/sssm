@@ -1,21 +1,24 @@
 class ChangePasswordController < ApplicationController
   before_action :security_private
 
+  def show
+  end
+
   def update
-    if sha1(params[:current_password]) == @user.password
+    if Digest::SHA1.hexdigest(params[:current_password]) == @user.password
       if params[:new_password] != "" && params[:new_password_again] != ""
         if params[:new_password] == params[:new_password_again]
           @user.update(password: params[:new_password])
-          @alert = t(:password_changed)
+          @alert = "Password changed"
         else
-          @alert = t(:passwords_do_not_match)
+          @alert = "Password doesn't match"
         end
       else
-        @alert = t(:new_password_cant_be_blank)
+        @alert = "Password can't be blank"
       end
     else
-      @alert = t(:current_password_incorrect)
+      @alert = "Wrong current password"
     end
-    render 'account/show'
+    render 'show'
   end
 end

@@ -5,7 +5,7 @@ class LoginController < ApplicationController
   end
 
   def create
-    @found_user = User.where(username: params[:username], password: sha1(params[:password])).first rescue nil
+    @found_user = User.where(username: params[:username], password: Digest::SHA1.hexdigest(params[:password])).first rescue nil
     if @found_user.nil?
       @alert = 'Wrong username or password'
       render 'show'

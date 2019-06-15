@@ -3,52 +3,40 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4><%= t(:log_watchers) %></h4>
+          <h4>Log watchers</h4>
         </div>
         <div class="col text-right">
-          <% unless @log_watchers.empty? %>
-            <%= link_to t(:new_log_watcher), new_log_watcher_path, class: 'btn btn-primary' %>
-          <% end %>
+          <a href="<%= new_log_watcher_path %>" class="btn btn-primary">New</a>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xl-12">
-          <% if @log_watchers.empty? %>
-            <div class="my-5 text-center">
-              <span data-feather="eye" style="width: 45px; height: 45px" class="mb-3"></span>
-              <h5><%= t(:no_log_watcher) %></h5>
-              <p class="text-muted"><%= t(:start_creating_new_log_watcher) %></p>
-              <%= link_to t(:new_log_watcher), new_log_watcher_path, class: 'btn btn-primary' %>
-            </div>
-          <% else %>
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>File</th>
+                <th>Action</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @log_watchers.each do |log_watcher| %>
                 <tr>
-                  <th><%= t(:log_watcher_name) %></th>
-                  <th><%= t(:file) %></th>
-                  <th><%= t(:action) %></th>
-                  <th></th>
+                  <td><%= log_watcher.name %></td>
+                  <td><%= log_watcher.file %></td>
+                  <td><%= log_watcher.action %></td>
+                  <td class="text-right">
+                    <a href="<%= edit_log_watcher_path(log_watcher) %>" class="btn btn-primary">Show</a>
+                    <a href="<%= log_watcher_path(log_watcher) %>" class="btn btn-danger delete">Delete</a>
+                  </td>
                 </tr>
-                </thead>
-                <tbody>
-                <% @log_watchers.each do |log_watcher| %>
-                  <tr>
-                    <td><%= log_watcher.name %></td>
-                    <td><%= log_watcher.file %></td>
-                    <td><%= log_watcher.action %></td>
-                    <td class="text-right">
-                      <%= link_to t(:send_test), log_watcher_test_path(log_watcher), class: 'btn btn-primary' %>
-                      <%= link_to t(:edit), edit_log_watcher_path(log_watcher), class: 'btn btn-primary' %>
-                      <%= link_to t(:delete), log_watcher_path(log_watcher), class: 'btn btn-danger delete' %>
-                    </td>
-                  </tr>
-                <% end %>
-                </tbody>
-              </table>
-            </div>
-          <% end %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

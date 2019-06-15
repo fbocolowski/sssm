@@ -3,50 +3,38 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4><%= link_to(@server.hostname, @server) %> / <%= t(:triggers) %></h4>
+          <h4>Triggers</h4>
         </div>
         <div class="col text-right">
-          <% unless @triggers.empty? %>
-            <%= link_to t(:new_trigger), new_server_trigger_path(@server), class: 'btn btn-primary' %>
-          <% end %>
+          <a href="<%= new_trigger_path %>" class="btn btn-primary">New</a>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xl-12">
-          <% if @triggers.empty? %>
-            <div class="my-5 text-center">
-              <span data-feather="zap" style="width: 45px; height: 45px" class="mb-3"></span>
-              <h5><%= t(:no_trigger) %></h5>
-              <p class="text-muted"><%= t(:start_creating_new_trigger) %></p>
-              <%= link_to t(:new_trigger), new_server_trigger_path(@server), class: 'btn btn-primary' %>
-            </div>
-          <% else %>
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Event</th>
+                <th>Action</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @triggers.each do |trigger| %>
                 <tr>
-                  <th><%= t(:event) %></th>
-                  <th><%= t(:action) %></th>
-                  <th></th>
+                  <td><%= trigger.name %></td>
+                  <td><%= trigger.action %></td>
+                  <td class="text-right">
+                    <a href="<%= edit_trigger_path(trigger) %>" class="btn btn-primary">Show</a>
+                    <a href="<%= trigger_path(trigger) %>" class="btn btn-danger delete">Delete</a>
+                  </td>
                 </tr>
-                </thead>
-                <tbody>
-                <% @triggers.each do |trigger| %>
-                  <tr>
-                    <td><%= trigger.name %></td>
-                    <td><%= trigger.action %></td>
-                    <td class="text-right">
-                      <%= link_to t(:send_test), server_trigger_test_path(@server, trigger), class: 'btn btn-primary' %>
-                      <%= link_to t(:edit), edit_server_trigger_path(@server, trigger), class: 'btn btn-primary' %>
-                      <%= link_to t(:delete), server_trigger_path(@server, trigger), class: 'btn btn-danger delete' %>
-                    </td>
-                  </tr>
-                <% end %>
-                </tbody>
-              </table>
-            </div>
-          <% end %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

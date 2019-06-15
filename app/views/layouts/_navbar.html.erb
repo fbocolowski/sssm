@@ -2,19 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-4">
-        <%= link_to root_path do %>
-          <%= image_tag('logo.png', class: 'logo') %>
-        <% end %>
+        <a href="<%= root_path %>" class="font-weight-bold pl-0 link">SSSM</a>
       </div>
       <div class="col-xl-8 text-right">
         <% unless @user.nil? %>
-          <%= link_to "<span data-feather='server' class='feather'></span>".html_safe, servers_path, class: "link" %>
-          <%= link_to "<span data-feather='eye' class='feather'></span>".html_safe, log_watchers_path, class: "link" %>
-          <%= link_to "<span data-feather='user' class='feather'></span>".html_safe, account_path, class: "link" %>
-          <%= link_to "<span data-feather='power' class='feather'></span>".html_safe, logout_path, class: "link" %>
-        <% else %>
-          <%= link_to t(:login), login_path, class: "link" %>
-          <%= link_to t(:create_account), registration_path, class: "link" %>
+          <a href="<%= servers_path %>" class="link">Servers</a>
+          <a href="<%= log_watchers_path %>" class="link">Log watchers</a>
+          <a href="<%= triggers_path %>" class="link">Triggers</a>
+          <a href="<%= change_password_path %>" class="link">Change password</a>
+          <a href="<%= logout_path %>" class="link pr-0">Logout</a>
         <% end %>
       </div>
     </div>

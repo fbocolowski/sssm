@@ -12,15 +12,15 @@ module NotificationSender
       end
     end
 
-    def send_trigger(trigger)
-      if trigger.last_notification.nil? || ((Time.now - trigger.last_notification).to_i / 60) > 60
+    def send_trigger(trigger, server)
+      if server.last_notification.nil? || ((Time.now - server.last_notification).to_i / 60) > 60
         case trigger.action
         when 'Slack'
-          slack(trigger.url, trigger.pretty_message, nil)
+          slack(trigger.url, trigger.pretty_message(server.hostname, server.ip), nil)
         when 'Discord'
-          discord(trigger.url, trigger.pretty_message, nil)
+          discord(trigger.url, trigger.pretty_message(server.hostname, server.ip), nil)
         end
-        trigger.update(last_notification: Time.now)
+        server.update(last_notification: Time.now)
       end
     end
 

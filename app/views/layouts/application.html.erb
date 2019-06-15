@@ -7,16 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="robots" content="all, follow">
 
-  <title><%= t(:name) %></title>
-
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <title>SSSM</title>
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <%= favicon_link_tag 'logo.png' %>
+  <link rel="shortcut icon" href="/img/logo.png">
 
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/snackbar.min.css">
+  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,700">
+
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/snackbar.min.js"></script>
+  <script src="/js/application.js"></script>
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
@@ -31,10 +38,9 @@
         feather.replace();
 
         <% unless @alert.nil? %>
-        snackbar("<%= @alert.html_safe %>");
+        $.snackbar({content: "<%= @alert.html_safe %>"});
         <% end %>
     });
 </script>
-
 </body>
 </html>

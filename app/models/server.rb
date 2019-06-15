@@ -2,9 +2,7 @@ class Server
   include Mongoid::Document
   include Mongoid::Timestamps
   store_in collection: 'servers'
-  belongs_to :user
   has_many :reports, dependent: :delete_all
-  has_many :triggers, dependent: :delete_all
 
   field :token, type: String
   field :first_report, type: Time
@@ -15,6 +13,7 @@ class Server
   field :uptime, type: Float
   field :ram_usage, type: Integer
   field :disk_usage, type: Integer
+  field :last_notification, type: DateTime
 
   before_create :generate_token
 

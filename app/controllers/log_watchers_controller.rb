@@ -3,15 +3,15 @@ class LogWatchersController < ApplicationController
   before_action :set_log_watcher, only: [:edit, :update, :destroy]
 
   def index
-    @log_watchers = @user.log_watchers
+    @log_watchers = LogWatcher.all
   end
 
   def new
-    @log_watcher = @user.log_watchers.new
+    @log_watcher = LogWatcher.new
   end
 
   def create
-    @log_watcher = @user.log_watchers.new(log_watcher_params)
+    @log_watcher = LogWatcher.new(log_watcher_params)
     if @log_watcher.save
       redirect_to edit_log_watcher_path(@log_watcher)
     else
@@ -41,7 +41,7 @@ class LogWatchersController < ApplicationController
   private
 
   def set_log_watcher
-    @log_watcher = @user.log_watchers.find(params[:id])
+    @log_watcher = LogWatcher.find(params[:id])
   end
 
   def log_watcher_params

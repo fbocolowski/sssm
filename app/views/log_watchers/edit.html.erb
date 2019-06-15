@@ -2,34 +2,35 @@
   <div class="row">
     <div class="col-xl-4"></div>
     <div class="col-xl-4">
-      <h4><%= t(:edit_log_watcher) %></h4>
-      <h5><%= t(:setup) %></h5>
+      <h4>Log watchers / Edit</h4>
+      <h5>Setup</h5>
 
       <div class="form-group">
-        <label><%= t(:add_line_to_crontab) %></label>
+        <label>Add this line to your crontab</label>
         <input type="text" class="form-control" value='* * * * * curl -X POST -H "SSSM-Token: <%= @log_watcher.token %>" -F "file=@<%= @log_watcher.file %>" <%= @url %>/api/error_logs > /dev/null 2>&1'>
       </div>
 
       <hr>
+
       <%= form_for @log_watcher, url: log_watcher_path(@log_watcher) do |f| %>
         <div class="form-group">
-          <label><%= t(:log_watcher_name) %></label>
+          <label>Name</label>
           <%= f.text_field(:name, class: "form-control") %>
         </div>
         <div class="form-group">
-          <label><%= t(:file) %></label>
+          <label>File</label>
           <%= f.text_field(:file, class: "form-control") %>
         </div>
         <div class="form-group">
-          <label><%= t(:action) %></label>
+          <label>Action</label>
           <%= f.select(:action, options_for_select(LogWatcher::ACTIONS, selected: @log_watcher.action), {}, class: "form-control") %>
         </div>
         <div class="form-group">
-          <label><%= t(:url) %></label>
+          <label>URL</label>
           <%= f.text_field(:url, class: "form-control") %>
         </div>
         <div>
-          <%= f.submit(t(:submit), class: "btn btn-primary") %>
+          <%= f.submit("Submit", class: "btn btn-primary") %>
         </div>
       <% end %>
     </div>

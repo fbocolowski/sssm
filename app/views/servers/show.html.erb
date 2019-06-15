@@ -3,58 +3,39 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4><%= @server.hostname || t(:new_server) %></h4>
+          <h4><%= @server.hostname || "New server" %></h4>
         </div>
         <div class="col text-right">
-          <% unless @server.hostname.nil? %>
-            <%= link_to server_triggers_path(@server), class: 'btn btn-primary' do %>
-              <%= t(:triggers) %>
-            <% end %>
-          <% end %>
-          <%= link_to t(:delete), server_path(@server), class: 'btn btn-danger delete' %>
+
         </div>
       </div>
 
       <% if @server.reports.count == 0 %>
-        <h5><%= t(:setup_method_1) %></h5>
+        <h5>Setup</h5>
 
         <div class="form-group">
-          <label><%= t(:download_script) %></label>
-          <input type="text" class="form-control" value="wget <%= @url %>/runner.sh">
-        </div>
-
-        <div class="form-group">
-          <label><%= t(:add_line_to_crontab) %></label>
-          <input type="text" class="form-control" value="* * * * * bash <your-script-path> <%= @server.token %>">
-        </div>
-
-        <h5><%= t(:setup_method_2) %></h5>
-
-        <div class="form-group">
-          <label><%= t(:add_line_to_crontab) %></label>
+          <label>Add this line to your crontab</label>
           <input type="text" class="form-control" value="* * * * * curl -s <%= @url %>/runner.sh | bash -s <%= @server.token %>">
         </div>
-
-        <p><%= t(:refresh_page_after_1_minute) %></p>
       <% else %>
         <div class="row">
           <div class="col-xl-6">
-            <h5><%= t(:ram_usage_24) %></h5>
+            <h5>RAM usage</h5>
             <div id="ram_usage" style="height: 420px;"></div>
           </div>
           <div class="col-xl-5">
-            <h5><%= t(:disk_usage_24) %></h5>
+            <h5>Disk usage</h5>
             <div id="disk_usage" style="height: 420px;"></div>
           </div>
         </div>
 
-        <h5><%= t(:details) %></h5>
-        <div><%= t(:token) %>: <%= @server.token %></div>
-        <div><%= t(:ip) %>: <%= @server.ip %></div>
-        <div><%= t(:linux_distribution) %>: <%= @server.distro %></div>
-        <div><%= t(:uptime) %>: <%= @server.uptime_string %></div>
-        <div><%= t(:ram) %>: <%= @server.ram_usage %>%</div>
-        <div><%= t(:disk) %>: <%= @server.disk_usage %>%</div>
+        <h5>Details</h5>
+        <div>Token: <%= @server.token %></div>
+        <div>IP: <%= @server.ip %></div>
+        <div>Distro: <%= @server.distro %></div>
+        <div>Uptime: <%= @server.uptime_string %></div>
+        <div>RAM: <%= @server.ram_usage %>%</div>
+        <div>Disk: <%= @server.disk_usage %>%</div>
 
         <script>
             new Chartkick.LineChart("ram_usage", '/charts?server_id=<%= @server.id %>&type=ram_usage', {curve: false});

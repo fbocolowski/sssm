@@ -1,7 +1,3 @@
-function snackbar(message) {
-    $.snackbar({content: message});
-}
-
 $(function () {
     $.ajaxSetup({
         headers: {
@@ -28,12 +24,4 @@ $(function () {
             }
         });
     });
-
-    $(".clickable").click(function () {
-        window.location = $(this).data("href");
-    });
-
-    autosize($('textarea'));
-
-    $('[data-toggle="tooltip"]').tooltip()
 });

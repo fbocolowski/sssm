@@ -1,0 +1,36 @@
+body {
+    font-family: "PT Sans", sans-serif;
+    font-size: 0.875rem;
+}
+
+.btn, .form-control, .table, .snackbar, tooltip {
+    font-size: 0.875rem;
+}
+
+.table td, .table th {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.menu {
+    line-height: 55px;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.menu .link {
+    color: #12263f;
+    padding: .625rem 1rem;
+    text-decoration: none;
+}
+
+.menu .logo {
+    max-height: 45px;
+    padding: .5rem;
+}
+
+.table-thumb img {
+    height: 30px;
+    padding-top: .25rem !important;
+    padding-bottom: .25rem !important;
+}

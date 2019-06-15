@@ -3,87 +3,77 @@
     <div class="col-xl-12">
       <div class="row mb-3">
         <div class="col">
-          <h4><%= t(:servers) %></h4>
+          <h4>Servers</h4>
         </div>
         <div class="col text-right">
-          <% unless @servers.empty? %>
-            <%= link_to t(:new_server), new_server_path, class: 'btn btn-primary' %>
-          <% end %>
+          <a href="<%= new_server_path %>" class="btn btn-primary">New</a>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xl-12">
-          <% if @servers.empty? %>
-            <div class="my-5 text-center">
-              <span data-feather="server" style="width: 45px; height: 45px" class="mb-3"></span>
-              <h5><%= t(:no_server_found) %></h5>
-              <p class="text-muted"><%= t(:start_creating_new_server) %></p>
-              <%= link_to t(:new_server), new_server_path, class: 'btn btn-primary' %>
-            </div>
-          <% else %>
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                <tr>
-                  <th><%= sort_link("hostname", t(:hostname)) %></th>
-                  <th><%= t(:ip) %></th>
-                  <th></th>
-                  <th><%= sort_link("last_report", t(:last_active)) %></th>
-                  <th><%= sort_link("uptime", t(:uptime)) %></th>
-                  <th><%= sort_link("ram_usage", t(:ram)) %></th>
-                  <th><%= sort_link("disk_usage", t(:disk)) %></th>
-                  <th></th>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Hostname</th>
+                <th>IP</th>
+                <th></th>
+                <th>Last active</th>
+                <th>Uptime</th>
+                <th>RAM</th>
+                <th>Disk</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @servers.each do |server| %>
+                <tr data-href="<%= server_path(server) %>">
+                  <td><%= server.hostname || "New server" %></td>
+                  <td><%= server.ip %></td>
+                  <td class="table-thumb py-0 text-center">
+                    <% unless server.distro_logo.nil? %>
+                      <img src="/img/distros/<%= server.distro_logo %>.png">
+                    <% end %>
+                  </td>
+                  <td>
+                    <% unless server.last_report_minutes.nil? %>
+                      <% if server.last_report_minutes == 0 %>
+                        <span class="badge badge-success">Less than a minute</span>
+                      <% else %>
+                        <span class="badge badge-primary"><%= server.last_report_minutes %> minutes ago</span>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td><%= server.uptime_string %></td>
+                  <td>
+                    <% unless server.ram_usage.nil? %>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>%">
+                          <%= server.ram_usage %>%
+                        </div>
+                      </div>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% unless server.disk_usage.nil? %>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>%">
+                          <%= server.disk_usage %>%
+                        </div>
+                      </div>
+                    <% end %>
+                  </td>
+                  <th>
+                    <a href="<%= server_path(server) %>" class="btn btn-primary">Show</a>
+                    <a href="<%= server_path(server) %>" class="btn btn-danger delete">Delete</a>
+                  </th>
                 </tr>
-                </thead>
-                <tbody>
-                <% @servers.each do |server| %>
-                  <tr class="clickable" data-href="<%= server_path(server) %>">
-                    <td><%= server.hostname || t(:new_server) %></td>
-                    <td><%= server.ip %></td>
-                    <td class="table-thumb py-0 text-center">
-                      <% unless server.distro_logo.nil? %>
-                        <%= image_tag("distros/#{server.distro_logo}.png") %>
-                      <% end %>
-                    </td>
-                    <td>
-                      <% unless server.last_report_minutes.nil? %>
-                        <% if server.last_report_minutes == 0 %>
-                          <span class="badge badge-success"><%= t(:less_than_a_minute) %></span>
-                        <% else %>
-                          <span class="badge badge-primary"><%= t(:minutes_ago, time: server.last_report_minutes) %></span>
-                        <% end %>
-                      <% end %>
-                    </td>
-                    <td><%= server.uptime_string %></td>
-                    <td>
-                      <% unless server.ram_usage.nil? %>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style="width: <%= server.ram_usage %>%">
-                            <%= server.ram_usage %>%
-                          </div>
-                        </div>
-                      <% end %>
-                    </td>
-                    <td>
-                      <% unless server.disk_usage.nil? %>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style="width: <%= server.disk_usage %>%">
-                            <%= server.disk_usage %>%
-                          </div>
-                        </div>
-                      <% end %>
-                    </td>
-                    <td class="text-center">
-                      <span data-feather="zap" style="width: 15px; height: 20px"></span> <%= server.triggers.count %>
-                    </td>
-                  </tr>
-                <% end %>
+              <% end %>
 
-                </tbody>
-              </table>
-            </div>
-          <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

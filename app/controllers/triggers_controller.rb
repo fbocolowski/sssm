@@ -1,20 +1,19 @@
 class TriggersController < ApplicationController
   before_action :security_private
-  before_action :set_server
   before_action :set_trigger, only: [:edit, :update, :destroy]
 
   def index
-    @triggers = @server.triggers
+    @triggers = Trigger.all
   end
 
   def new
-    @trigger = @server.triggers.new
+    @trigger = Trigger.new
   end
 
   def create
-    @trigger = @server.triggers.new(trigger_params)
+    @trigger = Trigger.new(trigger_params)
     if @trigger.save
-      redirect_to server_triggers_path(@server)
+      redirect_to triggers_path
     else
       @alert = @trigger.errors.full_messages.first
       return render 'new'
@@ -27,7 +26,7 @@ class TriggersController < ApplicationController
 
   def update
     if @trigger.update(trigger_params)
-      redirect_to server_triggers_path(@server)
+      redirect_to triggers_path
     else
       @alert = @trigger.errors.full_messages.first
       return render 'edit'
@@ -36,17 +35,13 @@ class TriggersController < ApplicationController
 
   def destroy
     @trigger.destroy
-    render json: {redirect: server_triggers_path(@server)}
+    render json: {redirect: triggers_path}
   end
 
   private
 
-  def set_server
-    @server = @user.servers.find(params[:server_id])
-  end
-
   def set_trigger
-    @trigger = @server.triggers.find(params[:id])
+    @trigger = Trigger.find(params[:id])
   end
 
   def trigger_params
