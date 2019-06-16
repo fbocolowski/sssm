@@ -1,18 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="row mb-3">
-        <div class="col">
-          <h4><%= @server.hostname || "New server" %></h4>
-        </div>
-        <div class="col text-right">
-
-        </div>
-      </div>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="<%= servers_path %>">Servers</a></li>
+          <li class="breadcrumb-item active"><%= @server.hostname || "New server" %></li>
+        </ol>
+      </nav>
 
       <% if @server.reports.count == 0 %>
-        <h5>Setup</h5>
-
         <div class="form-group">
           <label>Add this line to your crontab</label>
           <input type="text" class="form-control" value="* * * * * curl -s <%= @url %>/runner.sh | bash -s <%= @server.token %>">

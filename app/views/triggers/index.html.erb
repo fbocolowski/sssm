@@ -1,41 +1,38 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="row mb-3">
-        <div class="col">
-          <h4>Triggers</h4>
-        </div>
-        <div class="col text-right">
-          <a href="<%= new_trigger_path %>" class="btn btn-primary">New</a>
-        </div>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">Triggers</li>
+        </ol>
+      </nav>
+
+      <div class="mb-3">
+        <a href="<%= new_trigger_path %>" class="btn btn-primary">New</a>
       </div>
 
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-              <tr>
-                <th>Event</th>
-                <th>Action</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @triggers.each do |trigger| %>
-                <tr>
-                  <td><%= trigger.name %></td>
-                  <td><%= trigger.action %></td>
-                  <td class="text-right">
-                    <a href="<%= edit_trigger_path(trigger) %>" class="btn btn-primary">Show</a>
-                    <a href="<%= trigger_path(trigger) %>" class="btn btn-danger delete">Delete</a>
-                  </td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Event</th>
+            <th>Action</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @triggers.each do |trigger| %>
+            <tr>
+              <td><%= trigger.name %></td>
+              <td><%= trigger.action %></td>
+              <td class="text-right">
+                <a href="<%= edit_trigger_path(trigger) %>" class="btn btn-primary">Edit</a>
+                <a href="<%= trigger_path(trigger) %>" class="btn btn-danger delete">Delete</a>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

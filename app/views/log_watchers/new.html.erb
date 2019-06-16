@@ -1,8 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-xl-4"></div>
-    <div class="col-xl-4">
-      <h4>Log watchers / New</h4>
+    <div class="offset-xl-4 col-xl-4">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="<%= log_watchers_path %>">Log watchers</a></li>
+          <li class="breadcrumb-item active">New</li>
+        </ol>
+      </nav>
+
       <%= form_for @log_watcher, url: log_watchers_path do |f| %>
         <div class="form-group">
           <label>Name</label>

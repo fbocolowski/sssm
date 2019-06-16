@@ -1,7 +1,7 @@
 development:
   clients:
     default:
-      database: sssm
+      database: sssm_development
       hosts:
         - localhost:27017
 production:

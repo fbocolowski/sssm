@@ -1,2 +1,0 @@
-#!/bin/bash
-ssh -t elizabeth "cd /srv/sssm/ && git pull && bundle install && sudo systemctl restart sssm.service"

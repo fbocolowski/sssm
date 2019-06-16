@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-xl-4"></div>
-    <div class="col-xl-4">
-      <h4>Change password</h4>
+    <div class="offset-xl-4 col-xl-4">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">Change password</li>
+        </ol>
+      </nav>
+
       <%= form_tag(change_password_path, method: "put") do %>
         <div class="form-group">
           <label>Current password</label>

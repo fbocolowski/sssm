@@ -1,16 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-xl-4"></div>
-    <div class="col-xl-4">
-      <h4>Log watchers / Edit</h4>
-      <h5>Setup</h5>
+    <div class="offset-xl-4 col-xl-4">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="<%= log_watchers_path %>">Log watchers</a></li>
+          <li class="breadcrumb-item active">Edit</li>
+        </ol>
+      </nav>
 
       <div class="form-group">
         <label>Add this line to your crontab</label>
         <input type="text" class="form-control" value='* * * * * curl -X POST -H "SSSM-Token: <%= @log_watcher.token %>" -F "file=@<%= @log_watcher.file %>" <%= @url %>/api/error_logs > /dev/null 2>&1'>
       </div>
-
-      <hr>
 
       <%= form_for @log_watcher, url: log_watcher_path(@log_watcher) do |f| %>
         <div class="form-group">
