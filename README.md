@@ -49,3 +49,10 @@ sudo systemctl daemon-reload
 sudo systemctl enable sssm
 sudo systemctl start sssm
 ```
+
+Create users:
+
+```
+rails console -e production
+    User.create(username:  'jhon', password: '123')
+```
