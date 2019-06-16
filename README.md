@@ -37,7 +37,7 @@ Setup your Nginx:
 
 ```
 sudo cp config/nginx.conf /etc/nginx/sites-enabled/sssm
-nano /etc/nginx/sites-enabled/sssm
+sudo nano /etc/nginx/sites-enabled/sssm
 sudo systemctl restart nginx
 ```
 
