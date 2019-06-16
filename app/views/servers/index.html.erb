@@ -32,7 +32,7 @@
               <td><%= server.ip %></td>
               <td class="table-thumb py-0 text-center">
                 <% unless server.distro_logo.nil? %>
-                  <img src="/img/distros/<%= server.distro_logo %>.png">
+                  <img src="/img/distros/<%= server.distro_logo %>.png" style="height: 30px;padding-top: .25rem;padding-bottom: .25rem;">
                 <% end %>
               </td>
               <td>

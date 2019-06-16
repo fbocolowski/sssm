@@ -1,6 +1,7 @@
 body {
     font-family: "PT Sans", sans-serif;
     font-size: 0.875rem;
+    padding-bottom: 3rem;
 }
 
 .btn, .form-control, .table, .snackbar, tooltip {
@@ -22,15 +23,4 @@ body {
     color: #12263f;
     padding: .625rem 1rem;
     text-decoration: none;
-}
-
-.menu .logo {
-    max-height: 45px;
-    padding: .5rem;
-}
-
-.table-thumb img {
-    height: 30px;
-    padding-top: .25rem !important;
-    padding-bottom: .25rem !important;
 }
