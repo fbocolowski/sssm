@@ -23,6 +23,15 @@ scheduler.cron '* * * * *' do
       end
     end
   end
+
+  UptimeCheck.all.each do |uptime_check|
+    get = RestClient.get(uptime_check.target).code rescue nil
+    if !get.nil? && get == 200
+      uptime_check.update(last_ok: Time.now)
+    else
+      NotificationSender.send_downtime(uptime_check)
+    end
+  end
 end
 
 scheduler.cron '* * * * *' do

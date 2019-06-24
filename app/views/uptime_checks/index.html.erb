@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">Uptime checks</li>
+        </ol>
+      </nav>
+
+      <div class="mb-3">
+        <a href="<%= new_uptime_check_path %>" class="btn btn-primary">New</a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Target</th>
+            <th>Last checked</th>
+            <th>Action</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @uptime_checks.each do |uptime_check| %>
+            <tr>
+              <td><%= uptime_check.target %></td>
+              <td>
+                <% unless uptime_check.last_ok_minutes.nil? %>
+                  <% if uptime_check.last_ok_minutes == 0 %>
+                    <span class="badge badge-success">Less than a minute</span>
+                  <% else %>
+                    <span class="badge badge-primary"><%= uptime_check.last_ok_minutes %> minutes ago</span>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><%= uptime_check.action %></td>
+              <td class="text-right">
+                <a href="<%= edit_uptime_check_path(uptime_check) %>" class="btn btn-primary">Edit</a>
+                <a href="<%= uptime_check_path(uptime_check) %>" class="btn btn-danger delete">Delete</a>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

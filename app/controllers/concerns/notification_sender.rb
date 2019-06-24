@@ -24,6 +24,18 @@ module NotificationSender
       end
     end
 
+    def send_downtime(uptime_check)
+      if uptime_check.last_notification.nil? || ((Time.now - uptime_check.last_notification).to_i / 10) > 10
+        case uptime_check.action
+        when 'Slack'
+          slack(uptime_check.url, "#{uptime_check.target} is down!", nil)
+        when 'Discord'
+          discord(uptime_check.url, "#{uptime_check.target} is down!", nil)
+        end
+        uptime_check.update(last_notification: Time.now)
+      end
+    end
+
     def slack(url, text, attachment)
       if Rails.env.production?
         begin
