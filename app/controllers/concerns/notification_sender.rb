@@ -6,9 +6,9 @@ module NotificationSender
     def send_error(log_watcher, message)
       case log_watcher.action
       when 'Slack'
-        slack(log_watcher.url, "Error found in #{log_watcher.name}", message)
+        slack(log_watcher.url, "Errors found in #{log_watcher.name}", message)
       when 'Discord'
-        discord(log_watcher.url, "Error found in #{log_watcher.name}", message)
+        discord(log_watcher.url, "Errors found in #{log_watcher.name}", message)
       end
     end
 
@@ -44,7 +44,8 @@ module NotificationSender
           # do nothing
         end
       else
-        puts "Slack: #{text} / #{attachment}"
+        puts "Slack: #{text}"
+        puts "#{attachment}"
       end
     end
 
@@ -56,7 +57,8 @@ module NotificationSender
           # do nothing
         end
       else
-        puts "Discord: #{text} / #{attachment}"
+        puts "Discord: #{text}"
+        puts "#{attachment}"
       end
     end
   end
