@@ -8,7 +8,7 @@ Rails.application.configure do
 
   config.active_support.deprecation = :log
 
-  config.mongoid.logger.level = Logger::ERROR
+  config.mongoid.logger.level = Logger::INFO
 
-  config.log_level = :debug
+  config.log_level = :info
 end
