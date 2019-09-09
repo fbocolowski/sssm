@@ -4,7 +4,7 @@ include NotificationSender
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.cron '* * * * *' do
+scheduler.cron '*/5 * * * *' do
   Trigger.all.each do |trigger|
     Server.all.each do |server|
       case trigger.event
@@ -34,6 +34,6 @@ scheduler.cron '* * * * *' do
   end
 end
 
-scheduler.cron '* * * * *' do
+scheduler.cron '0 0 * * *' do
   Report.where(:created_at.lt => (Time.now - 1.days)).delete_all
 end
