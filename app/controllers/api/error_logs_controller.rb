@@ -4,7 +4,7 @@ class Api::ErrorLogsController < Api::ApplicationController
     log_watcher = LogWatcher.where(token: token).first rescue nil
     unless log_watcher.nil?
       begin
-        logger.info 'Receiving: ' + log_watcher.name + ' (' + log_watcher.file + ')'
+        puts 'Receiving: ' + log_watcher.name + ' (' + log_watcher.file + ')'
 
         if params[:file].present?
           filename = params[:file].original_filename
@@ -23,11 +23,11 @@ class Api::ErrorLogsController < Api::ApplicationController
           end
         end
       rescue => e
-        logger.info 'Exception: ' + log_watcher.name + ' (' + log_watcher.file + ')'
-        logger.info e
+        puts 'Exception: ' + log_watcher.name + ' (' + log_watcher.file + ')'
+        puts e
       end
     else
-      logger.info 'Invalid token: ' + token
+      puts 'Invalid token: ' + token
     end
 
     render json: ""

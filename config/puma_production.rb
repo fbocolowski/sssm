@@ -1,4 +1,4 @@
-threads 5, 5
+threads 10, 10
 environment "production"
 
 bind "unix:/srv/sssm/tmp/puma.sock"
