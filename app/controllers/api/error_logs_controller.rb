@@ -11,7 +11,7 @@ class Api::ErrorLogsController < Api::ApplicationController
           result_message = ''
           File.read(params[:file].tempfile).each_line.with_index do |text, line|
             if (text.downcase.include? "error" or text.downcase.include? "exception")
-              if (!text.downcase.include? "erros" and !text.downcase.include? "erronato" and !text.downcase.include? "ErrorHandlingControllerAdvice" and !text.downcase.include? "HttpMessageNotReadableException")
+              if (!text.downcase.include? "erros" and !text.downcase.include? "erronato" and !text.downcase.include? "errorhandlingcontrolleradvice" and !text.downcase.include? "httpmessagenotreadableexception")
                 if log_watcher.error_logs.where(filename: filename, error: text, line: line).empty?
                   log_watcher.error_logs.create(filename: filename, error: text, line: line)
                   result_message = result_message + text
