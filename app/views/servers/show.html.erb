@@ -8,6 +8,10 @@
         </ol>
       </nav>
 
+      <div class="mb-3">
+        <a href="<%= server_path(@server) %>" class="btn btn-danger delete">Delete</a>
+      </div>
+
       <% if @server.reports.count == 0 %>
         <div class="form-group">
           <label>Add this line to your crontab</label>

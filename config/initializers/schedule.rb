@@ -2,7 +2,9 @@ require 'rufus-scheduler'
 
 include NotificationSender
 
-scheduler = Rufus::Scheduler.new
+scheduler = Rufus::Scheduler.singleton
+
+return if defined?(Rails::Console) || Rails.env.test? || File.split($0).last == 'rake'
 
 scheduler.cron '*/5 * * * *' do
   Trigger.all.each do |trigger|
@@ -23,17 +25,8 @@ scheduler.cron '*/5 * * * *' do
       end
     end
   end
-
-  UptimeCheck.all.each do |uptime_check|
-    get = RestClient.get(uptime_check.target).code rescue nil
-    if !get.nil? && get == 200
-      uptime_check.update(last_ok: Time.now)
-    else
-      NotificationSender.send_downtime(uptime_check)
-    end
-  end
 end
 
 scheduler.cron '0 0 * * *' do
-  Report.where(:created_at.lt => (Time.now - 1.days)).delete_all
+  Report.where(:created_at.lt => (Time.now - 3.days)).delete_all
 end

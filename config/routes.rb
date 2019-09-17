@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources 'servers', controller: 'servers', only: [:index, :show, :new, :destroy]
   resources 'log_watchers', controller: 'log_watchers'
   resources 'triggers', controller: 'triggers'
-  resources 'uptime_checks', controller: 'uptime_checks'
   resource 'charts', controller: 'charts', only: [:show]
   resources 'notifications', controller: 'notifications', only: [:index]
 
