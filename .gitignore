@@ -1,6 +1,7 @@
 /log/*
 /tmp/*
-/config/secrets.yml
 /.idea
 /*.iml
 /public/uploads/*
+/config/secrets.yml
+/config/puma_production.rb
