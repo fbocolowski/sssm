@@ -6,6 +6,8 @@ ActiveSupport.on_load(:action_controller) do
   wrap_parameters format: [:json]
 end
 
+Mime::Type.register "text/x-script.sh", :sh
+
 require 'rufus-scheduler'
 
 include NotificationSender
