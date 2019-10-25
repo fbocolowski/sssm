@@ -15,7 +15,7 @@
       <% if @server.reports.count == 0 %>
         <div class="form-group">
           <label>Add this line to your crontab</label>
-          <input type="text" class="form-control" value="* * * * * curl -s <%= @url %>/runner.sh | bash -s <%= @server.token %>">
+          <input type="text" class="form-control" value="* * * * * curl -s <%= @url %>/runner.sh | bash -s <%= @server.token %> >/dev/null 2>&1">
         </div>
       <% else %>
         <div class="row">

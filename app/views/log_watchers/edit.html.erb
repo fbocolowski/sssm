@@ -10,7 +10,7 @@
 
       <div class="form-group">
         <label>Add this line to your crontab</label>
-        <input type="text" class="form-control" value='* * * * * curl -X POST -H "SSSM-Token: <%= @log_watcher.token %>" -F "file=@<%= @log_watcher.file %>" <%= @url %>/api/error_logs > /dev/null 2>&1'>
+        <input type="text" class="form-control" value='* * * * * curl -X POST -H "SSSM-Token: <%= @log_watcher.token %>" -F "file=@<%= @log_watcher.file %>" <%= @url %>/api/error_logs >/dev/null 2>&1'>
       </div>
 
       <%= form_for @log_watcher, url: log_watcher_path(@log_watcher) do |f| %>
