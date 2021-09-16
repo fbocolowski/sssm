@@ -1,5 +1,5 @@
 #!/bin/bash
-# ./deploy versao servidor
+# ./deploy version server
 ./gradlew build -x test
 scp build/libs/sssm-"$1".jar "$2":/tmp/sssm-"$1".jar
 ssh "$2" -t "sudo systemctl stop sssm &&
