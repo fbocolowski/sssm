@@ -1,23 +1,4 @@
 #!/bin/bash
-while [ $# -ne 0 ]
-do
-    arg="$1"
-    case "$arg" in
-        --docker)
-            docker=true
-            ;;
-        *)
-            ;;
-    esac
-    shift
-done
-
 ssh -t sssm "mongodump --gzip --db sssm --archive=sssm.gz"
 scp sssm:sssm.gz /tmp/
-if [ "$docker" == true ]; then
-    docker exec -it asaplog-mongo mongo sssmDev --eval "db.dropDatabase()"
-    docker exec -it asaplog-mongo mongorestore --gzip --archive=/tmp/sssm.gz --nsFrom "sssm.*" --nsTo "sssmDev.*"
-  else
-    mongo sssmDev --eval "db.dropDatabase()"
-    mongorestore --gzip --archive=/tmp/sssm.gz --nsFrom "sssm.*" --nsTo "sssmDev.*"
-  fi
+mongorestore --gzip --archive=/tmp/sssm.gz --nsFrom "sssm.*" --nsTo "sssmDev.*"
