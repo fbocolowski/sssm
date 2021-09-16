@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <th:block th:replace="fragments/header"></th:block>
+</head>
+<body>
+<th:block th:replace="fragments/navbar"></th:block>
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h4>Settings</h4>
+
+            <form method="post" th:action="@{/groups/} + ${group.id}" th:object="${group}">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" th:field="*{name}" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a th:href="@{/groups/} + ${group.id} + @{/delete}" th:if="${!isLastGroup}" class="btn btn-danger">Delete</a>
+                </div>
+            </form>
+
+            <hr>
+
+            <h4>Users</h4>
+
+            <div th:each="u : ${users}">
+                <div>
+                    <span th:text="${u.email}"></span>
+                    <span th:if="${u.id != group.ownerId}"> | <a
+                            th:href="@{/groups/} + ${group.id} + @{/users/} + ${u.id} + @{/delete}">Remove</a></span>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Add user</h5>
+
+            <form method="post" th:action="@{/groups/} + ${group.id} + @{/users}">
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>

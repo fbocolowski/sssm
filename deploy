@@ -1,0 +1,9 @@
+#!/bin/bash
+# ./deploy versao servidor
+./gradlew build -x test
+scp build/libs/sssm-"$1".jar "$2":/tmp/sssm-"$1".jar
+ssh "$2" -t "sudo systemctl stop sssm &&
+            sudo mv /tmp/sssm-$1.jar /srv/sssm/application.jar &&
+            sudo chown -R spring:spring /srv/sssm/ &&
+            sudo systemctl start sssm &&
+            sudo tail -n 1000 -f /srv/sssm/application.log"

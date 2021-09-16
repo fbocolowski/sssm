@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row mb-3 py-3 border-bottom">
+        <div class="col">
+            <a href="/" class="text-dark text-decoration-none">
+                <img th:src="@{/img/logo.png}" height="26">
+<!--                <h5>SSSM</h5>-->
+            </a>
+        </div>
+
+        <div class="col text-end">
+            <th:block th:if="${user != null}">
+                <a href="/groups" class="text-decoration-none align-middle mx-2">Groups</a>
+                <a href="/account" class="text-decoration-none align-middle mx-2">My account</a>
+                <a href="/logout" class="text-decoration-none align-middle mx-2">Logout</a>
+            </th:block>
+            <th:block th:if="${user == null}">
+                <a href="/registration" class="text-decoration-none align-middle mx-2">Create an account</a>
+                <a href="/login" class="text-decoration-none align-middle mx-2">Login</a>
+            </th:block>
+        </div>
+    </div>
+</div>

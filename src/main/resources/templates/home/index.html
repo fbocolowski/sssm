@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <th:block th:replace="fragments/header"></th:block>
+</head>
+<body>
+<th:block th:replace="fragments/navbar"></th:block>
+
+<div class="container">
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" th:src="@{/img/logo.png}" height="57">
+        <h1 class="display-5 fw-bold">Stupid Simple Server Monitor</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">UN*X Server monitoring app</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="/registration" class="btn btn-primary btn-lg px-4 gap-3">Create an account</a>
+                <a href="/login" class="btn btn-outline-secondary btn-lg px-4">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <h4>Features</h4>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <img th:src="@{/img/undraw_maintenance.svg}" class="mb-3" style="height: 200px;">
+            <h4>RAM + Disk monitoring</h4>
+            <p>Need to focus and don't have all the time to keep up to your server's hardware? We can do that
+                for you, put it into a dashboard and warn you of sudden incidents.</p>
+        </div>
+        <div class="col">
+            <img th:src="@{/img/undraw_server.svg}" class="mb-3" style="height: 200px;">
+            <h4>Simple setup</h4>
+            <p>Our service is easy and quick to setup. Simply download our script and put it into a cron
+                job.</p>
+        </div>
+        <div class="col">
+            <img th:src="@{/img/undraw_cloud_sync.svg}" class="mb-3" style="height: 200px;">
+            <h4>History charts</h4>
+            <p>We gather your server's data and put into simple but powerful charts for you to have a better
+                view of what's happening.</p>
+        </div>
+    </div>
+
+    <div class="row py-3 mb-3 border-top">
+        <div class="col">
+            <img class="mb-2" th:src="@{/img/logo.png}" height="19">
+            <small class="d-block mb-3 text-muted">SSSM © 2021</small>
+        </div>
+        <div class="col">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="/privacy">Privacy</a></li>
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="/terms">Terms</a></li>
+            </ul>
+        </div>
+        <div class="col">
+            <a href="https://www.digitalocean.com/?refcode=ad78d08afe25&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img
+                    src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg"
+                    alt="DigitalOcean Referral Badge"/></a>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>

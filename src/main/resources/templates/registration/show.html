@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <th:block th:replace="fragments/header"></th:block>
+</head>
+<body>
+<th:block th:replace="fragments/navbar"></th:block>
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h4>Create an account</h4>
+
+            <form method="post" th:action="@{/registration}" th:object="${userModel}">
+                <div th:if="${errors != null}" class="alert alert-danger">
+                    <div th:each="err : ${errors}" th:text="${err}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" autofocus class="form-control" th:field="*{email}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" th:field="*{password}" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>

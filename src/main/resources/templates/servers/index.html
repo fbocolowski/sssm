@@ -1,0 +1,95 @@
+<div class="row mb-3">
+    <div class="col">
+        <h4 th:text="${group.name}"></h4>
+    </div>
+    <div class="col text-end">
+        <form class="form-inline" th:action="@{/groups/} + ${group.id} + @{/servers}" method="post">
+            <a th:href="@{/groups/} + ${group.id}" class="btn btn-primary">Settings</a>
+            <button type="submit" class="btn btn-primary">New server</button>
+        </form>
+    </div>
+</div>
+
+<th:block th:if="${servers.empty}">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="my-5 text-center">
+                <h5>No server found</h5>
+                <p class="text-muted">Start by creating a new server</p>
+                <form class="form-inline" th:action="@{/groups/} + ${group.id} + @{/servers}" method="post">
+                    <button type="submit" class="btn btn-primary">New server</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block th:if="${!servers.empty}">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle table-borderless">
+            <thead class="">
+            <tr>
+                <th>Hostname</th>
+                <th>IP</th>
+                <th></th>
+                <th>Last active</th>
+                <th>Uptime</th>
+                <th>RAM</th>
+                <th>Disk</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="server : ${servers}">
+                <tr class="clickable" th:data-href="@{/groups/} + ${group.id} + @{/servers/} + ${server.id}">
+                    <td>
+                        <span th:text="${server.hostname != null ? server.hostname : 'New server'}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${server.ip != null ? server.ip : ''}"></span>
+                    </td>
+                    <td class="table-thumb text-center">
+                        <th:block th:if="${server.getLogoName() != null}">
+                            <img th:src="@{/img/distros/} + ${server.getLogoName()} + @{.png}"/>
+                        </th:block>
+                    </td>
+                    <td>
+                        <th:block
+                                th:if="${server.getLastReportMinutes() != null && server.getLastReportMinutes() <= 1}">
+                            <span class="badge bg-success">Less than a minute</span>
+                        </th:block>
+                        <th:block th:if="${server.getLastReportMinutes() != null && server.getLastReportMinutes() > 1}">
+                            <span class="badge bg-primary"
+                                  th:text="${server.getLastReportMinutes() + ' '} + @{minutes ago}"></span>
+                        </th:block>
+                    </td>
+                    <td>
+                        <span th:text="${server.getFormattedUptime()}"></span>
+                    </td>
+                    <td>
+                        <div class="progress" th:if="${server.ramUsage != null}">
+                            <div class="progress-bar" role="progressbar"
+                                 th:style="@{width:} + ${server.ramUsage} + @{%}" th:text="${server.ramUsage} + @{%}">
+                                0%
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="progress" th:if="${server.diskUsage != null}">
+                            <div class="progress-bar" role="progressbar"
+                                 th:style="@{width:} + ${server.diskUsage} + @{%}" th:text="${server.diskUsage} + @{%}">
+                                0%
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</th:block>
+
+<script>
+    $(".clickable").click(function () {
+        window.location = $(this).data("href");
+    });
+</script>

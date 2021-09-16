@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <th:block th:replace="fragments/header"></th:block>
+</head>
+<body>
+<th:block th:replace="fragments/navbar"></th:block>
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h4>My account</h4>
+
+            <form method="post" th:action="@{/account}" th:object="${user}">
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" th:field="*{email}" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+            <hr>
+
+            <h4>Change password</h4>
+
+            <form method="post" th:action="@{/changePassword}">
+                <div class="mb-3">
+                    <label class="form-label">New password</label>
+                    <input type="password" class="form-control" name="newPassword" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Confirm password</label>
+                    <input type="password" class="form-control" name="confirmPassword" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>

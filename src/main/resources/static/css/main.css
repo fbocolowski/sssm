@@ -1,0 +1,9 @@
+.table-thumb img {
+    height: 30px;
+    padding-top: .25rem !important;
+    padding-bottom: .25rem !important;
+}
+
+.clickable {
+    cursor: pointer;
+}

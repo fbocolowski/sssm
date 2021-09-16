@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <th:block th:replace="fragments/header"></th:block>
+</head>
+<body>
+<th:block th:replace="fragments/navbar"></th:block>
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h4>Login</h4>
+
+            <form method="post" th:action="@{/login}">
+                <div th:if="${param.error}" class="alert alert-danger">
+                    Email or password incorrect
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" autofocus class="form-control" name="username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>

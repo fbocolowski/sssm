@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <th:block th:replace="fragments/header"></th:block>
+</head>
+<body>
+<th:block th:replace="fragments/navbar"></th:block>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row mb-3">
+                <div class="col">
+                    <h4 th:text="${server.hostname != null ? ' ' + server.hostname : ' New server'}"></h4>
+                </div>
+                <div class="col text-end">
+                    <a th:href="@{/groups/} + ${group.id} + @{/servers/} + ${server.id} + @{/delete}"
+                       class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+
+            <th:block th:if="${reports.isEmpty()}">
+                <h5>Setup</h5>
+
+                <div class="mb-3">
+                    <label class="form-label">Add this line to your crontab</label>
+                    <input type="text" class="form-control"
+                           th:value="@{* * * * * curl -s} + ${' ' + url} + @{/runner.sh | bash -s} + ${' ' + url + ' '} + ${server.token + ' '} + @{>/dev/null 2>&1}">
+                </div>
+
+                <p>And refresh this page after 1 minute!</p>
+            </th:block>
+
+            <th:block th:if="${!reports.isEmpty()}">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="mb-3">RAM usage (last 24 hours)</h4>
+                        <div id="ram_usage" style="height: 420px;"></div>
+                    </div>
+                    <div class="col">
+                        <h4 class="mb-3">Disk usage (last 24 hours)</h4>
+                        <div id="disk_usage" style="height: 420px;"></div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <h4>Details</h4>
+                        <div><b>IP:</b> <span th:text="${server.ip}"></span></div>
+                        <div><b>Distro:</b> <span th:text="${server.distro}"></span></div>
+                        <div><b>Uptime:</b> <span th:text="${server.getFormattedUptime()}"></span></div>
+                        <div><b>RAM:</b> <span th:text="${server.ramUsage}"></span>%</div>
+                        <div><b>Disk:</b> <span th:text="${server.diskUsage}"></span>%</div>
+                    </div>
+                </div>
+
+                <script th:inline="javascript">
+                    /*<![CDATA[*/
+                    const groupId = /*[[${group.id}]]*/ '';
+                    const serverId = /*[[${server.id}]]*/ '';
+                    new Chartkick.LineChart("ram_usage", '/groups/' + groupId + '/servers/' + serverId + '/charts/ram', {curve: false});
+                    new Chartkick.LineChart("disk_usage", '/groups/' + groupId + '/servers/' + serverId + '/charts/disk', {curve: false});
+                    /*]]>*/
+                </script>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>

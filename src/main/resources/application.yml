@@ -1,0 +1,49 @@
+spring:
+  profiles:
+    active: development
+  application:
+    name: sssm
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 3MB
+      max-request-size: 3MB
+server:
+  port: 9090
+  servlet:
+    session:
+      cookie:
+        name: SSSM_SESSION_ID
+      persistent: true
+    encoding:
+      charset: UTF-8
+      enabled: true
+
+---
+
+spring:
+  data:
+    mongodb:
+      database: sssmDev
+  config:
+    activate:
+      on-profile: development
+server:
+  url: http://localhost:9090
+
+---
+
+spring:
+  data:
+    mongodb:
+      database: sssm
+  config:
+    activate:
+      on-profile: production
+logging:
+  level:
+    root: info
+  file:
+    name: /srv/sssm/application.log
+server:
+  url: https://sssm.app

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <th:block th:replace="fragments/header"></th:block>
+</head>
+<body>
+<th:block th:replace="fragments/navbar"></th:block>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <th:block th:each="group : ${groups}">
+                <div th:id="@{group_} + ${group.id}"></div>
+                <script th:inline="javascript">
+                    /*<![CDATA[*/
+                    $.ajax({
+                        type: "GET",
+                        url: '/groups/' + (/*[[${group.id}]]*/ '') + '/servers',
+                        success: function (data) {
+                            $("#group_" + /*[[${group.id}]]*/ '').html(data);
+                        },
+                        error: function () {
+                            console.log('Error loading group ' + /*[[${group.id}]]*/ '');
+                        }
+                    });
+                    /*]]>*/
+                </script>
+            </th:block>
+
+            <div class="text-center my-3 py-3 border-top">
+                <form class="form-inline" th:action="@{/groups}" method="post">
+                    <button type="submit" class="btn btn-light">New group</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer"></th:block>
+</body>
+</html>
