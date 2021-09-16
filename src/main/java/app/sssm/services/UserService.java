@@ -166,20 +166,14 @@ public class UserService implements UserDetailsService {
     public void changePassword(User user, String newPassword, String confirmPassword) {
         Boolean changed = false;
 
-        logger.info("changePassword => newPassword " + newPassword);
-        logger.info("changePassword => confirmPassword " + confirmPassword);
-
         if (newPassword.equals(confirmPassword)) {
-            logger.info("New password confirmed!");
             if (validatePassword(newPassword).isEmpty()) {
-                logger.info("Password valid!");
                 changed = true;
                 user.setPassword(bCryptPasswordEncoder.encode(newPassword));
             }
         }
 
         if (changed) {
-            logger.info("Password changed!");
             userRepository.save(user);
         }
     }
