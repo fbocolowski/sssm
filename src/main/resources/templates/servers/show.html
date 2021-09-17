@@ -23,7 +23,7 @@
                 <h5>Setup</h5>
 
                 <div class="mb-3">
-                    <label class="form-label">Add this line to your crontab</label>
+                    <label class="form-label">Add this line into your crontab</label>
                     <input type="text" class="form-control"
                            th:value="@{* * * * * curl -s} + ${' ' + url} + @{/runner.sh | bash -s} + ${' ' + url + ' '} + ${server.token + ' '} + @{>/dev/null 2>&1}">
                 </div>

@@ -1,4 +1,5 @@
 #!/bin/bash
 ssh -t sssm "mongodump --gzip --db sssm --archive=sssm.gz"
 scp sssm:sssm.gz /tmp/
+mongo sssmDev --eval "db.dropDatabase()"
 mongorestore --gzip --archive=/tmp/sssm.gz --nsFrom "sssm.*" --nsTo "sssmDev.*"
