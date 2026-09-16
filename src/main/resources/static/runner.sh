@@ -1,12 +1,24 @@
 #!/bin/bash
-UPTIME=`awk '{print $1}' /proc/uptime`
+OS=`uname -s`
 HOSTNAME=`hostname`
-DISTRO=`cat /etc/*release | grep "PRETTY_NAME" | cut -d "=" -f 2- | sed 's/"//g'`
-RAM_TOTAL=`free -t --mega | grep "Mem" | awk {'print $2'}`
-RAM_USED=`free -t --mega | grep "Mem" | awk {'print $3'}`
-DISK_DATA=`df -m --output=target,pcent,size,used / | tail -n+2`
-DISK_TOTAL=`echo $DISK_DATA | awk {'print $3'}`
-DISK_USED=`echo $DISK_DATA | awk {'print $4'}`
+if [ "$OS" = "Darwin" ]; then
+    BOOT_TIME=`sysctl -n kern.boottime | sed -n 's/.*{ *sec *= *\([0-9]*\).*/\1/p'`
+    UPTIME=$(($(date +%s) - $BOOT_TIME))
+    DISTRO="macOS `sw_vers -productVersion`"
+    PAGE_SIZE=`getconf PAGESIZE`
+    RAM_TOTAL=`sysctl -n hw.memsize | awk '{print int($1 / 1048576)}'`
+    FREE_PAGES=`vm_stat | awk '/Pages free/ {print $3}'`
+    FREE_MB=$(awk -v f="$FREE_PAGES" -v p="$PAGE_SIZE" 'BEGIN {print int(f * p / 1048576)}')
+    RAM_USED=$((RAM_TOTAL - FREE_MB))
+else
+    UPTIME=`awk '{print $1}' /proc/uptime`
+    DISTRO=`cat /etc/*release | grep "PRETTY_NAME" | cut -d "=" -f 2- | sed 's/"//g'`
+    RAM_TOTAL=`free -t --mega | grep "Mem" | awk {'print $2'}`
+    RAM_USED=`free -t --mega | grep "Mem" | awk {'print $3'}`
+fi
+DISK_DATA=`df -m / | tail -n 1`
+DISK_TOTAL=`echo $DISK_DATA | awk {'print $2'}`
+DISK_USED=`echo $DISK_DATA | awk {'print $3'}`
 
 generate_post_data() {
 cat <<EOF
